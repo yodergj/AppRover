@@ -1,0 +1,74 @@
+\section{Fetcher Class Reference}
+\label{classFetcher}\index{Fetcher@{Fetcher}}
+
+
+The class which handles all downloads of required files.  
+
+
+
+
+{\ttfamily \#include $<$Fetcher.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf Fetch} (string fileLocation, string storageDirectory, string checksum=\char`\"{}\char`\"{}, bool force=false) const 
+\item 
+string {\bf GetChecksum} (string fileLocation, string storageDirectory) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The class which handles all downloads of required files. 
+
+\subsection{Member Function Documentation}
+\index{Fetcher@{Fetcher}!Fetch@{Fetch}}
+\index{Fetch@{Fetch}!Fetcher@{Fetcher}}
+\subsubsection[{Fetch}]{\setlength{\rightskip}{0pt plus 5cm}bool Fetcher::Fetch (
+\begin{DoxyParamCaption}
+\item[{string}]{ fileLocation, }
+\item[{string}]{ storageDirectory, }
+\item[{string}]{ checksum = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{bool}]{ force = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const}\label{classFetcher_a008547a86306dd463526cbfac531a598}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fileLocation}]-\/ the remote location of the file \item[{\em storageDirectory}]-\/ the directory to hold the local copy of the file \item[{\em checksum}]-\/ string to check md5sum against, check disabled if \char`\"{}\char`\"{} \item[{\em force}]-\/ if true, the file will be fetched even if a local copy exists \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if file cannot be downloaded or the file exists and cannot be forcibly removed 
+
+true if successful or fle already exists
+\end{DoxyReturn}
+Downloads the file from the specifed location and stores it in the storage directory. If the file is already in the storage directory, it will only be downloaded if force is true. 
+
+References GetChecksum(), and Interpreter::Interpret().
+
+
+
+Referenced by Package::Fetch(), Package::RecordSourceChecksums(), and Repository::Synchronize().
+
+\index{Fetcher@{Fetcher}!GetChecksum@{GetChecksum}}
+\index{GetChecksum@{GetChecksum}!Fetcher@{Fetcher}}
+\subsubsection[{GetChecksum}]{\setlength{\rightskip}{0pt plus 5cm}string Fetcher::GetChecksum (
+\begin{DoxyParamCaption}
+\item[{string}]{ fileLocation, }
+\item[{string}]{ storageDirectory}
+\end{DoxyParamCaption}
+) const}\label{classFetcher_a04f7613e3261feff71c274b486cb33c3}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fileLocation}]-\/ the remove location of the file \item[{\em storageDirectory}]-\/ the directory where the file is locally stored \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the checksum for the local copy of the specified file 
+\end{DoxyReturn}
+
+
+Referenced by Fetch(), and Package::RecordSourceChecksums().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Fetcher.h\item 
+Fetcher.cpp\end{DoxyCompactItemize}

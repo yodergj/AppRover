@@ -1,0 +1,254 @@
+\section{Revision Class Reference}
+\label{classRevision}\index{Revision@{Revision}}
+
+
+A simple class for handling package revision strings.  
+
+
+
+
+{\ttfamily \#include $<$Revision.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Revision} (string revision)
+\item 
+bool {\bf IsSet} () const 
+\item 
+{\bf Revision} \& {\bf operator=} (const {\bf Revision} \&src)
+\item 
+bool {\bf operator$<$} (const {\bf Revision} \&refRevision) const 
+\item 
+bool {\bf operator$<$=} (const {\bf Revision} \&refRevision) const 
+\item 
+bool {\bf operator==} (const {\bf Revision} \&refRevision) const 
+\item 
+bool {\bf operator$>$=} (const {\bf Revision} \&refRevision) const 
+\item 
+bool {\bf operator$>$} (const {\bf Revision} \&refRevision) const 
+\item 
+string {\bf GetString} () const 
+\item 
+void {\bf Set} (string revision)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf SetValues} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mRevisionStr}\label{classRevision_a656395f0d475feaeffafbba5df0020a6}
+
+\begin{DoxyCompactList}\small\item\em The contents of this revision in a readable string. \item\end{DoxyCompactList}\item 
+int {\bf mAlphaNumber}\label{classRevision_ac0dfe73f7b931fa3d137731c79cc56b9}
+
+\begin{DoxyCompactList}\small\item\em The alpha number of this revision (i.e. alpha 1, alpha 2, etc.). \item\end{DoxyCompactList}\item 
+int {\bf mBetaNumber}\label{classRevision_a11e2f55468303ab147b3687e396831b1}
+
+\begin{DoxyCompactList}\small\item\em The beta number of this revision (i.e. beta 1, beta 2, etc.). \item\end{DoxyCompactList}\item 
+int {\bf mRCNumber}\label{classRevision_a94f3823f49575bc49e65a4060ac43b13}
+
+\begin{DoxyCompactList}\small\item\em The release candidate number of this revision (i.e. RC 1, RC 2, etc.). \item\end{DoxyCompactList}\item 
+vector$<$ int $>$ {\bf mVersionParts}\label{classRevision_af51623cfe1c58007d084cf37b187b705}
+
+\begin{DoxyCompactList}\small\item\em List of the leading numeric components in the application's version. \item\end{DoxyCompactList}\item 
+string {\bf mRemnant}\label{classRevision_ad28c9298fd8e834c0e7b1e35cef2948a}
+
+\begin{DoxyCompactList}\small\item\em Non-\/numeric revision suffix aside from alpha, beta, and rc. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A simple class for handling package revision strings. A revision consists of the version of an application combined with and indicator of how many times a package for this application has been redone (such as \char`\"{}1.00beta1\char`\"{}, \char`\"{}1.00\char`\"{}, \char`\"{}1.00-\/r1\char`\"{}, \char`\"{}1.00-\/r2\char`\"{}, \char`\"{}1.02\char`\"{}) 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Revision@{Revision}!Revision@{Revision}}
+\index{Revision@{Revision}!Revision@{Revision}}
+\subsubsection[{Revision}]{\setlength{\rightskip}{0pt plus 5cm}Revision::Revision (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classRevision_ad0f0755a2ae4c164715299f10ddc115f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ the string representation of this revision \end{DoxyParams}
+
+
+References mRevisionStr, and SetValues().
+
+
+
+\subsection{Member Function Documentation}
+\index{Revision@{Revision}!GetString@{GetString}}
+\index{GetString@{GetString}!Revision@{Revision}}
+\subsubsection[{GetString}]{\setlength{\rightskip}{0pt plus 5cm}string Revision::GetString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classRevision_a8c2e195e7b824dd7ac52fee0e9d464e0}
+\begin{DoxyReturn}{Returns}
+the string representation of this revision 
+\end{DoxyReturn}
+
+
+References mRevisionStr.
+
+
+
+Referenced by Repository::AddPackage(), PackageIndex::AddPackage(), Package::Build(), InstallEntry::ClearDependencies(), Package::Configure(), InstallLog::DeleteEntry(), Package::Fetch(), PackageDependency::GetDependentRevision(), PackageDependency::GetDependentString(), PackageDependency::GetMaxRevision(), PackageDependency::GetMinRevision(), PackageDependency::GetString(), Package::Install(), AppRover::Install(), PackageWizard::NameChanged(), Package::Package(), PackageDependency::Save(), Package::Save(), InstallEntry::Save(), PackageWizard::showPage(), InstallEntry::Uninstall(), AppRover::Uninstall(), Package::Unpack(), and AppRover::Update().
+
+\index{Revision@{Revision}!IsSet@{IsSet}}
+\index{IsSet@{IsSet}!Revision@{Revision}}
+\subsubsection[{IsSet}]{\setlength{\rightskip}{0pt plus 5cm}bool Revision::IsSet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classRevision_a3610a52ad5f4c26c21d01d028264c422}
+\begin{DoxyReturn}{Returns}
+false if this revision is empty (unspecified) 
+\end{DoxyReturn}
+
+
+References mRevisionStr.
+
+
+
+Referenced by PackageDependency::GetString(), PackageDependency::IsSatisfiedBy(), and PackageDependency::Save().
+
+\index{Revision@{Revision}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Revision@{Revision}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool Revision::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Revision} \&}]{ refRevision}
+\end{DoxyParamCaption}
+) const}\label{classRevision_a7ac92bcc822d6516255b4d874d0fb7ef}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refRevision}]-\/ the revision that this revision is compared against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this revision is earlier than the reference revision
+\end{DoxyReturn}
+To determine if a revision comes earlier, first the corresponding numeric parts of the application version are compared. If all of the corresponding parts match, the revision with fewer numeric components is considered earlier. Next, the alpha numbers are compared, followed by the beta and rc numbers. Finally, the number of times the package has been revised should be compared (currently unimplemented). All other comparison operators determine their values by using the results of this operator and checking for equality. 
+
+\begin{Desc}
+\item[{\bf Todo}]Add support for checking the revision number \end{Desc}
+
+
+
+
+References mAlphaNumber, mBetaNumber, mRCNumber, mRemnant, and mVersionParts.
+
+\index{Revision@{Revision}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Revision@{Revision}}
+\subsubsection[{operator$<$=}]{\setlength{\rightskip}{0pt plus 5cm}bool Revision::operator$<$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Revision} \&}]{ refRevision}
+\end{DoxyParamCaption}
+) const}\label{classRevision_af746df89ce9d54c233ac45d8f3e1355c}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refRevision}]-\/ the revision that this revision is compared against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this revision is earlier than or matches the reference revision 
+\end{DoxyReturn}
+\index{Revision@{Revision}!operator=@{operator=}}
+\index{operator=@{operator=}!Revision@{Revision}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Revision} \& Revision::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Revision} \&}]{ src}
+\end{DoxyParamCaption}
+)}\label{classRevision_ae42dfaec144bdd40a6700d187892c7ab}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]-\/ the revision to copy \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to this revision 
+\end{DoxyReturn}
+
+
+References mRevisionStr.
+
+\index{Revision@{Revision}!operator==@{operator==}}
+\index{operator==@{operator==}!Revision@{Revision}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool Revision::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Revision} \&}]{ refRevision}
+\end{DoxyParamCaption}
+) const}\label{classRevision_a4937aced519a59664f83c61ef52b2062}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refRevision}]-\/ the revision that this revision is compared against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this revision matches the reference revision 
+\end{DoxyReturn}
+
+
+References mRevisionStr.
+
+\index{Revision@{Revision}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Revision@{Revision}}
+\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}bool Revision::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Revision} \&}]{ refRevision}
+\end{DoxyParamCaption}
+) const}\label{classRevision_ac144a995755dd10df4603e79dde9f17a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refRevision}]-\/ the revision that this revision is compared against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this revision is later than the reference revision 
+\end{DoxyReturn}
+\index{Revision@{Revision}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Revision@{Revision}}
+\subsubsection[{operator$>$=}]{\setlength{\rightskip}{0pt plus 5cm}bool Revision::operator$>$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Revision} \&}]{ refRevision}
+\end{DoxyParamCaption}
+) const}\label{classRevision_a6c199c5cf145b989c78648fa97fe3dde}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refRevision}]-\/ the revision that this revision is compared against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this revision is later than or matches the reference revision 
+\end{DoxyReturn}
+\index{Revision@{Revision}!Set@{Set}}
+\index{Set@{Set}!Revision@{Revision}}
+\subsubsection[{Set}]{\setlength{\rightskip}{0pt plus 5cm}void Revision::Set (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classRevision_a5c36251dfb88cb591b2019efce45501f}
+\begin{DoxyReturn}{Returns}
+revision -\/ the string representation of this revision 
+\end{DoxyReturn}
+
+
+References mRevisionStr, and SetValues().
+
+
+
+Referenced by PackageIndex::GetPrecedingPackage(), PackageIndex::Load(), PackageDependency::Load(), Package::Load(), InstallEntry::Load(), Package::Package(), PackageDependency::PackageDependency(), PackageDependency::SetDependentRevision(), Package::SetRevision(), and InstallEntry::SetRevision().
+
+\index{Revision@{Revision}!SetValues@{SetValues}}
+\index{SetValues@{SetValues}!Revision@{Revision}}
+\subsubsection[{SetValues}]{\setlength{\rightskip}{0pt plus 5cm}void Revision::SetValues (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classRevision_afee0ec60a6c7ffcbc34dfd5af84d79b7}
+Parses the revision string and loads the relevant date into the version parts, and sets the alpha, beta, and release candidate numbers. 
+
+References mAlphaNumber, mBetaNumber, mRCNumber, mRemnant, mRevisionStr, and mVersionParts.
+
+
+
+Referenced by Revision(), and Set().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Revision.h\item 
+Revision.cpp\end{DoxyCompactItemize}

@@ -1,0 +1,133 @@
+\label{todo__todo000008}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{AppRover::ActivateFeatureForPackage}{p.}{classAppRover_a262e10b2a2aad96a036fb581d7fde951}(string packageName, string featureName, bool activationState) ]this function should be removed and activated feature should be passed as an argument to Install 
+\end{DoxyDescription}
+
+\label{todo__todo000006}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{AppRover::Install}{p.}{classAppRover_a5758b110f26be98601dd0cd730f1b25a}(string packageName, string revisionStr, bool pretend, \doxyref{ActionDescriptionVector}{p.}{classActionDescriptionVector} \&actionList, AppRoverHaltStageType haltStage=STAGE\_\-INSTALL, bool allowReinstall=false, bool explicitInstall=true) ]This does a minimal update. Need to make an option to do a full update or a full reinstall 
+\end{DoxyDescription}
+
+\label{todo__todo000009}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{AppRover::PopulatePackageList}{p.}{classAppRover_a8a9ff6b2675e102c268b48357f80ed57}() ]Sort the list and make sure there are no duplicate entries 
+\end{DoxyDescription}
+
+\label{todo__todo000007}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{AppRover::Uninstall}{p.}{classAppRover_a43fd77c6777299e9627043d76b5eb89a}(string packageName, bool pretend, \doxyref{ActionDescriptionVector}{p.}{classActionDescriptionVector} \&actionList) ]May want to add a means to protect some versions 
+\end{DoxyDescription}
+
+\label{todo__todo000002}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{AppRoverKWindow::FillOutPackageList}{p.}{classAppRoverKWindow_a2db5d59907817bb85210bb9833118c68}() ]Clean this up so it doesn't do so many allocations / deallocations 
+\end{DoxyDescription}
+
+\label{todo__todo000010}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{BooleanExpression::GetFeatureValue}{p.}{classBooleanExpression_af6a256a587bfb41868079be26c58ab2d}(const FeatureOptionVector \&features, string feature) const  ]Decide how to handle this case. Perhaps I will exit 
+\end{DoxyDescription}
+
+\label{todo__todo000011}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{InstallEntry::TransferFilesTo}{p.}{classInstallEntry_acab9c58583dca97ede488947591c9764}(\doxyref{InstallEntry}{p.}{classInstallEntry} $\ast$target) ]Should probably add inherited flag for symlinks and directories 
+\end{DoxyDescription}
+
+\label{todo__todo000014}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{InstallLog::GetUnneededPackages}{p.}{classInstallLog_a38ed17aae6ef7a6a7f4f70a90c1137ff}() ]Add an input list of things to ignore 
+\end{DoxyDescription}
+
+\label{todo__todo000013}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{InstallLog::RegisterReverseDependency}{p.}{classInstallLog_ae66d330827c1c9eacb54683b1949655c}(string packageName, string revision, const \doxyref{PackageDependency}{p.}{classPackageDependency} $\ast$dependency) ]Need to find best entry which satifies the dependency 
+\end{DoxyDescription}
+
+\label{todo__todo000012}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{InstallLog::Satisfies}{p.}{classInstallLog_afdd4793d52d76b415604faeda13398f4}(const \doxyref{PackageDependency}{p.}{classPackageDependency} $\ast$dependency) const  ]Need to add support here for block packages 
+\end{DoxyDescription}
+
+\label{todo__todo000016}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{InstructionSequence::ConditionFulfilled}{p.}{classInstructionSequence_ae574fcbcdfc0cf5c7bf911e6e55b2d04}(const FeatureOptionVector \&variables, int lineNumber) const  ]decide how to handle this case 
+\end{DoxyDescription}
+
+\label{todo__todo000015}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{InstructionSequence::Translate}{p.}{classInstructionSequence_adb6fd85789b61bd71ccb1b69c358e828}(\doxyref{InstallEntry}{p.}{classInstallEntry} $\ast$logEntry, int numProcessors) const  ]Add support for constants for things like package name 
+\end{DoxyDescription}
+
+\label{todo__todo000017}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{Interpreter::Interpret}{p.}{classInterpreter_ab7faef219a7956ee43338569f5cc1d2f}(string command, bool pleaseWait=false) ]If command starts with \char`\"{}@\char`\"{}, make in execute silently 
+\end{DoxyDescription}
+
+\label{todo__todo000003}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{kInterpreter::Interpret}{p.}{classkInterpreter_a44330e0014189296045471ceda2634ba}(string command, bool pleaseWait=false) ]If command starts with \char`\"{}@\char`\"{}, make it execute silently 
+\end{DoxyDescription}
+
+\label{todo__todo000022}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{PackageDependency::IsSatisfiedBy}{p.}{classPackageDependency_a843acb4ad329e79518d3d067f64eb922}(const string \&packageName, const \doxyref{Revision}{p.}{classRevision} \&revision) const  ]Add support for blocking dependencies 
+
+Add support for \char`\"{}virtual\char`\"{} dependencies 
+\end{DoxyDescription}
+
+\label{todo__todo000018}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{PackageDependency::IsSatisfiedBy}{p.}{classPackageDependency_a358eae90c5eeec6ddae5f385bda1731a}(const \doxyref{Package}{p.}{classPackage} $\ast$package) const  ]Add support for blocking dependencies 
+
+Add support for \char`\"{}virtual\char`\"{} dependencies 
+\end{DoxyDescription}
+
+\label{todo__todo000020}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{PackageDependency::IsSatisfiedBy}{p.}{classPackageDependency_aec19f85b09e1f8cd6aa11faaea9d24da}(const \doxyref{InstallEntry}{p.}{classInstallEntry} $\ast$package) const  ]Add support for blocking dependencies 
+
+Add support for \char`\"{}virtual\char`\"{} dependencies 
+\end{DoxyDescription}
+
+\label{todo__todo000004}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{PackageWizard::next}{p.}{classPackageWizard_abf0561836252a6e736e0d04a489a214e}() ]: use paragraph option for text to separately add instructions 
+
+update package wizard for dependency types 
+\end{DoxyDescription}
+
+\label{todo__todo000025}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{Repository::SetSyncLocation}{p.}{classRepository_a92857ef764fd9119b22cb87cb6abd82f}(string location) ]Start checking if location format matches protocol 
+\end{DoxyDescription}
+
+\label{todo__todo000024}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{Repository::Synchronize}{p.}{classRepository_a01e87f84cb9b88f4809a6e6f52fc35b0}() ]Do actual rsync synchronization 
+\end{DoxyDescription}
+
+\label{todo__todo000026}
+ 
+\begin{DoxyDescription}
+\item[Member \doxyref{Revision::operator$<$}{p.}{classRevision_a7ac92bcc822d6516255b4d874d0fb7ef}(const \doxyref{Revision}{p.}{classRevision} \&refRevision) const  ]Add support for checking the revision number 
+\end{DoxyDescription}

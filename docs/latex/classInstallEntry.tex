@@ -1,0 +1,1131 @@
+\section{InstallEntry Class Reference}
+\label{classInstallEntry}\index{InstallEntry@{InstallEntry}}
+
+
+Class responsible for managing all data concerning a package which has been at least partially installed.  
+
+
+
+
+{\ttfamily \#include $<$InstallEntry.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf Save} (xmlNodePtr parentNode)
+\item 
+bool {\bf Load} (xmlNodePtr entryNode)
+\item 
+string {\bf GetName} () const 
+\item 
+void {\bf SetName} (string name)
+\item 
+const {\bf Revision} \& {\bf GetRevision} () const 
+\item 
+void {\bf SetRevision} (string revision)
+\item 
+string {\bf GetSlot} () const 
+\item 
+void {\bf SetSlot} (string slot)
+\item 
+int {\bf GetBinaryCompatabilityRevision} () const 
+\item 
+void {\bf SetBinaryCompatabilityRevision} (int revision)
+\item 
+bool {\bf IsUnpacked} () const 
+\item 
+bool {\bf IsAtLeastUnpacked} () const 
+\item 
+void {\bf SetUnpacked} ()
+\item 
+bool {\bf IsConfigured} () const 
+\item 
+bool {\bf IsAtLeastConfigured} () const 
+\item 
+void {\bf SetConfigured} ()
+\item 
+bool {\bf IsBuilt} () const 
+\item 
+void {\bf SetBuilt} ()
+\item 
+bool {\bf IsInstalled} () const 
+\item 
+void {\bf SetInstalled} ()
+\item 
+string {\bf GetErrorMessage} () const 
+\item 
+void {\bf SetErrorMessage} (string errMsg)
+\item 
+string {\bf Uninstall} (bool backup=true)
+\item 
+void {\bf SetInstallListFilename} (string filename)
+\item 
+void {\bf AddInstalledFile} (string filename)
+\item 
+void {\bf AddInstalledSymLink} (string linkname)
+\item 
+void {\bf AddInstalledDirectory} (string directory)
+\item 
+bool {\bf TransferFilesTo} ({\bf InstallEntry} $\ast$target)
+\item 
+void {\bf ConsolidateFiles} ()
+\item 
+bool {\bf PurgeLegacyFiles} ()
+\item 
+void {\bf SetUninstallInstructions} (const {\bf InstructionSequence} \&instructions)
+\item 
+void {\bf AddDependency} (const {\bf PackageDependency} \&dependency)
+\item 
+void {\bf ClearDependencies} ({\bf InstallLog} \&installLog)
+\item 
+int {\bf GetNumDependencies} () const 
+\item 
+const {\bf PackageDependency} $\ast$ {\bf GetDependency} (int depNumber)
+\item 
+void {\bf AddReverseDependency} (string packageName, string revision, const {\bf PackageDependency} \&forwardDependency)
+\item 
+void {\bf RemoveReverseDependency} (string packageName, string revision, int maxEntries=1)
+\item 
+bool {\bf TransferReverseDependenciesTo} ({\bf InstallEntry} $\ast$target)
+\item 
+int {\bf GetNumReverseDependencies} () const 
+\item 
+string {\bf GetReverseDependencyName} (int depNumber) const 
+\item 
+bool {\bf ReverseDependencyIsStatic} (int depNumber) const 
+\item 
+bool {\bf ReverseDependenciesAreInList} (const InstallEntryVector \&packages) const 
+\item 
+const FeatureOptionVector \& {\bf GetFeatures} () const 
+\item 
+void {\bf AddFeature} ({\bf FeatureOption} $\ast$feature)
+\item 
+bool {\bf HasFeature} (string featureName)
+\item 
+bool {\bf GetFeatureState} (string featureName)
+\item 
+bool {\bf ActivateFeature} (string featureName)
+\item 
+bool {\bf DeactivateFeature} (string featureName)
+\item 
+bool {\bf IsExplicitlyInstalled} ()
+\item 
+void {\bf SetExplicitlyInstalled} (bool state)
+\item 
+bool {\bf IsExcludedFromUpdates} ()
+\item 
+void {\bf SetExcludeFromUpdates} (bool state)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf LoadFileList} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mPackageName}\label{classInstallEntry_a62788c4841561d95b0a2795c774002bb}
+
+\begin{DoxyCompactList}\small\item\em The name of the package pertaining to this entry. \item\end{DoxyCompactList}\item 
+{\bf Revision} {\bf mPackageRevision}\label{classInstallEntry_a22e42c86f96419901474575a7c061b3d}
+
+\begin{DoxyCompactList}\small\item\em The revision of the package pertaining to this entry. \item\end{DoxyCompactList}\item 
+string {\bf mPackageSlot}\label{classInstallEntry_a8e15702b1706b97dd6eb1af5e0b8a609}
+
+\begin{DoxyCompactList}\small\item\em The slot occupied by the package pertaining to this entry. \item\end{DoxyCompactList}\item 
+bool {\bf mExplicitInstall}\label{classInstallEntry_a68c60c06fac8cbb1056b50962f002d9c}
+
+\begin{DoxyCompactList}\small\item\em The state of whether this installation was explicitly requested by the user. \item\end{DoxyCompactList}\item 
+bool {\bf mExcludeFromUpdates}\label{classInstallEntry_aca262dbd9b4553e822a28cabcb1ca153}
+
+\begin{DoxyCompactList}\small\item\em Should this package be allowed to update when not necessary or expilcity stated. \item\end{DoxyCompactList}\item 
+int {\bf mBinaryCompatabilityRevision}\label{classInstallEntry_a8143d115816be7aa039c9fc28b6c0667}
+
+\begin{DoxyCompactList}\small\item\em Value used to track whether two revisions of a package have binary compatable interfaces. \item\end{DoxyCompactList}\item 
+string {\bf mPackageStatus}\label{classInstallEntry_a1eaa4451f7b1571d64d99b48b92e8816}
+
+\begin{DoxyCompactList}\small\item\em The state to which this package has been installed (unpacked, configured, etc). \item\end{DoxyCompactList}\item 
+bool {\bf mInstalledInThisSession}\label{classInstallEntry_a16b8392df09771763863cb7db052c298}
+
+\begin{DoxyCompactList}\small\item\em Indicates that this package was just installed, and its files must be recorded. \item\end{DoxyCompactList}\item 
+string {\bf mErrorMessage}\label{classInstallEntry_ae5e47e57a2ce550d332a9ff11b143f63}
+
+\begin{DoxyCompactList}\small\item\em The error message(s) generated by the last action performed on the package. \item\end{DoxyCompactList}\item 
+string {\bf mInstallListFilename}\label{classInstallEntry_ab685367201f25f413de2605e7ca394de}
+
+\begin{DoxyCompactList}\small\item\em The name of the file listing the files installed by this package. \item\end{DoxyCompactList}\item 
+vector$<$ {\bf InstalledFile} $\ast$ $>$ {\bf mInstalledFiles}\label{classInstallEntry_a82e073a34844ffa40bacd1b4a51f35bf}
+
+\begin{DoxyCompactList}\small\item\em The files installed by this package. \item\end{DoxyCompactList}\item 
+vector$<$ string $>$ {\bf mInstalledSymLinks}\label{classInstallEntry_a87319dafc27dbf1c8c3097a42a5a6747}
+
+\begin{DoxyCompactList}\small\item\em The names of the symbolic links installed by this package. \item\end{DoxyCompactList}\item 
+vector$<$ string $>$ {\bf mInstalledDirectories}\label{classInstallEntry_a1bb27e2a1b8948cf55a9126674ad6099}
+
+\begin{DoxyCompactList}\small\item\em The names of the directories installed by this package. \item\end{DoxyCompactList}\item 
+{\bf InstructionSequence} {\bf mUninstallInstructions}\label{classInstallEntry_a1adee7dc20fc5bed540c55bdae6ac015}
+
+\begin{DoxyCompactList}\small\item\em The instructions (if any) executed to remove this package from this system. \item\end{DoxyCompactList}\item 
+PackageDependencyVector {\bf mDependencies}\label{classInstallEntry_aa4ae5c00a9ef227093e92a2b8f66e29b}
+
+\begin{DoxyCompactList}\small\item\em The list of dependencies this package has on other packages. \item\end{DoxyCompactList}\item 
+PackageDependencyVector {\bf mReverseDependencies}\label{classInstallEntry_aacea84f137aee36c4cb106354c759fd3}
+
+\begin{DoxyCompactList}\small\item\em The list of the packages which depend on this package. \item\end{DoxyCompactList}\item 
+FeatureOptionVector {\bf mFeatures}\label{classInstallEntry_a87e88f6c199afc2d4e8389a81a9792bb}
+
+\begin{DoxyCompactList}\small\item\em The list of optional features and their states used by this package. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class responsible for managing all data concerning a package which has been at least partially installed. 
+
+\subsection{Member Function Documentation}
+\index{InstallEntry@{InstallEntry}!ActivateFeature@{ActivateFeature}}
+\index{ActivateFeature@{ActivateFeature}!InstallEntry@{InstallEntry}}
+\subsubsection[{ActivateFeature}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::ActivateFeature (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a79ef3777c41945269c9ffece16e51068}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ the name of the feature which is possibly used by this package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the optional feature has been associated
+\end{DoxyReturn}
+Activates the feature in the list of features. This does not affect the current installation, but whenever this package is upgraded or reinstalled, the feature will be used. 
+
+References GetName(), and mFeatures.
+
+\index{InstallEntry@{InstallEntry}!AddDependency@{AddDependency}}
+\index{AddDependency@{AddDependency}!InstallEntry@{InstallEntry}}
+\subsubsection[{AddDependency}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::AddDependency (
+\begin{DoxyParamCaption}
+\item[{const {\bf PackageDependency} \&}]{ dependency}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_ae2e5cb4a9a4554fd713f4cd18ac0ec19}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dependency}]-\/ package dependency to be added to the list of this package's dependencies \end{DoxyParams}
+
+
+References mDependencies.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!AddFeature@{AddFeature}}
+\index{AddFeature@{AddFeature}!InstallEntry@{InstallEntry}}
+\subsubsection[{AddFeature}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::AddFeature (
+\begin{DoxyParamCaption}
+\item[{{\bf FeatureOption} $\ast$}]{ feature}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a91fc0aa7cae3172a5af46be1ed2bf89e}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em feature}]-\/ optional feature to associate with this package \end{DoxyParams}
+
+
+References mFeatures.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!AddInstalledDirectory@{AddInstalledDirectory}}
+\index{AddInstalledDirectory@{AddInstalledDirectory}!InstallEntry@{InstallEntry}}
+\subsubsection[{AddInstalledDirectory}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::AddInstalledDirectory (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a4fc38ffb93e727afd15eee09dc056c8c}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em directory}]-\/ the full path of an installed directory\end{DoxyParams}
+Records a directory that has been installed by the package. 
+
+References mInstalledDirectories.
+
+
+
+Referenced by Package::Install(), and TransferFilesTo().
+
+\index{InstallEntry@{InstallEntry}!AddInstalledFile@{AddInstalledFile}}
+\index{AddInstalledFile@{AddInstalledFile}!InstallEntry@{InstallEntry}}
+\subsubsection[{AddInstalledFile}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::AddInstalledFile (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a828191bfa29949b02960b403f03f352b}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the full path of an installed file\end{DoxyParams}
+Records a file that has been installed by the package. 
+
+References mInstalledFiles, and InstalledFile::SetChecksum().
+
+
+
+Referenced by Package::Install().
+
+\index{InstallEntry@{InstallEntry}!AddInstalledSymLink@{AddInstalledSymLink}}
+\index{AddInstalledSymLink@{AddInstalledSymLink}!InstallEntry@{InstallEntry}}
+\subsubsection[{AddInstalledSymLink}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::AddInstalledSymLink (
+\begin{DoxyParamCaption}
+\item[{string}]{ linkname}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a92fae0239ca816be02e17cffb654127a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em linkname}]-\/ the full path of an installed symbolic link\end{DoxyParams}
+Records a symbolic link that has been installed by the package. 
+
+References mInstalledSymLinks.
+
+
+
+Referenced by Package::Install(), and TransferFilesTo().
+
+\index{InstallEntry@{InstallEntry}!AddReverseDependency@{AddReverseDependency}}
+\index{AddReverseDependency@{AddReverseDependency}!InstallEntry@{InstallEntry}}
+\subsubsection[{AddReverseDependency}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::AddReverseDependency (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revision, }
+\item[{const {\bf PackageDependency} \&}]{ forwardDependency}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a7b28fc312028abf248edba78d8aefcc6}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package which depends on this package \item[{\em revision}]-\/ revision of the package with depends on this package \item[{\em forwardDependency}]-\/ the dependency which the reverse dependency mirrors \end{DoxyParams}
+
+
+References mReverseDependencies, PackageDependency::SetDependentName(), and PackageDependency::SetDependentRevision().
+
+\index{InstallEntry@{InstallEntry}!ClearDependencies@{ClearDependencies}}
+\index{ClearDependencies@{ClearDependencies}!InstallEntry@{InstallEntry}}
+\subsubsection[{ClearDependencies}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::ClearDependencies (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallLog} \&}]{ installLog}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_abce6aabc1f3e22a66ae9dc2d50bc0b00}
+Empties the list of dependencies associated with this package, and releases all reverse dependencies which point to this package. 
+
+References Revision::GetString(), mDependencies, mPackageName, mPackageRevision, and InstallLog::ReleaseReverseDependenciesTo().
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!ConsolidateFiles@{ConsolidateFiles}}
+\index{ConsolidateFiles@{ConsolidateFiles}!InstallEntry@{InstallEntry}}
+\subsubsection[{ConsolidateFiles}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::ConsolidateFiles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_afa1c58297e92062816fb4bff6b713e78}
+Removes duplicate and missing files from the file list. Any backup files will be compared against the original file, and will be removed if they are the same or if the original file is missing (don't want backups of obsolete files). 
+
+References LoadFileList(), and mInstalledFiles.
+
+
+
+Referenced by Package::Install().
+
+\index{InstallEntry@{InstallEntry}!DeactivateFeature@{DeactivateFeature}}
+\index{DeactivateFeature@{DeactivateFeature}!InstallEntry@{InstallEntry}}
+\subsubsection[{DeactivateFeature}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::DeactivateFeature (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a38ae177a38ae49cf181c1e92d253193f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ the name of the feature which is possibly used by this package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the optional feature has been associated
+\end{DoxyReturn}
+Deactivates the feature in the list of features. This does not affect the current installation, but whenever this package is upgraded or reinstalled, the feature will no longer be used. 
+
+References GetName(), and mFeatures.
+
+\index{InstallEntry@{InstallEntry}!GetBinaryCompatabilityRevision@{GetBinaryCompatabilityRevision}}
+\index{GetBinaryCompatabilityRevision@{GetBinaryCompatabilityRevision}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetBinaryCompatabilityRevision}]{\setlength{\rightskip}{0pt plus 5cm}int InstallEntry::GetBinaryCompatabilityRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a3bb9e1dca968d0b5d7181f10836470c0}
+\begin{DoxyReturn}{Returns}
+integer used to track whether to revisions have binary compatable interfaces 
+\end{DoxyReturn}
+
+
+References mBinaryCompatabilityRevision.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!GetDependency@{GetDependency}}
+\index{GetDependency@{GetDependency}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetDependency}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf PackageDependency} $\ast$ InstallEntry::GetDependency (
+\begin{DoxyParamCaption}
+\item[{int}]{ depNumber}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_ae283d045ded2e223404b252f87eb6842}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em depNumber}]-\/ the index into the list of dependencies \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the dependency at the specified position in the list 
+
+NULL if depNumber is invalid 
+\end{DoxyReturn}
+
+
+References mDependencies.
+
+\index{InstallEntry@{InstallEntry}!GetErrorMessage@{GetErrorMessage}}
+\index{GetErrorMessage@{GetErrorMessage}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetErrorMessage}]{\setlength{\rightskip}{0pt plus 5cm}string InstallEntry::GetErrorMessage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_aedff1d12b7fc5c048ea333054f6a87f1}
+return the last recorded error message from one of the installation stages 
+
+References mErrorMessage.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!GetFeatures@{GetFeatures}}
+\index{GetFeatures@{GetFeatures}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetFeatures}]{\setlength{\rightskip}{0pt plus 5cm}const FeatureOptionVector \& InstallEntry::GetFeatures (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a3a0b149f612787ac8c938802cf77c3e9}
+\begin{DoxyReturn}{Returns}
+list of the optional features and their states associated with this package 
+\end{DoxyReturn}
+
+
+References mFeatures.
+
+
+
+Referenced by Package::Fetch(), InstructionSequence::HandleIfStatement(), AppRover::Install(), and Package::Unpack().
+
+\index{InstallEntry@{InstallEntry}!GetFeatureState@{GetFeatureState}}
+\index{GetFeatureState@{GetFeatureState}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetFeatureState}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::GetFeatureState (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a6379d382137c75c73f1c479096b0101a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ the name of the feature which is possibly used by this package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the optional feature has been associated with this package and has been activated 
+\end{DoxyReturn}
+
+
+References GetName(), and mFeatures.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!GetName@{GetName}}
+\index{GetName@{GetName}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetName}]{\setlength{\rightskip}{0pt plus 5cm}string InstallEntry::GetName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_afda8ce44ed7458b0a7ea40b3a06d1f80}
+\begin{DoxyReturn}{Returns}
+the name of the package recorded in this log entry 
+\end{DoxyReturn}
+
+
+References mPackageName.
+
+
+
+Referenced by ActivateFeature(), DeactivateFeature(), InstallLog::DeleteEntry(), InstallLog::FindNextOldestInstalledEntry(), GetFeatureState(), HasFeature(), PackageDependency::IsSatisfiedBy(), InstallLog::RemovePartiallyInstalledSlotMates(), and ReverseDependenciesAreInList().
+
+\index{InstallEntry@{InstallEntry}!GetNumDependencies@{GetNumDependencies}}
+\index{GetNumDependencies@{GetNumDependencies}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetNumDependencies}]{\setlength{\rightskip}{0pt plus 5cm}int InstallEntry::GetNumDependencies (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a0f53467f84620c65b1d5286b745dbe14}
+\begin{DoxyReturn}{Returns}
+the number of dependencies associated with this package 
+\end{DoxyReturn}
+
+
+References mDependencies.
+
+
+
+Referenced by InstallLog::DeleteEntry().
+
+\index{InstallEntry@{InstallEntry}!GetNumReverseDependencies@{GetNumReverseDependencies}}
+\index{GetNumReverseDependencies@{GetNumReverseDependencies}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetNumReverseDependencies}]{\setlength{\rightskip}{0pt plus 5cm}int InstallEntry::GetNumReverseDependencies (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_ab221b5781ac107b8ae3fc463ed0900dc}
+\begin{DoxyReturn}{Returns}
+the number of reverse dependencies pertaining to this package 
+\end{DoxyReturn}
+
+
+References mReverseDependencies.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!GetReverseDependencyName@{GetReverseDependencyName}}
+\index{GetReverseDependencyName@{GetReverseDependencyName}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetReverseDependencyName}]{\setlength{\rightskip}{0pt plus 5cm}string InstallEntry::GetReverseDependencyName (
+\begin{DoxyParamCaption}
+\item[{int}]{ depNumber}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_ae669c73f975f14348946b1280a5ca4fa}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em depNumber}]-\/ the index into the list of reverse dependency names \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the name of the reverse dependency at the specified position in the list 
+
+NULL if depNumber is invalid 
+\end{DoxyReturn}
+
+
+References mReverseDependencies.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!GetRevision@{GetRevision}}
+\index{GetRevision@{GetRevision}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetRevision}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Revision} \& InstallEntry::GetRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_aed5257bfa3deaffc6e8bad46b69598df}
+return the revision of the package recorded in this log entry 
+
+References mPackageRevision.
+
+
+
+Referenced by InstallLog::DeleteEntry(), InstallLog::FindNextOldestInstalledEntry(), InstallLog::FindOldestInstalledEntry(), AppRover::Install(), PackageDependency::IsSatisfiedBy(), and AppRover::Uninstall().
+
+\index{InstallEntry@{InstallEntry}!GetSlot@{GetSlot}}
+\index{GetSlot@{GetSlot}!InstallEntry@{InstallEntry}}
+\subsubsection[{GetSlot}]{\setlength{\rightskip}{0pt plus 5cm}string InstallEntry::GetSlot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a21a34fdc89eb9d7b924a1d0421be6546}
+\begin{DoxyReturn}{Returns}
+string containing the slot occupied by this package 
+\end{DoxyReturn}
+
+
+References mPackageSlot.
+
+
+
+Referenced by InstallLog::RemovePartiallyInstalledSlotMates().
+
+\index{InstallEntry@{InstallEntry}!HasFeature@{HasFeature}}
+\index{HasFeature@{HasFeature}!InstallEntry@{InstallEntry}}
+\subsubsection[{HasFeature}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::HasFeature (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a9bb81cb7bc3ba11ee0a1f2a491999cf8}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ the name of the feature which is possibly used by this package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the optional feature has been associated with this package 
+\end{DoxyReturn}
+
+
+References GetName(), and mFeatures.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!IsAtLeastConfigured@{IsAtLeastConfigured}}
+\index{IsAtLeastConfigured@{IsAtLeastConfigured}!InstallEntry@{InstallEntry}}
+\subsubsection[{IsAtLeastConfigured}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::IsAtLeastConfigured (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a913e224978de71dd50b8ecbe31f9affe}
+\begin{DoxyReturn}{Returns}
+-\/ true if the package recorded in this entry has completed the configure stage and possibly the stages following configure 
+\end{DoxyReturn}
+
+
+References IsAtLeastUnpacked(), and mPackageStatus.
+
+
+
+Referenced by AppRover::BuildPackage(), and AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!IsAtLeastUnpacked@{IsAtLeastUnpacked}}
+\index{IsAtLeastUnpacked@{IsAtLeastUnpacked}!InstallEntry@{InstallEntry}}
+\subsubsection[{IsAtLeastUnpacked}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::IsAtLeastUnpacked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_afb226cf665246efcc24f909296744ec5}
+\begin{DoxyReturn}{Returns}
+true if the package recorded in this entry has completed the unpack stage and possibly the stages following unpack 
+\end{DoxyReturn}
+
+
+References mPackageStatus.
+
+
+
+Referenced by AppRover::ConfigurePackage(), AppRover::Install(), and IsAtLeastConfigured().
+
+\index{InstallEntry@{InstallEntry}!IsBuilt@{IsBuilt}}
+\index{IsBuilt@{IsBuilt}!InstallEntry@{InstallEntry}}
+\subsubsection[{IsBuilt}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::IsBuilt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_adeb24cd1f65a5615ef34dd573bb5a6bc}
+\begin{DoxyReturn}{Returns}
+-\/ true if the package recorded in this entry has just completed the build stage of installation 
+\end{DoxyReturn}
+
+
+References mPackageStatus.
+
+
+
+Referenced by AppRover::Install(), and AppRover::InstallPackage().
+
+\index{InstallEntry@{InstallEntry}!IsConfigured@{IsConfigured}}
+\index{IsConfigured@{IsConfigured}!InstallEntry@{InstallEntry}}
+\subsubsection[{IsConfigured}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::IsConfigured (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a99141fbcf6221ce28f3a4717c2d607f9}
+\begin{DoxyReturn}{Returns}
+-\/ true if the package recorded in this entry has just completed the configure stage of installation 
+\end{DoxyReturn}
+
+
+References mPackageStatus.
+
+\index{InstallEntry@{InstallEntry}!IsExcludedFromUpdates@{IsExcludedFromUpdates}}
+\index{IsExcludedFromUpdates@{IsExcludedFromUpdates}!InstallEntry@{InstallEntry}}
+\subsubsection[{IsExcludedFromUpdates}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::IsExcludedFromUpdates (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_ac9c5aab33dcff69e59b91d7d5ce1dc57}
+\begin{DoxyReturn}{Returns}
+true if this package should not be auto-\/updated 
+\end{DoxyReturn}
+
+
+References mExcludeFromUpdates.
+
+
+
+Referenced by AppRover::Update().
+
+\index{InstallEntry@{InstallEntry}!IsExplicitlyInstalled@{IsExplicitlyInstalled}}
+\index{IsExplicitlyInstalled@{IsExplicitlyInstalled}!InstallEntry@{InstallEntry}}
+\subsubsection[{IsExplicitlyInstalled}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::IsExplicitlyInstalled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a3384b6403342efda71ccadfab2f06601}
+\begin{DoxyReturn}{Returns}
+true if this package was installed due to an explicit request from the user 
+\end{DoxyReturn}
+
+
+References mExplicitInstall.
+
+
+
+Referenced by AppRover::Install(), and AppRover::Update().
+
+\index{InstallEntry@{InstallEntry}!IsInstalled@{IsInstalled}}
+\index{IsInstalled@{IsInstalled}!InstallEntry@{InstallEntry}}
+\subsubsection[{IsInstalled}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::IsInstalled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a0ba15c2acf184082ffc128f83a1dcab4}
+\begin{DoxyReturn}{Returns}
+true if the package has been installed on the system 
+\end{DoxyReturn}
+
+
+References mPackageStatus.
+
+
+
+Referenced by AppRover::Install(), and Save().
+
+\index{InstallEntry@{InstallEntry}!IsUnpacked@{IsUnpacked}}
+\index{IsUnpacked@{IsUnpacked}!InstallEntry@{InstallEntry}}
+\subsubsection[{IsUnpacked}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::IsUnpacked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a8377483004e29d061428229daa0b3353}
+\begin{DoxyReturn}{Returns}
+true if the package recorded in this entry has just completed the unpack stage of installation 
+\end{DoxyReturn}
+
+
+References mPackageStatus.
+
+\index{InstallEntry@{InstallEntry}!Load@{Load}}
+\index{Load@{Load}!InstallEntry@{InstallEntry}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::Load (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ entryNode}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a191dde3158c16aad9ffa22a7eb30bbc9}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em entryNode}]-\/ the xml DOM node to containing the install entry data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if entryNode is NULL, or there is a probelm with the data 
+
+true otherwise
+\end{DoxyReturn}
+Loads the install entry data from an XML DOM node. 
+
+References FeatureOption::Load(), InstructionSequence::Load(), PackageDependency::Load(), mBinaryCompatabilityRevision, mDependencies, mErrorMessage, mExcludeFromUpdates, mExplicitInstall, mFeatures, mInstallListFilename, mPackageName, mPackageRevision, mPackageSlot, mPackageStatus, mReverseDependencies, mUninstallInstructions, and Revision::Set().
+
+
+
+Referenced by InstallLog::Load().
+
+\index{InstallEntry@{InstallEntry}!LoadFileList@{LoadFileList}}
+\index{LoadFileList@{LoadFileList}!InstallEntry@{InstallEntry}}
+\subsubsection[{LoadFileList}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::LoadFileList (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classInstallEntry_ab72208ae9be418189823b481001737ad}
+\begin{DoxyReturn}{Returns}
+true if the file list was successfully loaded from disk
+\end{DoxyReturn}
+Loads the contents of the file described by mInstallListFilename into mInstalledFiles, mInstalledChecksums, and mInstalledDirectories. 
+
+References InstalledFile::Load(), mInstalledDirectories, mInstalledFiles, mInstalledSymLinks, and mInstallListFilename.
+
+
+
+Referenced by ConsolidateFiles(), PurgeLegacyFiles(), TransferFilesTo(), and Uninstall().
+
+\index{InstallEntry@{InstallEntry}!PurgeLegacyFiles@{PurgeLegacyFiles}}
+\index{PurgeLegacyFiles@{PurgeLegacyFiles}!InstallEntry@{InstallEntry}}
+\subsubsection[{PurgeLegacyFiles}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::PurgeLegacyFiles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a58e5802c98e59e64316b039cf3cc3a2c}
+Deletes all non-\/backup inherited files from disk and removes them from the file list. \begin{DoxyReturn}{Returns}
+true if all relevant files were successfully removed 
+\end{DoxyReturn}
+
+
+References LoadFileList(), and mInstalledFiles.
+
+\index{InstallEntry@{InstallEntry}!RemoveReverseDependency@{RemoveReverseDependency}}
+\index{RemoveReverseDependency@{RemoveReverseDependency}!InstallEntry@{InstallEntry}}
+\subsubsection[{RemoveReverseDependency}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::RemoveReverseDependency (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revision, }
+\item[{int}]{ maxEntries = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_ab3e38ce8b6a728164980a2dfddd040c7}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package which depends on this package \item[{\em revision}]-\/ revision of the package with depends on this package \item[{\em maxEntries-\/}]the maximum number of matching reverse dependencies to remove\end{DoxyParams}
+This remove up to maxEntries number of reverse dependencies matching the specified name and revision. There can be 2 matching reverse dependencies in the case where the revision has been installed and an attempt to reinstall has been at least configured. 
+
+References mReverseDependencies.
+
+\index{InstallEntry@{InstallEntry}!ReverseDependenciesAreInList@{ReverseDependenciesAreInList}}
+\index{ReverseDependenciesAreInList@{ReverseDependenciesAreInList}!InstallEntry@{InstallEntry}}
+\subsubsection[{ReverseDependenciesAreInList}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::ReverseDependenciesAreInList (
+\begin{DoxyParamCaption}
+\item[{const InstallEntryVector \&}]{ packages}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_a64c1cf48a164a858514a6778755ff0cc}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packages}]-\/ list of [partially] installed packages which are possible rerse dependencies of this package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if any of this package's reverse dependencies are not contained in the list of packages 
+\end{DoxyReturn}
+
+
+References GetName(), and mReverseDependencies.
+
+\index{InstallEntry@{InstallEntry}!ReverseDependencyIsStatic@{ReverseDependencyIsStatic}}
+\index{ReverseDependencyIsStatic@{ReverseDependencyIsStatic}!InstallEntry@{InstallEntry}}
+\subsubsection[{ReverseDependencyIsStatic}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::ReverseDependencyIsStatic (
+\begin{DoxyParamCaption}
+\item[{int}]{ depNumber}
+\end{DoxyParamCaption}
+) const}\label{classInstallEntry_aff578cfaa1126006716743aee5afbf16}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em depNumber}]-\/ the index into the list of reverse dependencies \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it is a static dependency 
+
+false if it is not a static dependency or depNumber is invalid 
+\end{DoxyReturn}
+
+
+References mReverseDependencies.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!Save@{Save}}
+\index{Save@{Save}!InstallEntry@{InstallEntry}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::Save (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ parentNode}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a40ee3e34d3f2c4bda0b3ef9c0bb95c8d}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em parentNode}]-\/ the parent DOM node to hold the \doxyref{InstallEntry}{p.}{classInstallEntry} node \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if parentNode is NULL 
+
+true otherwise
+\end{DoxyReturn}
+Saves the install entry data as an XML DOM node that is a child of the specified parent node. 
+
+References Revision::GetString(), InstructionSequence::IsEmpty(), IsInstalled(), mBinaryCompatabilityRevision, mDependencies, mErrorMessage, mExcludeFromUpdates, mExplicitInstall, mFeatures, mInstalledDirectories, mInstalledFiles, mInstalledInThisSession, mInstalledSymLinks, mInstallListFilename, mPackageName, mPackageRevision, mPackageSlot, mPackageStatus, mReverseDependencies, mUninstallInstructions, and InstructionSequence::Save().
+
+\index{InstallEntry@{InstallEntry}!SetBinaryCompatabilityRevision@{SetBinaryCompatabilityRevision}}
+\index{SetBinaryCompatabilityRevision@{SetBinaryCompatabilityRevision}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetBinaryCompatabilityRevision}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetBinaryCompatabilityRevision (
+\begin{DoxyParamCaption}
+\item[{int}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a4a9572e092e9dce86e90e5294af6796c}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ integer used to track whether to revisions have binary compatable interfaces \end{DoxyParams}
+
+
+References mBinaryCompatabilityRevision.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!SetBuilt@{SetBuilt}}
+\index{SetBuilt@{SetBuilt}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetBuilt}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetBuilt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a81f475ee9f2f0be3d84bb8617c0b979c}
+Flags the log indicating that the package has just completed the build stage. 
+
+References mPackageStatus.
+
+
+
+Referenced by Package::Build().
+
+\index{InstallEntry@{InstallEntry}!SetConfigured@{SetConfigured}}
+\index{SetConfigured@{SetConfigured}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetConfigured}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetConfigured (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a4ee16fc55016a4fa1f824874812e19db}
+Flags the log indicating that the package has just completed the configuration stage. 
+
+References mPackageStatus.
+
+
+
+Referenced by Package::Configure().
+
+\index{InstallEntry@{InstallEntry}!SetErrorMessage@{SetErrorMessage}}
+\index{SetErrorMessage@{SetErrorMessage}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetErrorMessage}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetErrorMessage (
+\begin{DoxyParamCaption}
+\item[{string}]{ errMsg}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a37212ea964047190ddd406c57c2663a4}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em errMsg}]-\/ the error message\end{DoxyParams}
+Records the error message produced by one of the installation stages 
+
+References mErrorMessage.
+
+
+
+Referenced by Package::Build(), Package::Configure(), InstructionSequence::Execute(), Package::Fetch(), InstructionSequence::HandleIfStatement(), Package::Install(), InstructionSequence::Translate(), and Package::Unpack().
+
+\index{InstallEntry@{InstallEntry}!SetExcludeFromUpdates@{SetExcludeFromUpdates}}
+\index{SetExcludeFromUpdates@{SetExcludeFromUpdates}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetExcludeFromUpdates}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetExcludeFromUpdates (
+\begin{DoxyParamCaption}
+\item[{bool}]{ state}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_ab48c1d169a1cf680066220422a4b2ea3}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em state}]-\/ true if this package should not be auto-\/updated \end{DoxyParams}
+
+
+References mExcludeFromUpdates.
+
+\index{InstallEntry@{InstallEntry}!SetExplicitlyInstalled@{SetExplicitlyInstalled}}
+\index{SetExplicitlyInstalled@{SetExplicitlyInstalled}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetExplicitlyInstalled}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetExplicitlyInstalled (
+\begin{DoxyParamCaption}
+\item[{bool}]{ state}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_ae2efb98ddf51f9c081179d3a80ab0ba9}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em state}]-\/ true if this package was installed due to an explicit request from the user \end{DoxyParams}
+
+
+References mExplicitInstall.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!SetInstalled@{SetInstalled}}
+\index{SetInstalled@{SetInstalled}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetInstalled}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetInstalled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a3e50254f2313db500438181d3ca65c36}
+Flags the log indicating that the package has been installed 
+
+References mInstalledInThisSession, and mPackageStatus.
+
+
+
+Referenced by Package::Install().
+
+\index{InstallEntry@{InstallEntry}!SetInstallListFilename@{SetInstallListFilename}}
+\index{SetInstallListFilename@{SetInstallListFilename}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetInstallListFilename}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetInstallListFilename (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a5db4c0c37bc54b867ad9c57ab350459b}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the file listing the files installed by this package \end{DoxyParams}
+
+
+References mInstallListFilename.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!SetName@{SetName}}
+\index{SetName@{SetName}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetName}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetName (
+\begin{DoxyParamCaption}
+\item[{string}]{ name}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a414ded55775ba0dc02c410c9eb22cf93}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]-\/ name of the package stored in this entry\end{DoxyParams}
+Records the package name into the install entry. 
+
+References mPackageName.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!SetRevision@{SetRevision}}
+\index{SetRevision@{SetRevision}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetRevision}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetRevision (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_adffc2d124f0233fee4616fef72f01a1f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ revision of the package stored in this entry\end{DoxyParams}
+Records the package revision into the install entry. 
+
+References mPackageRevision, and Revision::Set().
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!SetSlot@{SetSlot}}
+\index{SetSlot@{SetSlot}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetSlot}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetSlot (
+\begin{DoxyParamCaption}
+\item[{string}]{ slot}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a7f6ddd491e0f7a4d622b4a19acc64877}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em slot}]-\/ the slot occupied by this package \end{DoxyParams}
+
+
+References mPackageSlot.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!SetUninstallInstructions@{SetUninstallInstructions}}
+\index{SetUninstallInstructions@{SetUninstallInstructions}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetUninstallInstructions}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetUninstallInstructions (
+\begin{DoxyParamCaption}
+\item[{const {\bf InstructionSequence} \&}]{ instructions}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a42d8c9b5057ef9bbcb119a8f70e956fb}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em instructions}]-\/ the instructions for uninstalling the package\end{DoxyParams}
+Records the instructions for removing the package from the system. 
+
+References mUninstallInstructions.
+
+
+
+Referenced by Package::Install().
+
+\index{InstallEntry@{InstallEntry}!SetUnpacked@{SetUnpacked}}
+\index{SetUnpacked@{SetUnpacked}!InstallEntry@{InstallEntry}}
+\subsubsection[{SetUnpacked}]{\setlength{\rightskip}{0pt plus 5cm}void InstallEntry::SetUnpacked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a4437d1f9217244b39fd7f9264dbccf2e}
+Flags the log indicating that the package has just completed the unpacking stage. 
+
+References mPackageStatus.
+
+
+
+Referenced by Package::Unpack().
+
+\index{InstallEntry@{InstallEntry}!TransferFilesTo@{TransferFilesTo}}
+\index{TransferFilesTo@{TransferFilesTo}!InstallEntry@{InstallEntry}}
+\subsubsection[{TransferFilesTo}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::TransferFilesTo (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ target}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_acab9c58583dca97ede488947591c9764}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em target}]-\/ the install entry to accept ownership of the files, directories, and symlinks associated with this entry \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if target is NULL
+\end{DoxyReturn}
+Transfers ownership of all files, directories, and symbolic links associated with this entry to the target entry. Since it is expected that these files are about to be overwritten by a new install, any files which have a different md5sum than when they were installed will be backed up to files named .$<$original name$>$.arbak 
+
+\begin{Desc}
+\item[{\bf Todo}]Should probably add inherited flag for symlinks and directories \end{Desc}
+
+
+
+
+References AddInstalledDirectory(), AddInstalledSymLink(), Interpreter::Interpret(), LoadFileList(), mInstalledDirectories, mInstalledFiles, mInstalledSymLinks, mInstallListFilename, InstalledFile::SetBackup(), InstalledFile::SetChecksum(), and InstalledFile::SetInherited().
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!TransferReverseDependenciesTo@{TransferReverseDependenciesTo}}
+\index{TransferReverseDependenciesTo@{TransferReverseDependenciesTo}!InstallEntry@{InstallEntry}}
+\subsubsection[{TransferReverseDependenciesTo}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallEntry::TransferReverseDependenciesTo (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ target}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a2bd915b5a518e6c770a54df44cd7fc0f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em target}]-\/ the install entry to accept ownership of the reverse dependencies associated with this entry \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if target is NULL 
+\end{DoxyReturn}
+
+
+References mReverseDependencies.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallEntry@{InstallEntry}!Uninstall@{Uninstall}}
+\index{Uninstall@{Uninstall}!InstallEntry@{InstallEntry}}
+\subsubsection[{Uninstall}]{\setlength{\rightskip}{0pt plus 5cm}string InstallEntry::Uninstall (
+\begin{DoxyParamCaption}
+\item[{bool}]{ backup = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classInstallEntry_a9abbc20ba8ac450eeb36c1aff3718f69}
+\begin{DoxyReturn}{Returns}
+the error string or \char`\"{}\char`\"{} if successful
+\end{DoxyReturn}
+Executes the recorded uinstall instructions if they have been specified. Otherwise, removes all files and directories installed by the package. If backup is true (default), any files which have a different md5sum than when they were installed will be backed up to files named .$<$original name$>$.arbak 
+
+References InstructionSequence::Execute(), Revision::GetString(), Interpreter::Interpret(), InstructionSequence::IsEmpty(), LoadFileList(), mErrorMessage, mInstalledDirectories, mInstalledFiles, mInstalledSymLinks, mInstallListFilename, mPackageName, mPackageRevision, mPackageStatus, mReverseDependencies, and mUninstallInstructions.
+
+
+
+Referenced by AppRover::Uninstall().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+InstallEntry.h\item 
+InstallEntry.cpp\end{DoxyCompactItemize}

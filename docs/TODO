@@ -1,0 +1,57 @@
+This is not a formal todo list, it is mostly just a set of reminders.  These are quasi-prioritized.
+
+add protected files - files that won't ever get removed (/etc/ld.so.conf /etc/ld.so.cache /etc/passwd ...).  Possibly add exclue keyword to flag parts of instruction lists where files shouldn't be logged.  Maybe a NOBACKUP keyword for files.  Maintain a configurable list of files which won't be logged or removed.
+
+Deep update might not work for optional dependencies
+
+Final error message needs to be improved since it only shows error of last package.
+
+Pretend mode of uninstall appears to be broken
+It appears that circular dependencies can lead to a stack blowing loop (try installing the system without distro mode, and without having anything installed by the system)
+
+Fix package cleaning / reverse dependency registering (partially installed package causes some other packages to be installed.  Uninstall something and all of the helper packages will be removed since they don't have any reverse dependencies registered)
+
+Improve ability of instruction failures to cause stage to fail (I think that only failure of the last instruction returns a failure code from the script)
+
+KDE interface needs port to KDE4, package editing/creating updates, cleaning up after uninstalling, feature activation
+add animation to wait dialog
+replace all Qt classes with their KDE counterparts
+Test on FreeBSD
+
+Curses interface
+KDE gui
+figure out how to control something like SoftwareValet via scripting
+BeOS gui
+something like etc-update
+refine makefile determination of whether guis should be built
+clean up PopulatePackageList (possibly refine when it is called too)
+overload AppRover::Install so that it isn't such a mess of parameters
+Add memory allocation checks & checks for negative index and other things to beef up error checking (checking arguments passes to CLI)
+start zipping xml files
+ability to print the state of the system feature settings
+
+instruction sequence needs constants for things like package name
+passing feature values on command line for the given packages
+replace some FeatureVectors with FeatureMaps
+Deep / shallow updates
+Blocking dependencies
+dependency conditions - OR for use with feature flag
+perhaps, virtual dependencies
+Custom compilation flags (possibly also recorded in install log)
+?Add support for reinstalling the entire tree / portions of the tree (only if needed to update for custom compilation flags)
+package lists
+protected packages which can be updated but not removed entirely
+determine a method to be able to run multiple builds simultaneously
+
+cvs access in fetcher
+package descriptions & quality ratings (ratings affect listing order)
+optional silent execution with interpreter
+rsync synchronization
+perhaps a multi-file makefile system to eliminate gmake dependency
+stability ratings and options for which ones to use
+
+prefetch files while building a package
+Package Autodetection
+installer packages (single executable which installs a basic version of AppRover along with any bundled apps)
+??? combined source & binary packages with option to choose preferred type
+??? Add support for AppRover forced uninstall (uninstall even though package has reverse dependencies), possibly also uninstalling the reverse dependencies, or disabling an optional usage and reinstalling

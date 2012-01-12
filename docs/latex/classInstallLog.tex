@@ -1,0 +1,502 @@
+\section{InstallLog Class Reference}
+\label{classInstallLog}\index{InstallLog@{InstallLog}}
+
+
+Class for managing the entries of all packages which have been at least partially installed.  
+
+
+
+
+{\ttfamily \#include $<$InstallLog.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+InstallLogStatusType {\bf Save} (string filename)
+\item 
+InstallLogStatusType {\bf Load} (string filename)
+\item 
+bool {\bf Satisfies} (const {\bf PackageDependency} $\ast$dependency) const 
+\item 
+bool {\bf AddEntry} ({\bf InstallEntry} $\ast$newEntry)
+\item 
+{\bf InstallEntry} $\ast$ {\bf FindEntry} (string packageName, string packageRevision)
+\item 
+void {\bf GetInstalledEntries} (string packageName, vector$<$ {\bf InstallEntry} $\ast$ $>$ \&results)
+\item 
+{\bf InstallEntry} $\ast$ {\bf FindPartiallyInstalledEntry} (string packageName, string packageRevision)
+\item 
+{\bf InstallEntry} $\ast$ {\bf FindOldestInstalledEntry} (string packageName)
+\item 
+{\bf InstallEntry} $\ast$ {\bf FindNextOldestInstalledEntry} ({\bf InstallEntry} $\ast$entry)
+\item 
+{\bf InstallEntry} $\ast$ {\bf FindInstalledSlotOccupant} (string packageName, string slot)
+\item 
+bool {\bf DeleteEntry} (string packageName, string packageRevision)
+\item 
+bool {\bf DeleteEntry} ({\bf InstallEntry} $\ast$entry, bool removeRevDeps=true)
+\item 
+string {\bf GetRevisionInstalled} (string packageName)
+\item 
+bool {\bf RemovePartiallyInstalledSlotMates} ({\bf InstallEntry} $\ast$entry, string workDirectory)
+\item 
+void {\bf RegisterReverseDependency} (string packageName, string revision, const {\bf PackageDependency} $\ast$dependency)
+\item 
+void {\bf ReleaseReverseDependenciesTo} (string packageName, string revision)
+\item 
+InstallEntryVector {\bf GetPackagesUsingFeature} (string featureName)
+\item 
+InstallEntryVector {\bf GetPartiallyInstalledPackages} ()
+\item 
+InstallEntryVector {\bf GetUnneededPackages} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+InstallEntryVector {\bf mInstallEntries}\label{classInstallLog_afca2f6d83147355af3a979fb763228e3}
+
+\begin{DoxyCompactList}\small\item\em List of all [partially] installed packages in the system. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for managing the entries of all packages which have been at least partially installed. 
+
+\subsection{Member Function Documentation}
+\index{InstallLog@{InstallLog}!AddEntry@{AddEntry}}
+\index{AddEntry@{AddEntry}!InstallLog@{InstallLog}}
+\subsubsection[{AddEntry}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallLog::AddEntry (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ newEntry}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a29356895def7b25939d67f45e1380833}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em newEntry}]-\/ the entry to add to the log \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if the entry is NULL
+\end{DoxyReturn}
+Adds an entry to the list of entries. 
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallLog@{InstallLog}!DeleteEntry@{DeleteEntry}}
+\index{DeleteEntry@{DeleteEntry}!InstallLog@{InstallLog}}
+\subsubsection[{DeleteEntry}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallLog::DeleteEntry (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ packageRevision}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_af59a0c213c50573c256a5a6127df80ec}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package recorded in the entry \item[{\em packageRevision}]-\/ revision of the package recorded in the entry \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if no entry records a package with the specified name and revision
+\end{DoxyReturn}
+Deletes an entry containing a package with the specified name and revision. Removes all reverse dependencies which link to this entry. 
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::Clean(), AppRover::Install(), RemovePartiallyInstalledSlotMates(), and AppRover::Uninstall().
+
+\index{InstallLog@{InstallLog}!DeleteEntry@{DeleteEntry}}
+\index{DeleteEntry@{DeleteEntry}!InstallLog@{InstallLog}}
+\subsubsection[{DeleteEntry}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallLog::DeleteEntry (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ entry, }
+\item[{bool}]{ removeRevDeps = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_aa606fb2996a945233853214e070e8058}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em entry}]-\/ the entry to remove from the log \item[{\em removeRevDeps}]-\/ should reverse dependencies that point to this package be removed \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if the entry was not found in the log
+\end{DoxyReturn}
+Removes the specifed entry from the log and removes the package from reverse dependencies of all other installed packages. 
+
+References InstallEntry::GetName(), InstallEntry::GetNumDependencies(), InstallEntry::GetRevision(), Revision::GetString(), and mInstallEntries.
+
+\index{InstallLog@{InstallLog}!FindEntry@{FindEntry}}
+\index{FindEntry@{FindEntry}!InstallLog@{InstallLog}}
+\subsubsection[{FindEntry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InstallEntry} $\ast$ InstallLog::FindEntry (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ packageRevision}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a6c77c6a3201e2859ccf24cf7f9cb744d}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package recorded in the entry \item[{\em packageRevision}]-\/ revision of the package recorded in the entry \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the entry contaiing the specified package and revision 
+
+NULL if no entry records a package with the specified name and revision 
+\end{DoxyReturn}
+
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::Install(), and AppRover::Update().
+
+\index{InstallLog@{InstallLog}!FindInstalledSlotOccupant@{FindInstalledSlotOccupant}}
+\index{FindInstalledSlotOccupant@{FindInstalledSlotOccupant}!InstallLog@{InstallLog}}
+\subsubsection[{FindInstalledSlotOccupant}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InstallEntry} $\ast$ InstallLog::FindInstalledSlotOccupant (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ slot}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a45e6705f3d3f5a590c77adc7bd1efa59}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package \item[{\em slot}]-\/ the slot which the requested package occupies \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the installed entry with the given name that occupies the specified slot 
+
+NULL if the package has not been installed or does not occupy the specifed slot 
+\end{DoxyReturn}
+
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallLog@{InstallLog}!FindNextOldestInstalledEntry@{FindNextOldestInstalledEntry}}
+\index{FindNextOldestInstalledEntry@{FindNextOldestInstalledEntry}!InstallLog@{InstallLog}}
+\subsubsection[{FindNextOldestInstalledEntry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InstallEntry} $\ast$ InstallLog::FindNextOldestInstalledEntry (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ entry}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a0dd7eb71f1cf6d111f648a634d193535}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em entry}]-\/ the install entry used as a reference for find the next oldest installed entry \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the oldest installed entry which is newer than the reference entry 
+
+NULL if entry is NULL or is the newest installed entry 
+\end{DoxyReturn}
+
+
+References InstallEntry::GetName(), InstallEntry::GetRevision(), and mInstallEntries.
+
+
+
+Referenced by AppRover::Uninstall().
+
+\index{InstallLog@{InstallLog}!FindOldestInstalledEntry@{FindOldestInstalledEntry}}
+\index{FindOldestInstalledEntry@{FindOldestInstalledEntry}!InstallLog@{InstallLog}}
+\subsubsection[{FindOldestInstalledEntry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InstallEntry} $\ast$ InstallLog::FindOldestInstalledEntry (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a8ef99855039c22341b80bdb57c856636}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package recorded in the entry \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the entry contaiing the specified package and a revision older than the revision of any other entry for the specified package 
+
+NULL if no entry records a package with the specified name 
+\end{DoxyReturn}
+
+
+References InstallEntry::GetRevision(), and mInstallEntries.
+
+
+
+Referenced by AppRover::Uninstall().
+
+\index{InstallLog@{InstallLog}!FindPartiallyInstalledEntry@{FindPartiallyInstalledEntry}}
+\index{FindPartiallyInstalledEntry@{FindPartiallyInstalledEntry}!InstallLog@{InstallLog}}
+\subsubsection[{FindPartiallyInstalledEntry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InstallEntry} $\ast$ InstallLog::FindPartiallyInstalledEntry (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ packageRevision}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a8842a74554f32a2394d5e7ea4beb8d8d}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package recorded in the entry \item[{\em packageRevision}]-\/ revision of the package recorded in the entry \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the entry contaiing the specified package and revision 
+
+NULL if no entry records a package with the specified name and revision 
+\end{DoxyReturn}
+
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallLog@{InstallLog}!GetInstalledEntries@{GetInstalledEntries}}
+\index{GetInstalledEntries@{GetInstalledEntries}!InstallLog@{InstallLog}}
+\subsubsection[{GetInstalledEntries}]{\setlength{\rightskip}{0pt plus 5cm}void InstallLog::GetInstalledEntries (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{vector$<$ {\bf InstallEntry} $\ast$ $>$ \&}]{ results}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_acb9fe52ab30006e40739f16a7e0944ba}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package \item[{\em results}]-\/ (output) the installed entries of the specified package\end{DoxyParams}
+Finds all installed versions of the package and stores the entries in results. 
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::ExcludeFromUpdates(), and AppRover::Purify().
+
+\index{InstallLog@{InstallLog}!GetPackagesUsingFeature@{GetPackagesUsingFeature}}
+\index{GetPackagesUsingFeature@{GetPackagesUsingFeature}!InstallLog@{InstallLog}}
+\subsubsection[{GetPackagesUsingFeature}]{\setlength{\rightskip}{0pt plus 5cm}InstallEntryVector InstallLog::GetPackagesUsingFeature (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a43dc3969eb3bcd77a5d7cd02abd64da3}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ the name of the optional feature to locate in the entries \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list of packages can use the optional feature 
+\end{DoxyReturn}
+
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::ActivateFeature(), and AppRover::ActivateFeatureForPackage().
+
+\index{InstallLog@{InstallLog}!GetPartiallyInstalledPackages@{GetPartiallyInstalledPackages}}
+\index{GetPartiallyInstalledPackages@{GetPartiallyInstalledPackages}!InstallLog@{InstallLog}}
+\subsubsection[{GetPartiallyInstalledPackages}]{\setlength{\rightskip}{0pt plus 5cm}InstallEntryVector InstallLog::GetPartiallyInstalledPackages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_ae8b08f44ae8db7093250b22b47cd3a64}
+\begin{DoxyReturn}{Returns}
+list of all packages which have only been partially installed 
+\end{DoxyReturn}
+
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::Clean().
+
+\index{InstallLog@{InstallLog}!GetRevisionInstalled@{GetRevisionInstalled}}
+\index{GetRevisionInstalled@{GetRevisionInstalled}!InstallLog@{InstallLog}}
+\subsubsection[{GetRevisionInstalled}]{\setlength{\rightskip}{0pt plus 5cm}string InstallLog::GetRevisionInstalled (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a6feab3b1212769d4c6438db2d152839a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the package recorded in the entry \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\char`\"{} if the package has not been installed in the system 
+
+Otherwise, the revision string of the specified installed package 
+\end{DoxyReturn}
+
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::PopulatePackageList().
+
+\index{InstallLog@{InstallLog}!GetUnneededPackages@{GetUnneededPackages}}
+\index{GetUnneededPackages@{GetUnneededPackages}!InstallLog@{InstallLog}}
+\subsubsection[{GetUnneededPackages}]{\setlength{\rightskip}{0pt plus 5cm}InstallEntryVector InstallLog::GetUnneededPackages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a38ed17aae6ef7a6a7f4f70a90c1137ff}
+\begin{DoxyReturn}{Returns}
+list of all packages which were not explicitly installed and are not dependencies of explicitly installed packages 
+\end{DoxyReturn}
+
+
+\begin{Desc}
+\item[{\bf Todo}]Add an input list of things to ignore \end{Desc}
+
+
+
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::Clean().
+
+\index{InstallLog@{InstallLog}!Load@{Load}}
+\index{Load@{Load}!InstallLog@{InstallLog}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}InstallLogStatusType InstallLog::Load (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_aa7f1eae6dc009f173f4ccb51491248c2}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the file containing the installation log \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+LOG\_\-FILE\_\-NOT\_\-SPECIFIED if filename is \char`\"{}\char`\"{} 
+
+LOG\_\-FILE\_\-MISSING if the file does not exist 
+
+LOG\_\-FILE\_\-FORMAT\_\-ERROR if there is a problem with the data 
+
+LOG\_\-OK if successful
+\end{DoxyReturn}
+Loads the installation log from the specified file. 
+
+References InstallEntry::Load(), and mInstallEntries.
+
+
+
+Referenced by AppRover::AppRover().
+
+\index{InstallLog@{InstallLog}!RegisterReverseDependency@{RegisterReverseDependency}}
+\index{RegisterReverseDependency@{RegisterReverseDependency}!InstallLog@{InstallLog}}
+\subsubsection[{RegisterReverseDependency}]{\setlength{\rightskip}{0pt plus 5cm}void InstallLog::RegisterReverseDependency (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revision, }
+\item[{const {\bf PackageDependency} $\ast$}]{ dependency}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_ae66d330827c1c9eacb54683b1949655c}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the package with the specified dependency \item[{\em revision}]-\/ the revision of the package with the specified dependency \item[{\em dependency}]-\/ package dependency used to determine the recipient of the reverse dependency\end{DoxyParams}
+Uses the dependency to locate a satisfiying package and associates the specified package name and revision as a reverse dependency. 
+
+Install dependencies are moot after package install, so no reverse dependencies are generated for them.
+
+\begin{Desc}
+\item[{\bf Todo}]Need to find best entry which satifies the dependency \end{Desc}
+
+
+
+
+References PackageDependency::GetName(), PackageDependency::GetType(), PackageDependency::IsSatisfiedBy(), and mInstallEntries.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallLog@{InstallLog}!ReleaseReverseDependenciesTo@{ReleaseReverseDependenciesTo}}
+\index{ReleaseReverseDependenciesTo@{ReleaseReverseDependenciesTo}!InstallLog@{InstallLog}}
+\subsubsection[{ReleaseReverseDependenciesTo}]{\setlength{\rightskip}{0pt plus 5cm}void InstallLog::ReleaseReverseDependenciesTo (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ packageRevision}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a82a5d01cb2c9335e5d82ebfd17aea1c5}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of the target package \item[{\em packageRevision}]-\/ revision of the target package\end{DoxyParams}
+Deletes reverse dependencies which point to a package with the specified name and revision. If a single entry has more than one applicable reverse dependency, only one of them is removed. 
+
+References mInstallEntries.
+
+
+
+Referenced by InstallEntry::ClearDependencies().
+
+\index{InstallLog@{InstallLog}!RemovePartiallyInstalledSlotMates@{RemovePartiallyInstalledSlotMates}}
+\index{RemovePartiallyInstalledSlotMates@{RemovePartiallyInstalledSlotMates}!InstallLog@{InstallLog}}
+\subsubsection[{RemovePartiallyInstalledSlotMates}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallLog::RemovePartiallyInstalledSlotMates (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ entry, }
+\item[{string}]{ workDirectory}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_a1ce401877052edb63bb6094adfc074f1}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em entry}]-\/ the package occupying the slot to be cleaned \item[{\em workDirectory}]-\/ the top level directory where builds are done \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if entry is NULL
+\end{DoxyReturn}
+Examines the package slot for the specified entry and clears out any other entries which occupy the same slot and are in a partially installed state. 
+
+References DeleteEntry(), InstallEntry::GetName(), InstallEntry::GetSlot(), Interpreter::Interpret(), and mInstallEntries.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallLog@{InstallLog}!Satisfies@{Satisfies}}
+\index{Satisfies@{Satisfies}!InstallLog@{InstallLog}}
+\subsubsection[{Satisfies}]{\setlength{\rightskip}{0pt plus 5cm}bool InstallLog::Satisfies (
+\begin{DoxyParamCaption}
+\item[{const {\bf PackageDependency} $\ast$}]{ dependency}
+\end{DoxyParamCaption}
+) const}\label{classInstallLog_afdd4793d52d76b415604faeda13398f4}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dependency}]-\/ the dependency that need to be resolved \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a package has been installed that satisfies the dependency
+\end{DoxyReturn}
+Determines whether the dependency has been satisfied by the installed packages. 
+
+\begin{Desc}
+\item[{\bf Todo}]Need to add support here for block packages \end{Desc}
+
+
+
+
+References PackageDependency::GetName(), PackageDependency::IsSatisfiedBy(), and mInstallEntries.
+
+
+
+Referenced by AppRover::Install().
+
+\index{InstallLog@{InstallLog}!Save@{Save}}
+\index{Save@{Save}!InstallLog@{InstallLog}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}InstallLogStatusType InstallLog::Save (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classInstallLog_ad2a9a60319ba4fb632bfe0de3590e5d3}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the file to hold the installation log \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+LOG\_\-FILE\_\-NOT\_\-SPECIFIED if filename is \char`\"{}\char`\"{} 
+
+LOG\_\-FILE\_\-NOT\_\-WRITABLE if the file could not be opened for writing 
+
+LOG\_\-OK if successful
+\end{DoxyReturn}
+Saves the installation log into the specified file. 
+
+References mInstallEntries.
+
+
+
+Referenced by AppRover::AppRover(), AppRover::BuildPackage(), AppRover::Clean(), AppRover::ConfigurePackage(), AppRover::ExcludeFromUpdates(), AppRover::FetchPackage(), AppRover::Install(), AppRover::InstallPackage(), AppRover::Purify(), AppRover::Uninstall(), and AppRover::UnpackPackage().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+InstallLog.h\item 
+InstallLog.cpp\end{DoxyCompactItemize}

@@ -1,0 +1,1049 @@
+\section{Package Class Reference}
+\label{classPackage}\index{Package@{Package}}
+
+
+Class for handling all relevant data pertaining to a particular revision of an application.  
+
+
+
+
+{\ttfamily \#include $<$Package.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Package} (const {\bf Package} $\ast$refPackage, string revision)
+\item 
+bool {\bf Save} ()
+\item 
+bool {\bf Save} (string filename)
+\item 
+bool {\bf Load} (string filename)
+\item 
+bool {\bf IsNewerThan} (const {\bf Package} $\ast$refPackage) const 
+\item 
+string {\bf GetName} () const 
+\item 
+void {\bf SetName} (string packageName)
+\item 
+const {\bf Revision} \& {\bf GetRevision} () const 
+\item 
+void {\bf SetRevision} (string revision)
+\item 
+string {\bf GetSlot} () const 
+\item 
+void {\bf SetSlot} (string slot)
+\item 
+int {\bf GetBinaryCompatabilityRevision} () const 
+\item 
+void {\bf SetBinaryCompatabilityRevision} (int revision)
+\item 
+int {\bf GetNumSourceFiles} () const 
+\item 
+{\bf SourceFile} $\ast$ {\bf GetSourceFile} (int fileNumber)
+\item 
+bool {\bf AddSourceFile} ({\bf SourceFile} $\ast$file)
+\item 
+bool {\bf RemoveSourceFile} (int fileNumber)
+\item 
+void {\bf ClearSourceFiles} ()
+\item 
+bool {\bf RecordSourceChecksums} (string storageDirectory)
+\item 
+void {\bf AddUnpackInstruction} (string instruction)
+\item 
+bool {\bf DumpUnpackInstructionsToFile} (FILE $\ast$file) const 
+\item 
+void {\bf ClearUnpackInstructions} ()
+\item 
+void {\bf AddConfigureInstruction} (string instruction)
+\item 
+bool {\bf DumpConfigureInstructionsToFile} (FILE $\ast$file) const 
+\item 
+void {\bf ClearConfigureInstructions} ()
+\item 
+void {\bf AddBuildInstruction} (string instruction)
+\item 
+bool {\bf DumpBuildInstructionsToFile} (FILE $\ast$file) const 
+\item 
+void {\bf ClearBuildInstructions} ()
+\item 
+void {\bf AddInstallInstruction} (string instruction)
+\item 
+bool {\bf DumpInstallInstructionsToFile} (FILE $\ast$file) const 
+\item 
+void {\bf ClearInstallInstructions} ()
+\item 
+void {\bf AddUninstallInstruction} (string instruction)
+\item 
+bool {\bf DumpUninstallInstructionsToFile} (FILE $\ast$file) const 
+\item 
+void {\bf ClearUninstallInstructions} ()
+\item 
+int {\bf GetNumDependencies} () const 
+\item 
+const {\bf PackageDependency} $\ast$ {\bf GetDependency} (int dependencyNumber) const 
+\item 
+void {\bf AddDependency} ({\bf PackageDependency} $\ast$dependency)
+\item 
+bool {\bf RemoveDependency} (string packageName)
+\item 
+void {\bf ClearDependencies} ()
+\item 
+int {\bf GetNumFeatures} () const 
+\item 
+{\bf FeatureOption} $\ast$ {\bf GetFeature} (int featureNumber) const 
+\item 
+void {\bf AddFeature} ({\bf FeatureOption} $\ast$feature)
+\item 
+bool {\bf RemoveFeature} (string featureName)
+\item 
+void {\bf ClearFeatures} ()
+\item 
+bool {\bf Fetch} ({\bf InstallEntry} $\ast$logEntry, string storageDirectory, bool force=false) const 
+\item 
+bool {\bf Unpack} ({\bf InstallEntry} $\ast$logEntry, string storageDirectory, string workDirectory, int numProcessors)
+\item 
+bool {\bf Configure} ({\bf InstallEntry} $\ast$logEntry, string workDirectory, int numProcessors)
+\item 
+bool {\bf Build} ({\bf InstallEntry} $\ast$logEntry, string workDirectory, int numProcessors)
+\item 
+bool {\bf Install} ({\bf InstallEntry} $\ast$logEntry, string workDirectory, int numProcessors)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mFilename}\label{classPackage_aa41f13f9e923333a8b46acae30d270f1}
+
+\begin{DoxyCompactList}\small\item\em The of the file which contains this package data. \item\end{DoxyCompactList}\item 
+PackageDependencyVector {\bf mDependencies}\label{classPackage_a6d8e6bab8bff3c1556e0d5d905dc3d8a}
+
+\begin{DoxyCompactList}\small\item\em List of required dependencies for intalling this package. \item\end{DoxyCompactList}\item 
+FeatureOptionVector {\bf mFeatures}\label{classPackage_a2b2a1ec40d748d09448c43fd60c229fe}
+
+\begin{DoxyCompactList}\small\item\em List of optional features and their default states which can be used by this package. \item\end{DoxyCompactList}\item 
+string {\bf mPackageName}\label{classPackage_a5bc5975a73c02ede4079dd713720df64}
+
+\begin{DoxyCompactList}\small\item\em The name of the application. \item\end{DoxyCompactList}\item 
+{\bf Revision} {\bf mPackageRevision}\label{classPackage_a8b11b249e073f5f83df80461ec8c79b7}
+
+\begin{DoxyCompactList}\small\item\em The revision of the application and this package. \item\end{DoxyCompactList}\item 
+string {\bf mPackageSlot}\label{classPackage_a8c9d27c4e14cb8a0a850bf9b472ca149}
+
+\begin{DoxyCompactList}\small\item\em The slot which is occupies by this package. \item\end{DoxyCompactList}\item 
+int {\bf mBinaryCompatabilityRevision}\label{classPackage_a6d35c8de847bf3a87fec97d231f3039d}
+
+\begin{DoxyCompactList}\small\item\em Value used to indiciate if two packages have binary compatable interfaces. \item\end{DoxyCompactList}\item 
+SourceFileVector {\bf mSourceFiles}\label{classPackage_ae1587b6f783efb4c8dd72ef089635c4c}
+
+\begin{DoxyCompactList}\small\item\em List of files required to install this package. \item\end{DoxyCompactList}\item 
+vector$<$ string $>$ {\bf mInstalledFiles}\label{classPackage_a2636c6f4885503b66bcf0aa7c5ac2ea6}
+
+\begin{DoxyCompactList}\small\item\em List of installed files to be used for detecting if this package has been installed. \item\end{DoxyCompactList}\item 
+vector$<$ string $>$ {\bf mInstalledDirectories}\label{classPackage_a183b07f0650b5025bd729b6942fd9c91}
+
+\begin{DoxyCompactList}\small\item\em List of installed directories to be used for detecting if this package has been installed. \item\end{DoxyCompactList}\item 
+{\bf InstructionSequence} {\bf mUnpackInstructions}\label{classPackage_a810829913a38d2bef23887943c4f993a}
+
+\begin{DoxyCompactList}\small\item\em The instructions to unpack this package. \item\end{DoxyCompactList}\item 
+{\bf InstructionSequence} {\bf mConfigureInstructions}\label{classPackage_aba60173b15195179fe36abc035f7525f}
+
+\begin{DoxyCompactList}\small\item\em The instructions to configure this package. \item\end{DoxyCompactList}\item 
+{\bf InstructionSequence} {\bf mBuildInstructions}\label{classPackage_a523f893a70e4fbc81fdff76f5cc26775}
+
+\begin{DoxyCompactList}\small\item\em The instructions to build this package. \item\end{DoxyCompactList}\item 
+{\bf InstructionSequence} {\bf mInstallInstructions}\label{classPackage_a5b7156a48c700d87519ac0137cf905e6}
+
+\begin{DoxyCompactList}\small\item\em The instructions to install this package. \item\end{DoxyCompactList}\item 
+{\bf InstructionSequence} {\bf mUninstallInstructions}\label{classPackage_aa4251edc2dda5efca8a12ceda99a21ca}
+
+\begin{DoxyCompactList}\small\item\em The instructions to uninstall this package. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for handling all relevant data pertaining to a particular revision of an application. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Package@{Package}!Package@{Package}}
+\index{Package@{Package}!Package@{Package}}
+\subsubsection[{Package}]{\setlength{\rightskip}{0pt plus 5cm}Package::Package (
+\begin{DoxyParamCaption}
+\item[{const {\bf Package} $\ast$}]{ refPackage, }
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classPackage_aa1b4e33c40f9758ceb13244e6b4a7fef}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refPackage}]-\/ package used as a base \item[{\em revision}]-\/ the revision for this package\end{DoxyParams}
+Creates a new package which is an updated copy of refPackage. The new package is the same as refPackage except that all references to refPackage's revision is changed to the new packages revision. 
+
+References PackageDependency::GetMaxRevision(), PackageDependency::GetMinRevision(), Revision::GetString(), mBinaryCompatabilityRevision, mBuildInstructions, mConfigureInstructions, mDependencies, mFeatures, mFilename, mInstallInstructions, mPackageName, mPackageRevision, mPackageSlot, mSourceFiles, mUninstallInstructions, mUnpackInstructions, InstructionSequence::ReplaceString(), Revision::Set(), and SourceFile::SetCondition().
+
+
+
+\subsection{Member Function Documentation}
+\index{Package@{Package}!AddBuildInstruction@{AddBuildInstruction}}
+\index{AddBuildInstruction@{AddBuildInstruction}!Package@{Package}}
+\subsubsection[{AddBuildInstruction}]{\setlength{\rightskip}{0pt plus 5cm}void Package::AddBuildInstruction (
+\begin{DoxyParamCaption}
+\item[{string}]{ instruction}
+\end{DoxyParamCaption}
+)}\label{classPackage_abb460994aa29c871d8df9f544bffb5df}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em instruction}]-\/ the new instruction\end{DoxyParams}
+Adds an instruction to the end of the list of build instructions. 
+
+References InstructionSequence::AddInstruction(), and mBuildInstructions.
+
+
+
+Referenced by PackageWizard::next().
+
+\index{Package@{Package}!AddConfigureInstruction@{AddConfigureInstruction}}
+\index{AddConfigureInstruction@{AddConfigureInstruction}!Package@{Package}}
+\subsubsection[{AddConfigureInstruction}]{\setlength{\rightskip}{0pt plus 5cm}void Package::AddConfigureInstruction (
+\begin{DoxyParamCaption}
+\item[{string}]{ instruction}
+\end{DoxyParamCaption}
+)}\label{classPackage_a4e68328b54e0c100100adec6457ba619}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em instruction}]-\/ the new instruction\end{DoxyParams}
+Adds an instruction to the end of the list of configuration instructions. 
+
+References InstructionSequence::AddInstruction(), and mConfigureInstructions.
+
+
+
+Referenced by PackageWizard::next().
+
+\index{Package@{Package}!AddDependency@{AddDependency}}
+\index{AddDependency@{AddDependency}!Package@{Package}}
+\subsubsection[{AddDependency}]{\setlength{\rightskip}{0pt plus 5cm}void Package::AddDependency (
+\begin{DoxyParamCaption}
+\item[{{\bf PackageDependency} $\ast$}]{ dependency}
+\end{DoxyParamCaption}
+)}\label{classPackage_a1207f16cdcad3e127327290606d498e2}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dependency}]-\/ the dependency to add\end{DoxyParams}
+Adds a dependency to the list of dependencies. 
+
+References mDependencies.
+
+
+
+Referenced by PackageWizard::next().
+
+\index{Package@{Package}!AddFeature@{AddFeature}}
+\index{AddFeature@{AddFeature}!Package@{Package}}
+\subsubsection[{AddFeature}]{\setlength{\rightskip}{0pt plus 5cm}void Package::AddFeature (
+\begin{DoxyParamCaption}
+\item[{{\bf FeatureOption} $\ast$}]{ feature}
+\end{DoxyParamCaption}
+)}\label{classPackage_a66ce016eabb470e94c4407b70a260847}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em feature}]-\/ optional feature to be added to the list \end{DoxyParams}
+
+
+References mFeatures.
+
+\index{Package@{Package}!AddInstallInstruction@{AddInstallInstruction}}
+\index{AddInstallInstruction@{AddInstallInstruction}!Package@{Package}}
+\subsubsection[{AddInstallInstruction}]{\setlength{\rightskip}{0pt plus 5cm}void Package::AddInstallInstruction (
+\begin{DoxyParamCaption}
+\item[{string}]{ instruction}
+\end{DoxyParamCaption}
+)}\label{classPackage_a792711ef9799f53f52795f640cd83c4b}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em instruction}]-\/ the new instruction\end{DoxyParams}
+Adds an instruction to the end of the list of install instructions. 
+
+References InstructionSequence::AddInstruction(), and mInstallInstructions.
+
+
+
+Referenced by PackageWizard::next().
+
+\index{Package@{Package}!AddSourceFile@{AddSourceFile}}
+\index{AddSourceFile@{AddSourceFile}!Package@{Package}}
+\subsubsection[{AddSourceFile}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::AddSourceFile (
+\begin{DoxyParamCaption}
+\item[{{\bf SourceFile} $\ast$}]{ file}
+\end{DoxyParamCaption}
+)}\label{classPackage_a97ba498afcdbf35f47457577d8f0bce0}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]-\/ the source file to add \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if file is NULL
+\end{DoxyReturn}
+Adds file to the end of the list of source files. \char`\"{}Source\char`\"{} indicates a file to be fetched and does not necessarily indicate that it contains source code. 
+
+References mSourceFiles.
+
+
+
+Referenced by PackageWizard::next().
+
+\index{Package@{Package}!AddUninstallInstruction@{AddUninstallInstruction}}
+\index{AddUninstallInstruction@{AddUninstallInstruction}!Package@{Package}}
+\subsubsection[{AddUninstallInstruction}]{\setlength{\rightskip}{0pt plus 5cm}void Package::AddUninstallInstruction (
+\begin{DoxyParamCaption}
+\item[{string}]{ instruction}
+\end{DoxyParamCaption}
+)}\label{classPackage_abdca2db1c7a1b0a6278e2d1aeb263210}
+instruction -\/ the new instruction
+
+Adds an instruction to the end of the list of uninstall instructions. 
+
+References InstructionSequence::AddInstruction(), and mUninstallInstructions.
+
+
+
+Referenced by PackageWizard::accept().
+
+\index{Package@{Package}!AddUnpackInstruction@{AddUnpackInstruction}}
+\index{AddUnpackInstruction@{AddUnpackInstruction}!Package@{Package}}
+\subsubsection[{AddUnpackInstruction}]{\setlength{\rightskip}{0pt plus 5cm}void Package::AddUnpackInstruction (
+\begin{DoxyParamCaption}
+\item[{string}]{ instruction}
+\end{DoxyParamCaption}
+)}\label{classPackage_aa3d2a02d5883493f2a37119bcb4b4655}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em instruction}]-\/ the new instruction\end{DoxyParams}
+Adds an instruction to the end of the list of unpacking instructions. 
+
+References InstructionSequence::AddInstruction(), and mUnpackInstructions.
+
+
+
+Referenced by PackageWizard::next().
+
+\index{Package@{Package}!Build@{Build}}
+\index{Build@{Build}!Package@{Package}}
+\subsubsection[{Build}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::Build (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{string}]{ workDirectory, }
+\item[{int}]{ numProcessors}
+\end{DoxyParamCaption}
+)}\label{classPackage_a5411b775d943d40692978c690a5ea77e}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em logEntry}]-\/ the install log entry corresponding to this package \item[{\em workDirectory}]-\/ the parent directory of all package working directories \item[{\em numProcessors}]-\/ number of processors in system (for parallelization) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if logEntry is NULL or an error occurs while building
+\end{DoxyReturn}
+Builds the package by executing all build instructions from the working directory. 
+
+References InstructionSequence::Execute(), Revision::GetString(), Interpreter::Interpret(), mBuildInstructions, mPackageName, mPackageRevision, InstallEntry::SetBuilt(), InstallEntry::SetErrorMessage(), and InstructionSequence::SetStartingDirectory().
+
+
+
+Referenced by AppRover::BuildPackage().
+
+\index{Package@{Package}!ClearBuildInstructions@{ClearBuildInstructions}}
+\index{ClearBuildInstructions@{ClearBuildInstructions}!Package@{Package}}
+\subsubsection[{ClearBuildInstructions}]{\setlength{\rightskip}{0pt plus 5cm}void Package::ClearBuildInstructions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_a86762a91d10c050024be5917dee4a463}
+Deletes all of the build instructions. 
+
+References InstructionSequence::Clear(), and mBuildInstructions.
+
+
+
+Referenced by PackageWizard::back(), and PackageWizard::next().
+
+\index{Package@{Package}!ClearConfigureInstructions@{ClearConfigureInstructions}}
+\index{ClearConfigureInstructions@{ClearConfigureInstructions}!Package@{Package}}
+\subsubsection[{ClearConfigureInstructions}]{\setlength{\rightskip}{0pt plus 5cm}void Package::ClearConfigureInstructions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_a64fd826aa922e509c5b6fa00bcc77dac}
+Deletes all of the configuration instructions. 
+
+References InstructionSequence::Clear(), and mConfigureInstructions.
+
+
+
+Referenced by PackageWizard::back(), and PackageWizard::next().
+
+\index{Package@{Package}!ClearDependencies@{ClearDependencies}}
+\index{ClearDependencies@{ClearDependencies}!Package@{Package}}
+\subsubsection[{ClearDependencies}]{\setlength{\rightskip}{0pt plus 5cm}void Package::ClearDependencies (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_ada61f49d5b50133f0f9499ae743ff279}
+Empties the list of dependencies files. 
+
+References mDependencies.
+
+
+
+Referenced by PackageWizard::back(), and PackageWizard::next().
+
+\index{Package@{Package}!ClearFeatures@{ClearFeatures}}
+\index{ClearFeatures@{ClearFeatures}!Package@{Package}}
+\subsubsection[{ClearFeatures}]{\setlength{\rightskip}{0pt plus 5cm}void Package::ClearFeatures (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_a8eb12c73261836cd30b2563a7163df46}
+Removes all entries from the list of optional features 
+
+References mFeatures.
+
+\index{Package@{Package}!ClearInstallInstructions@{ClearInstallInstructions}}
+\index{ClearInstallInstructions@{ClearInstallInstructions}!Package@{Package}}
+\subsubsection[{ClearInstallInstructions}]{\setlength{\rightskip}{0pt plus 5cm}void Package::ClearInstallInstructions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_aa7a767a609598192722d2b61ee359c3c}
+Deletes all of the install instructions. 
+
+References InstructionSequence::Clear(), and mInstallInstructions.
+
+
+
+Referenced by PackageWizard::back(), and PackageWizard::next().
+
+\index{Package@{Package}!ClearSourceFiles@{ClearSourceFiles}}
+\index{ClearSourceFiles@{ClearSourceFiles}!Package@{Package}}
+\subsubsection[{ClearSourceFiles}]{\setlength{\rightskip}{0pt plus 5cm}void Package::ClearSourceFiles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_a249bfb840c936f4a14f0662e143b6432}
+Empties the list of source files. 
+
+References mSourceFiles.
+
+
+
+Referenced by PackageWizard::back(), and PackageWizard::next().
+
+\index{Package@{Package}!ClearUninstallInstructions@{ClearUninstallInstructions}}
+\index{ClearUninstallInstructions@{ClearUninstallInstructions}!Package@{Package}}
+\subsubsection[{ClearUninstallInstructions}]{\setlength{\rightskip}{0pt plus 5cm}void Package::ClearUninstallInstructions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_acb74c529abb2f617cf61f6476d025810}
+Deletes all of the uninstall instructions. 
+
+References InstructionSequence::Clear(), and mUninstallInstructions.
+
+
+
+Referenced by PackageWizard::accept(), and PackageWizard::back().
+
+\index{Package@{Package}!ClearUnpackInstructions@{ClearUnpackInstructions}}
+\index{ClearUnpackInstructions@{ClearUnpackInstructions}!Package@{Package}}
+\subsubsection[{ClearUnpackInstructions}]{\setlength{\rightskip}{0pt plus 5cm}void Package::ClearUnpackInstructions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_a2b034b864761bf64bfbaa7c1ab7dfe08}
+Deletes all of the unpacking instructions. 
+
+References InstructionSequence::Clear(), and mUnpackInstructions.
+
+
+
+Referenced by PackageWizard::back(), and PackageWizard::next().
+
+\index{Package@{Package}!Configure@{Configure}}
+\index{Configure@{Configure}!Package@{Package}}
+\subsubsection[{Configure}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::Configure (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{string}]{ workDirectory, }
+\item[{int}]{ numProcessors}
+\end{DoxyParamCaption}
+)}\label{classPackage_a18f415dd3f0966ef1b0ca5c8c2a19af2}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em logEntry}]-\/ the install log entry corresponding to this package \item[{\em workDirectory}]-\/ the parent directory of all package working directories \item[{\em numProcessors}]-\/ number of processors in system (for parallelization) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if logEntry is NULL or an error occurs while configuring
+\end{DoxyReturn}
+Configures the package by executing all configure instructions from the working directory. 
+
+References InstructionSequence::Execute(), Revision::GetString(), Interpreter::Interpret(), mConfigureInstructions, mPackageName, mPackageRevision, InstallEntry::SetConfigured(), InstallEntry::SetErrorMessage(), and InstructionSequence::SetStartingDirectory().
+
+
+
+Referenced by AppRover::ConfigurePackage().
+
+\index{Package@{Package}!DumpBuildInstructionsToFile@{DumpBuildInstructionsToFile}}
+\index{DumpBuildInstructionsToFile@{DumpBuildInstructionsToFile}!Package@{Package}}
+\subsubsection[{DumpBuildInstructionsToFile}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::DumpBuildInstructionsToFile (
+\begin{DoxyParamCaption}
+\item[{FILE $\ast$}]{ file}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a8772500d9a6ec6419b35b65c4dbbce47}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]-\/ the file to receive the build instructions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the build instructions were successfully saved to the file 
+\end{DoxyReturn}
+
+
+References InstructionSequence::DumpToFile(), and mBuildInstructions.
+
+\index{Package@{Package}!DumpConfigureInstructionsToFile@{DumpConfigureInstructionsToFile}}
+\index{DumpConfigureInstructionsToFile@{DumpConfigureInstructionsToFile}!Package@{Package}}
+\subsubsection[{DumpConfigureInstructionsToFile}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::DumpConfigureInstructionsToFile (
+\begin{DoxyParamCaption}
+\item[{FILE $\ast$}]{ file}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a83055b06387b6f434c53d67ed77cc5a9}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]-\/ the file to receive the configuration instructions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the configuration instructions were successfully saved to the file 
+\end{DoxyReturn}
+
+
+References InstructionSequence::DumpToFile(), and mConfigureInstructions.
+
+\index{Package@{Package}!DumpInstallInstructionsToFile@{DumpInstallInstructionsToFile}}
+\index{DumpInstallInstructionsToFile@{DumpInstallInstructionsToFile}!Package@{Package}}
+\subsubsection[{DumpInstallInstructionsToFile}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::DumpInstallInstructionsToFile (
+\begin{DoxyParamCaption}
+\item[{FILE $\ast$}]{ file}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a7254f52b184b23a5f7096755d3894b07}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]-\/ the file to receive the install instructions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the install instructions were successfully saved to the file 
+\end{DoxyReturn}
+
+
+References InstructionSequence::DumpToFile(), and mInstallInstructions.
+
+\index{Package@{Package}!DumpUninstallInstructionsToFile@{DumpUninstallInstructionsToFile}}
+\index{DumpUninstallInstructionsToFile@{DumpUninstallInstructionsToFile}!Package@{Package}}
+\subsubsection[{DumpUninstallInstructionsToFile}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::DumpUninstallInstructionsToFile (
+\begin{DoxyParamCaption}
+\item[{FILE $\ast$}]{ file}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a492f02a574974acb9aa8752f630b68cf}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]-\/ the file to receive the uninstall instructions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the uninstall instructions were successfully saved to the file 
+\end{DoxyReturn}
+
+
+References InstructionSequence::DumpToFile(), and mUninstallInstructions.
+
+\index{Package@{Package}!DumpUnpackInstructionsToFile@{DumpUnpackInstructionsToFile}}
+\index{DumpUnpackInstructionsToFile@{DumpUnpackInstructionsToFile}!Package@{Package}}
+\subsubsection[{DumpUnpackInstructionsToFile}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::DumpUnpackInstructionsToFile (
+\begin{DoxyParamCaption}
+\item[{FILE $\ast$}]{ file}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a5933c7d120fc1833b03da00bbadaafd9}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]-\/ the file to receive the unpacking instructions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the unpacking instructions were successfully saved to the file 
+\end{DoxyReturn}
+
+
+References InstructionSequence::DumpToFile(), and mUnpackInstructions.
+
+\index{Package@{Package}!Fetch@{Fetch}}
+\index{Fetch@{Fetch}!Package@{Package}}
+\subsubsection[{Fetch}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::Fetch (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{string}]{ storageDirectory, }
+\item[{bool}]{ force = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const}\label{classPackage_ae4e72ff1098ce5c924ddc624d31c1113}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em logEntry}]-\/ the install log entry corresponding to this package \item[{\em storageDirectory}]-\/ the directory where source files are stored \item[{\em force}](=false) -\/ if true, fetch all files even if local copies exist \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if logEntry is NULL or a file cannot be retrieved
+\end{DoxyReturn}
+This retrieves all files needed in order to install the package. 
+
+References Fetcher::Fetch(), InstallEntry::GetFeatures(), Revision::GetString(), mPackageName, mPackageRevision, mSourceFiles, and InstallEntry::SetErrorMessage().
+
+
+
+Referenced by AppRover::FetchPackage().
+
+\index{Package@{Package}!GetBinaryCompatabilityRevision@{GetBinaryCompatabilityRevision}}
+\index{GetBinaryCompatabilityRevision@{GetBinaryCompatabilityRevision}!Package@{Package}}
+\subsubsection[{GetBinaryCompatabilityRevision}]{\setlength{\rightskip}{0pt plus 5cm}int Package::GetBinaryCompatabilityRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackage_ac162ec3ab26a622d5454783b1e2df193}
+\begin{DoxyReturn}{Returns}
+the value used to indicate if 2 packages have binary compatable interfaces 
+\end{DoxyReturn}
+
+
+References mBinaryCompatabilityRevision.
+
+
+
+Referenced by AppRover::Install().
+
+\index{Package@{Package}!GetDependency@{GetDependency}}
+\index{GetDependency@{GetDependency}!Package@{Package}}
+\subsubsection[{GetDependency}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf PackageDependency} $\ast$ Package::GetDependency (
+\begin{DoxyParamCaption}
+\item[{int}]{ dependencyNumber}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a4e3ce356ffd700a144c6030ac41418ed}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dependencyNumber}]-\/ the index to the dependency list \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+NULL if the index is invalid 
+
+Otherwise, a pointer to the dependency object 
+\end{DoxyReturn}
+
+
+References mDependencies.
+
+
+
+Referenced by AppRover::Install().
+
+\index{Package@{Package}!GetFeature@{GetFeature}}
+\index{GetFeature@{GetFeature}!Package@{Package}}
+\subsubsection[{GetFeature}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FeatureOption} $\ast$ Package::GetFeature (
+\begin{DoxyParamCaption}
+\item[{int}]{ featureNumber}
+\end{DoxyParamCaption}
+) const}\label{classPackage_aaeefd172486e89c799a1e2ada055f05b}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureNumber}]-\/ the index into the list of optional features \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the feature at the specified location in the list 
+
+NULL if featureNumber is invalid 
+\end{DoxyReturn}
+
+
+References mFeatures.
+
+
+
+Referenced by AppRover::Install().
+
+\index{Package@{Package}!GetName@{GetName}}
+\index{GetName@{GetName}!Package@{Package}}
+\subsubsection[{GetName}]{\setlength{\rightskip}{0pt plus 5cm}string Package::GetName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackage_aa8daa18c95837fe299c7e9a750099d53}
+\begin{DoxyReturn}{Returns}
+the name of this package 
+\end{DoxyReturn}
+
+
+References mPackageName.
+
+
+
+Referenced by Repository::AddPackage(), PackageIndex::AddPackage(), AppRover::Install(), PackageDependency::IsSatisfiedBy(), RemoveDependency(), RemoveFeature(), PackageWizard::RevisionChanged(), and PackageWizard::showPage().
+
+\index{Package@{Package}!GetNumDependencies@{GetNumDependencies}}
+\index{GetNumDependencies@{GetNumDependencies}!Package@{Package}}
+\subsubsection[{GetNumDependencies}]{\setlength{\rightskip}{0pt plus 5cm}int Package::GetNumDependencies (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackage_af8d3a8f7e5bd6ee69ffcc48bfec96459}
+\begin{DoxyReturn}{Returns}
+the number of prerequisite packages that must be satisfied before this package can be installed 
+\end{DoxyReturn}
+
+
+References mDependencies.
+
+
+
+Referenced by AppRover::Install().
+
+\index{Package@{Package}!GetNumFeatures@{GetNumFeatures}}
+\index{GetNumFeatures@{GetNumFeatures}!Package@{Package}}
+\subsubsection[{GetNumFeatures}]{\setlength{\rightskip}{0pt plus 5cm}int Package::GetNumFeatures (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a48220a0c9688dc59ee50b83f0d824b4b}
+\begin{DoxyReturn}{Returns}
+the number of optional features recognized by this package 
+\end{DoxyReturn}
+
+
+References mFeatures.
+
+
+
+Referenced by AppRover::Install().
+
+\index{Package@{Package}!GetNumSourceFiles@{GetNumSourceFiles}}
+\index{GetNumSourceFiles@{GetNumSourceFiles}!Package@{Package}}
+\subsubsection[{GetNumSourceFiles}]{\setlength{\rightskip}{0pt plus 5cm}int Package::GetNumSourceFiles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a4b2c99403507a3ac2cae9e165e2fe6b6}
+\begin{DoxyReturn}{Returns}
+the number of files required to install this package 
+\end{DoxyReturn}
+
+
+References mSourceFiles.
+
+\index{Package@{Package}!GetRevision@{GetRevision}}
+\index{GetRevision@{GetRevision}!Package@{Package}}
+\subsubsection[{GetRevision}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Revision} \& Package::GetRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackage_ab6f85c30e1c5f37375559d88347dcfc4}
+\begin{DoxyReturn}{Returns}
+the revision of this package 
+\end{DoxyReturn}
+
+
+References mPackageRevision.
+
+
+
+Referenced by Repository::AddPackage(), PackageIndex::AddPackage(), AppRover::Install(), PackageDependency::IsSatisfiedBy(), PackageWizard::NameChanged(), PackageWizard::showPage(), and AppRover::Update().
+
+\index{Package@{Package}!GetSlot@{GetSlot}}
+\index{GetSlot@{GetSlot}!Package@{Package}}
+\subsubsection[{GetSlot}]{\setlength{\rightskip}{0pt plus 5cm}string Package::GetSlot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackage_a01f9d6f1942e77b5546a6ed425a0a9fa}
+\begin{DoxyReturn}{Returns}
+the slot this package occupies 
+\end{DoxyReturn}
+
+
+References mPackageSlot.
+
+
+
+Referenced by AppRover::Install().
+
+\index{Package@{Package}!GetSourceFile@{GetSourceFile}}
+\index{GetSourceFile@{GetSourceFile}!Package@{Package}}
+\subsubsection[{GetSourceFile}]{\setlength{\rightskip}{0pt plus 5cm}{\bf SourceFile} $\ast$ Package::GetSourceFile (
+\begin{DoxyParamCaption}
+\item[{int}]{ fileNumber}
+\end{DoxyParamCaption}
+)}\label{classPackage_ac13f3bec79f88ae469ccd303934b4359}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fileNumber}]-\/ index into the list of source files \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the source file at the specifed position in the list 
+
+NULL if fileNumber is invalid 
+\end{DoxyReturn}
+
+
+References mSourceFiles.
+
+\index{Package@{Package}!Install@{Install}}
+\index{Install@{Install}!Package@{Package}}
+\subsubsection[{Install}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::Install (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{string}]{ workDirectory, }
+\item[{int}]{ numProcessors}
+\end{DoxyParamCaption}
+)}\label{classPackage_acd45cf105e1aa288c5a64d028179a336}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em logEntry}]-\/ the install log entry corresponding to this package \item[{\em workDirectory}]-\/ the parent directory of all package working directories \item[{\em numProcessors}]-\/ number of processors in system (for parallelization) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if logEntry is NULL or an error occurs while installing
+\end{DoxyReturn}
+Installs the package by executing all install instructions from the working directory. 
+
+References InstallEntry::AddInstalledDirectory(), InstallEntry::AddInstalledFile(), InstallEntry::AddInstalledSymLink(), InstallEntry::ConsolidateFiles(), InstructionSequence::Execute(), InstructionSequence::GetStartingDirectory(), Revision::GetString(), Interpreter::Interpret(), mInstallInstructions, mPackageName, mPackageRevision, mUninstallInstructions, InstallEntry::SetErrorMessage(), InstallEntry::SetInstalled(), InstructionSequence::SetStartingDirectory(), and InstallEntry::SetUninstallInstructions().
+
+
+
+Referenced by AppRover::InstallPackage().
+
+\index{Package@{Package}!IsNewerThan@{IsNewerThan}}
+\index{IsNewerThan@{IsNewerThan}!Package@{Package}}
+\subsubsection[{IsNewerThan}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::IsNewerThan (
+\begin{DoxyParamCaption}
+\item[{const {\bf Package} $\ast$}]{ refPackage}
+\end{DoxyParamCaption}
+) const}\label{classPackage_aec698a7b09cbd93fae8d442f99ce8826}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refPackage}]-\/ the package to compare against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this package has a higher revision number than refPackage
+\end{DoxyReturn}
+Compares the revision numbers of this package with refPackage and returns true if this package has a higher revision number. 
+
+References mPackageRevision.
+
+
+
+Referenced by AppRover::FindMostCurrentPackage().
+
+\index{Package@{Package}!Load@{Load}}
+\index{Load@{Load}!Package@{Package}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::Load (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classPackage_ae966ddec9330b6da352283ef22c08703}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the file containing the package data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if filename is \char`\"{}\char`\"{}, the file doesn't exists, or there is a format error in the file
+\end{DoxyReturn}
+Loads the package data from the specified file. 
+
+References InstructionSequence::Load(), SourceFile::Load(), FeatureOption::Load(), PackageDependency::Load(), mBinaryCompatabilityRevision, mBuildInstructions, mConfigureInstructions, mDependencies, mFeatures, mFilename, mInstalledDirectories, mInstalledFiles, mInstallInstructions, mPackageName, mPackageRevision, mPackageSlot, mSourceFiles, mUninstallInstructions, mUnpackInstructions, and Revision::Set().
+
+
+
+Referenced by PackageIndex::GetMostCurrentPackage(), and PackageIndex::GetPrecedingPackage().
+
+\index{Package@{Package}!RecordSourceChecksums@{RecordSourceChecksums}}
+\index{RecordSourceChecksums@{RecordSourceChecksums}!Package@{Package}}
+\subsubsection[{RecordSourceChecksums}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::RecordSourceChecksums (
+\begin{DoxyParamCaption}
+\item[{string}]{ storageDirectory}
+\end{DoxyParamCaption}
+)}\label{classPackage_ad080ddf0b25bd0615c0ebb09fc1f66ec}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em storageDirectory}]-\/ location where local copies of source files are stored \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if checksums were successfully calculated for all source files 
+\end{DoxyReturn}
+
+
+References Fetcher::Fetch(), Fetcher::GetChecksum(), and mSourceFiles.
+
+
+
+Referenced by AppRover::AddNewPackage(), and AppRover::UpdatePackageChecksums().
+
+\index{Package@{Package}!RemoveDependency@{RemoveDependency}}
+\index{RemoveDependency@{RemoveDependency}!Package@{Package}}
+\subsubsection[{RemoveDependency}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::RemoveDependency (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName}
+\end{DoxyParamCaption}
+)}\label{classPackage_afd7d5d2bb673b39009853aa82b4fa958}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of package to be removed from the list of dependencies \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if packageName is \char`\"{}\char`\"{} or is not a dependency of this package 
+\end{DoxyReturn}
+
+
+References GetName(), and mDependencies.
+
+\index{Package@{Package}!RemoveFeature@{RemoveFeature}}
+\index{RemoveFeature@{RemoveFeature}!Package@{Package}}
+\subsubsection[{RemoveFeature}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::RemoveFeature (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName}
+\end{DoxyParamCaption}
+)}\label{classPackage_aa9a264e393627a36784625f0a0a9d9ac}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ name of the optional feature to be removed from the list \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if featureName is \char`\"{}\char`\"{} or does not match any features in the list 
+\end{DoxyReturn}
+
+
+References GetName(), and mFeatures.
+
+\index{Package@{Package}!RemoveSourceFile@{RemoveSourceFile}}
+\index{RemoveSourceFile@{RemoveSourceFile}!Package@{Package}}
+\subsubsection[{RemoveSourceFile}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::RemoveSourceFile (
+\begin{DoxyParamCaption}
+\item[{int}]{ fileNumber}
+\end{DoxyParamCaption}
+)}\label{classPackage_a0ad264c016a2c199875b8dcf577151f8}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fileNumber}]-\/ index into the list of source files \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if fileNumber is invalid 
+\end{DoxyReturn}
+
+
+References mSourceFiles.
+
+\index{Package@{Package}!Save@{Save}}
+\index{Save@{Save}!Package@{Package}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::Save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPackage_adc395a14a37350ecbf599be9caa84e03}
+\begin{DoxyReturn}{Returns}
+true if this package was successfully saved to the file specified by mFilename 
+\end{DoxyReturn}
+
+
+References mFilename.
+
+
+
+Referenced by Save().
+
+\index{Package@{Package}!Save@{Save}}
+\index{Save@{Save}!Package@{Package}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::Save (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classPackage_a837a31defde049d142b0c2064659abac}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the file to receive the package data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if filename is \char`\"{}\char`\"{} or is not writable
+\end{DoxyReturn}
+Saves the package data to the specified file. 
+
+References Revision::GetString(), mBinaryCompatabilityRevision, mBuildInstructions, mConfigureInstructions, mDependencies, mFeatures, mFilename, mInstalledDirectories, mInstalledFiles, mInstallInstructions, mPackageName, mPackageRevision, mPackageSlot, mSourceFiles, mUninstallInstructions, mUnpackInstructions, InstructionSequence::Save(), and Save().
+
+\index{Package@{Package}!SetBinaryCompatabilityRevision@{SetBinaryCompatabilityRevision}}
+\index{SetBinaryCompatabilityRevision@{SetBinaryCompatabilityRevision}!Package@{Package}}
+\subsubsection[{SetBinaryCompatabilityRevision}]{\setlength{\rightskip}{0pt plus 5cm}void Package::SetBinaryCompatabilityRevision (
+\begin{DoxyParamCaption}
+\item[{int}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classPackage_a24a41364c02f43fa0dd89b0e0c0aa874}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ the value used to indicate if 2 packages have binary compatable interfaces \end{DoxyParams}
+
+
+References mBinaryCompatabilityRevision.
+
+\index{Package@{Package}!SetName@{SetName}}
+\index{SetName@{SetName}!Package@{Package}}
+\subsubsection[{SetName}]{\setlength{\rightskip}{0pt plus 5cm}void Package::SetName (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName}
+\end{DoxyParamCaption}
+)}\label{classPackage_a7b0861a9203eb2720cbb4c3f118762c3}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the new name of this package\end{DoxyParams}
+Sets the name of this package to the specified string. 
+
+References mPackageName.
+
+
+
+Referenced by PackageWizard::NameChanged().
+
+\index{Package@{Package}!SetRevision@{SetRevision}}
+\index{SetRevision@{SetRevision}!Package@{Package}}
+\subsubsection[{SetRevision}]{\setlength{\rightskip}{0pt plus 5cm}void Package::SetRevision (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classPackage_a31e4ae808f6e7f7ee4d955796269e033}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ the new revision of this package\end{DoxyParams}
+Sets the revision of this package to the specified value. 
+
+References mPackageRevision, and Revision::Set().
+
+
+
+Referenced by PackageWizard::RevisionChanged().
+
+\index{Package@{Package}!SetSlot@{SetSlot}}
+\index{SetSlot@{SetSlot}!Package@{Package}}
+\subsubsection[{SetSlot}]{\setlength{\rightskip}{0pt plus 5cm}void Package::SetSlot (
+\begin{DoxyParamCaption}
+\item[{string}]{ slot}
+\end{DoxyParamCaption}
+)}\label{classPackage_adb04c6df4cda5112f5bd24b8a029ebdd}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em slot}]-\/ the slot this package occupies \end{DoxyParams}
+
+
+References mPackageSlot.
+
+\index{Package@{Package}!Unpack@{Unpack}}
+\index{Unpack@{Unpack}!Package@{Package}}
+\subsubsection[{Unpack}]{\setlength{\rightskip}{0pt plus 5cm}bool Package::Unpack (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{string}]{ storageDirectory, }
+\item[{string}]{ workDirectory, }
+\item[{int}]{ numProcessors}
+\end{DoxyParamCaption}
+)}\label{classPackage_a30bec683f13f8f12f65d9bb2391f2fd9}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em logEntry}]-\/ the install log entry corresponding to this package \item[{\em storageDirectory}]-\/ the directory where source files are stored \item[{\em workDirectory}]-\/ the parent directory of all package working directories \item[{\em numProcessors}]-\/ number of processors in system (for parallelization) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if logEntry is NULL or an error occurs while unpacking
+\end{DoxyReturn}
+Unpacks the package by creating a working directory and copying all source files to the working directory. If any unpacking instructions have been specified, they will then be executed from the working directory. 
+
+References InstructionSequence::Execute(), InstallEntry::GetFeatures(), Revision::GetString(), Interpreter::Interpret(), mPackageName, mPackageRevision, mSourceFiles, mUnpackInstructions, InstallEntry::SetErrorMessage(), InstructionSequence::SetStartingDirectory(), and InstallEntry::SetUnpacked().
+
+
+
+Referenced by AppRover::UnpackPackage().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Package.h\item 
+Package.cpp\end{DoxyCompactItemize}

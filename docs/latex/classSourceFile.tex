@@ -1,0 +1,295 @@
+\section{SourceFile Class Reference}
+\label{classSourceFile}\index{SourceFile@{SourceFile}}
+
+
+A class describing a package source file.  
+
+
+
+
+{\ttfamily \#include $<$SourceFile.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf SourceFile} (string location)
+\item 
+{\bf SourceFile} (const {\bf SourceFile} $\ast$refFile)
+\item 
+string {\bf GetLocation} () const 
+\item 
+bool {\bf SetLocation} (string location)
+\item 
+string {\bf GetCheckSum} () const 
+\item 
+void {\bf SetCheckSum} (string checksum)
+\item 
+const {\bf BooleanExpression} \& {\bf GetCondition} () const 
+\item 
+void {\bf SetCondition} (const {\bf BooleanExpression} \&condition)
+\item 
+bool {\bf Save} (xmlNodePtr parentNode)
+\item 
+bool {\bf Load} (xmlNodePtr fileNode)
+\item 
+bool {\bf IsActive} (const FeatureOptionVector \&features) const 
+\item 
+bool {\bf IsEmbedded} () const 
+\item 
+void {\bf SetContents} (string contents)
+\item 
+bool {\bf ExtractContents} (string directory)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mLocation}\label{classSourceFile_a929327b1cd2dd3d046259e26d5f826c0}
+
+\begin{DoxyCompactList}\small\item\em The remote location of this file, or if embedded file, just the filename. \item\end{DoxyCompactList}\item 
+string {\bf mCheckSum}\label{classSourceFile_aa499f75fb007c60fe87b64883fd81a2c}
+
+\begin{DoxyCompactList}\small\item\em The checksum for this file. \item\end{DoxyCompactList}\item 
+{\bf BooleanExpression} {\bf mCondition}\label{classSourceFile_af2a8bae92233009674fb69088bf22996}
+
+\begin{DoxyCompactList}\small\item\em The expression which indicates whether this file is required. \item\end{DoxyCompactList}\item 
+string {\bf mContents}\label{classSourceFile_aa32e61dbebe31f03d3412db2f7338279}
+
+\begin{DoxyCompactList}\small\item\em Contents of an embedded file. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class describing a package source file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{SourceFile@{SourceFile}!SourceFile@{SourceFile}}
+\index{SourceFile@{SourceFile}!SourceFile@{SourceFile}}
+\subsubsection[{SourceFile}]{\setlength{\rightskip}{0pt plus 5cm}SourceFile::SourceFile (
+\begin{DoxyParamCaption}
+\item[{string}]{ location}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_a5145fe2b2320e9d48b372b0a8ca1a688}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em location}]-\/ the remote location of the source file \end{DoxyParams}
+
+
+References mLocation.
+
+\index{SourceFile@{SourceFile}!SourceFile@{SourceFile}}
+\index{SourceFile@{SourceFile}!SourceFile@{SourceFile}}
+\subsubsection[{SourceFile}]{\setlength{\rightskip}{0pt plus 5cm}SourceFile::SourceFile (
+\begin{DoxyParamCaption}
+\item[{const {\bf SourceFile} $\ast$}]{ refFile}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_ad4dc3666e0744dddfb2dc4f271bc12b0}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refFile}]-\/ \doxyref{SourceFile}{p.}{classSourceFile} to clone \end{DoxyParams}
+
+
+References mCheckSum, mCondition, mContents, and mLocation.
+
+
+
+\subsection{Member Function Documentation}
+\index{SourceFile@{SourceFile}!ExtractContents@{ExtractContents}}
+\index{ExtractContents@{ExtractContents}!SourceFile@{SourceFile}}
+\subsubsection[{ExtractContents}]{\setlength{\rightskip}{0pt plus 5cm}bool SourceFile::ExtractContents (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_a80d0e29a58f87bd922f8b4390f913657}
+Saves the embedded file contents to the specified directory with the filename determined by the contents of the location field. 
+\begin{DoxyParams}{Parameters}
+\item[{\em contents}]-\/ the contents of the embedded file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success 
+
+false if file is not embedded or other error 
+\end{DoxyReturn}
+
+
+References mContents, and mLocation.
+
+\index{SourceFile@{SourceFile}!GetCheckSum@{GetCheckSum}}
+\index{GetCheckSum@{GetCheckSum}!SourceFile@{SourceFile}}
+\subsubsection[{GetCheckSum}]{\setlength{\rightskip}{0pt plus 5cm}string SourceFile::GetCheckSum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSourceFile_a88018e421ce07ae0ad7e0ca721fc2cfb}
+\begin{DoxyReturn}{Returns}
+the checksum of this file 
+\end{DoxyReturn}
+
+
+References mCheckSum.
+
+\index{SourceFile@{SourceFile}!GetCondition@{GetCondition}}
+\index{GetCondition@{GetCondition}!SourceFile@{SourceFile}}
+\subsubsection[{GetCondition}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf BooleanExpression} \& SourceFile::GetCondition (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSourceFile_aed42ea890017b3c7c0a653ea05bff066}
+\begin{DoxyReturn}{Returns}
+the expression indicating whether this file is required 
+\end{DoxyReturn}
+
+
+References mCondition.
+
+\index{SourceFile@{SourceFile}!GetLocation@{GetLocation}}
+\index{GetLocation@{GetLocation}!SourceFile@{SourceFile}}
+\subsubsection[{GetLocation}]{\setlength{\rightskip}{0pt plus 5cm}string SourceFile::GetLocation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSourceFile_a27fb88612e1427ca3659453c411e1d2d}
+\begin{DoxyReturn}{Returns}
+the remote location of the source file 
+\end{DoxyReturn}
+
+
+References mLocation.
+
+\index{SourceFile@{SourceFile}!IsActive@{IsActive}}
+\index{IsActive@{IsActive}!SourceFile@{SourceFile}}
+\subsubsection[{IsActive}]{\setlength{\rightskip}{0pt plus 5cm}bool SourceFile::IsActive (
+\begin{DoxyParamCaption}
+\item[{const FeatureOptionVector \&}]{ features}
+\end{DoxyParamCaption}
+) const}\label{classSourceFile_a5d6298d11bff7e0ab4ae71b45eb628e3}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em features}]-\/ the features used to evaluate whether this file is required \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the result of evaluating the condition with respect to the value of the features 
+
+true if the condition is empty 
+\end{DoxyReturn}
+
+
+References BooleanExpression::EvaluatesToTrue(), BooleanExpression::IsEmpty(), and mCondition.
+
+\index{SourceFile@{SourceFile}!IsEmbedded@{IsEmbedded}}
+\index{IsEmbedded@{IsEmbedded}!SourceFile@{SourceFile}}
+\subsubsection[{IsEmbedded}]{\setlength{\rightskip}{0pt plus 5cm}bool SourceFile::IsEmbedded (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSourceFile_ae6a093224bfea230d1f71208fd834686}
+\begin{DoxyReturn}{Returns}
+true if the file contents are embedded in this object, false otherwise 
+\end{DoxyReturn}
+
+
+References mContents.
+
+\index{SourceFile@{SourceFile}!Load@{Load}}
+\index{Load@{Load}!SourceFile@{SourceFile}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool SourceFile::Load (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ fileNode}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_affc531702cd7b72e283f5843e8fc6af6}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fileNode}]-\/ the XML DOM node containing the file data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if fileNode is NULL or there is a format error
+\end{DoxyReturn}
+Loads the file data from the specified node. 
+
+References mCheckSum, mCondition, mContents, mLocation, and BooleanExpression::ParseFromString().
+
+
+
+Referenced by Package::Load().
+
+\index{SourceFile@{SourceFile}!Save@{Save}}
+\index{Save@{Save}!SourceFile@{SourceFile}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool SourceFile::Save (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ parentNode}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_a3c8d86f55ca99871f23679b3a81da400}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em parentNode}]-\/ the parent XML DOM node for the file node \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if parentNode is NULL
+\end{DoxyReturn}
+Saves the file data as a child node of the specified parent. 
+
+References BooleanExpression::GetString(), mCheckSum, mCondition, mContents, and mLocation.
+
+\index{SourceFile@{SourceFile}!SetCheckSum@{SetCheckSum}}
+\index{SetCheckSum@{SetCheckSum}!SourceFile@{SourceFile}}
+\subsubsection[{SetCheckSum}]{\setlength{\rightskip}{0pt plus 5cm}void SourceFile::SetCheckSum (
+\begin{DoxyParamCaption}
+\item[{string}]{ checksum}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_a2954c6638113784bdb7b5b758ac37025}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em checksum}]-\/ the checksum of this file \end{DoxyParams}
+
+
+References mCheckSum.
+
+\index{SourceFile@{SourceFile}!SetCondition@{SetCondition}}
+\index{SetCondition@{SetCondition}!SourceFile@{SourceFile}}
+\subsubsection[{SetCondition}]{\setlength{\rightskip}{0pt plus 5cm}void SourceFile::SetCondition (
+\begin{DoxyParamCaption}
+\item[{const {\bf BooleanExpression} \&}]{ condition}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_a14a742fe086d51802939bc9080e27bdd}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em condition}]-\/ the expression indicating whether this file is required \end{DoxyParams}
+
+
+References mCondition.
+
+
+
+Referenced by Package::Package().
+
+\index{SourceFile@{SourceFile}!SetContents@{SetContents}}
+\index{SetContents@{SetContents}!SourceFile@{SourceFile}}
+\subsubsection[{SetContents}]{\setlength{\rightskip}{0pt plus 5cm}void SourceFile::SetContents (
+\begin{DoxyParamCaption}
+\item[{string}]{ contents}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_acf37d30c7ff52b3c209110ea6b286186}
+Sets the embedded file contents to the specified string. If the string is empty, the contents are cleared and this source file will no longer be embedded. 
+\begin{DoxyParams}{Parameters}
+\item[{\em contents}]-\/ the contents of the embedded file \end{DoxyParams}
+
+
+References mContents.
+
+\index{SourceFile@{SourceFile}!SetLocation@{SetLocation}}
+\index{SetLocation@{SetLocation}!SourceFile@{SourceFile}}
+\subsubsection[{SetLocation}]{\setlength{\rightskip}{0pt plus 5cm}bool SourceFile::SetLocation (
+\begin{DoxyParamCaption}
+\item[{string}]{ location}
+\end{DoxyParamCaption}
+)}\label{classSourceFile_af1763a434afc5f6edbcad43b1bf21743}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em location}]-\/ the remote location of the source file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the location is properly formatted (currently only checks for a lack of whitespace) 
+\end{DoxyReturn}
+
+
+References mLocation.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+SourceFile.h\item 
+SourceFile.cpp\end{DoxyCompactItemize}

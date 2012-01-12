@@ -1,0 +1,89 @@
+\section{WaitDialog Class Reference}
+\label{classWaitDialog}\index{WaitDialog@{WaitDialog}}
+
+
+Dialog used by KDE \doxyref{AppRover}{p.}{classAppRover} GUI to notify the user to wait for an action to complete.  
+
+
+
+
+{\ttfamily \#include $<$kWaitDialog.h$>$}
+
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bf show} ()
+\item 
+virtual void {\bf hide} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf WaitDialog} (QWidget $\ast$parent=0, const char $\ast$name=0)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+KAnimWidget $\ast$ {\bf mProgressAnimation}\label{classWaitDialog_afcd22012a17c67f7bc93eb6eac3158ac}
+
+\begin{DoxyCompactList}\small\item\em Animation widget to show that the application has not frozen during the wait. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Dialog used by KDE \doxyref{AppRover}{p.}{classAppRover} GUI to notify the user to wait for an action to complete. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{WaitDialog@{WaitDialog}!WaitDialog@{WaitDialog}}
+\index{WaitDialog@{WaitDialog}!WaitDialog@{WaitDialog}}
+\subsubsection[{WaitDialog}]{\setlength{\rightskip}{0pt plus 5cm}WaitDialog::WaitDialog (
+\begin{DoxyParamCaption}
+\item[{QWidget $\ast$}]{ parent = {\ttfamily 0}, }
+\item[{const char $\ast$}]{ name = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classWaitDialog_a5afb88b144b323fac362d02c61996000}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em parent}]-\/ the parent widget of this dialog \item[{\em name}]-\/ the name of this dialog \end{DoxyParams}
+
+
+References mProgressAnimation.
+
+
+
+\subsection{Member Function Documentation}
+\index{WaitDialog@{WaitDialog}!hide@{hide}}
+\index{hide@{hide}!WaitDialog@{WaitDialog}}
+\subsubsection[{hide}]{\setlength{\rightskip}{0pt plus 5cm}void WaitDialog::hide (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual, slot]}}\label{classWaitDialog_a7d4f8ee4a200d0b09c06103e197a274f}
+Hides this dialog and stops the animation. 
+
+References mProgressAnimation.
+
+
+
+Referenced by kInterpreter::Interpret().
+
+\index{WaitDialog@{WaitDialog}!show@{show}}
+\index{show@{show}!WaitDialog@{WaitDialog}}
+\subsubsection[{show}]{\setlength{\rightskip}{0pt plus 5cm}void WaitDialog::show (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual, slot]}}\label{classWaitDialog_a766767d8cc208b637eaa384893d0fc4e}
+Makes this dialog visible and starts the animation. 
+
+References mProgressAnimation.
+
+
+
+Referenced by kInterpreter::Interpret().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+kWaitDialog.h\item 
+kWaitDialog.cpp\end{DoxyCompactItemize}

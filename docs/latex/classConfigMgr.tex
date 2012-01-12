@@ -1,0 +1,394 @@
+\section{ConfigMgr Class Reference}
+\label{classConfigMgr}\index{ConfigMgr@{ConfigMgr}}
+
+
+Class responsible for managing all system specific \doxyref{AppRover}{p.}{classAppRover} configuration details.  
+
+
+
+
+{\ttfamily \#include $<$ConfigMgr.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+ConfigMgrStatusType {\bf Load} (string filename)
+\item 
+ConfigMgrStatusType {\bf Save} (string filename)
+\item 
+ConfigMgrStatusType {\bf Save} ()
+\item 
+string {\bf GetInstallLogFilename} () const 
+\item 
+int {\bf GetNumRepositories} () const 
+\item 
+string {\bf GetRepositoryDirectory} (int repositoryNumber) const 
+\item 
+bool {\bf AddRepositoryDirectory} (string directory)
+\item 
+string {\bf GetStorageDirectory} () const 
+\item 
+void {\bf SetStorageDirectory} (string directory)
+\item 
+string {\bf GetWorkDirectory} () const 
+\item 
+void {\bf SetWorkDirectory} (string directory)
+\item 
+string {\bf GetInstallFileDirectory} () const 
+\item 
+void {\bf SetInstallFileDirectory} (string directory)
+\item 
+int {\bf GetNumProcessors} ()
+\item 
+int {\bf GetFeatureState} (string featureName)
+\item 
+void {\bf SetFeatureState} (string featureName, int state)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf DetectNumProcessors} ()\label{classConfigMgr_ade2d8bcb486ae2fa8d13f378ce0544bf}
+
+\begin{DoxyCompactList}\small\item\em Determines the number of processors in the system and sets mNumProcessors accordingly. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ string $>$ {\bf mRepositoryDirectories}\label{classConfigMgr_a001475e2c739128df3081e33b071b7bb}
+
+\begin{DoxyCompactList}\small\item\em List of the location of all repositories in this system. \item\end{DoxyCompactList}\item 
+string {\bf mInstallLogFilename}\label{classConfigMgr_a593a46f2fbc56c66bc65d041913e69e6}
+
+\begin{DoxyCompactList}\small\item\em Name of the file containing the install log. \item\end{DoxyCompactList}\item 
+string {\bf mStorageDirectory}\label{classConfigMgr_a30a55f64623096bf9c790827552e1cbe}
+
+\begin{DoxyCompactList}\small\item\em The directory where are fetched files are stored. \item\end{DoxyCompactList}\item 
+string {\bf mWorkDirectory}\label{classConfigMgr_ac25784e9795ae681b01c107d36c26d47}
+
+\begin{DoxyCompactList}\small\item\em The top level directory where all file operations are performed prior to installing a package. \item\end{DoxyCompactList}\item 
+string {\bf mInstallFileDirectory}\label{classConfigMgr_a66596301397c39233ffea8c221b0059c}
+
+\begin{DoxyCompactList}\small\item\em The directory containing the lists of files installed by packages. \item\end{DoxyCompactList}\item 
+string {\bf mCfgFilename}\label{classConfigMgr_a0fd6802422199236a333f91c91d17ff7}
+
+\begin{DoxyCompactList}\small\item\em The file where this configuration data is stored. \item\end{DoxyCompactList}\item 
+int {\bf mNumProcessors}\label{classConfigMgr_ab7247561140c1cec8007631fac15cc5d}
+
+\begin{DoxyCompactList}\small\item\em The number processing cores in the system. \item\end{DoxyCompactList}\item 
+map$<$ string, bool $>$ {\bf mFeatureSettings}\label{classConfigMgr_a8dc2f5b26cc3ee6906afcb80d017a71a}
+
+\begin{DoxyCompactList}\small\item\em The system wide default values for a set of optional features. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class responsible for managing all system specific \doxyref{AppRover}{p.}{classAppRover} configuration details. 
+
+\subsection{Member Function Documentation}
+\index{ConfigMgr@{ConfigMgr}!AddRepositoryDirectory@{AddRepositoryDirectory}}
+\index{AddRepositoryDirectory@{AddRepositoryDirectory}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{AddRepositoryDirectory}]{\setlength{\rightskip}{0pt plus 5cm}bool ConfigMgr::AddRepositoryDirectory (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_a5d58687a94f8e436887d6c5ddd65c2d7}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em directory}]-\/ the full path of the directory containing the repository \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if directory is \char`\"{}\char`\"{} or already has been specified
+\end{DoxyReturn}
+Adds add repository directory to the configuration. This only records a location -\/ nothing is actually done to the repository. 
+
+References mRepositoryDirectories.
+
+
+
+Referenced by AppRover::AddNewRepository().
+
+\index{ConfigMgr@{ConfigMgr}!GetFeatureState@{GetFeatureState}}
+\index{GetFeatureState@{GetFeatureState}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{GetFeatureState}]{\setlength{\rightskip}{0pt plus 5cm}int ConfigMgr::GetFeatureState (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_a1c7d650614c4c7a416c89a4ebce571dc}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ name of the optional feature whose activation status is desired \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+FEATURE\_\-ENABLED if the feature has been activated 
+
+FEATURE\_\-DISABLE if the feature has been deactivated 
+
+FEATURE\_\-USE\_\-DEFAULT if a system default value has not been set (indicates that the package specific default should be used) 
+\end{DoxyReturn}
+
+
+References mFeatureSettings.
+
+
+
+Referenced by AppRover::Install().
+
+\index{ConfigMgr@{ConfigMgr}!GetInstallFileDirectory@{GetInstallFileDirectory}}
+\index{GetInstallFileDirectory@{GetInstallFileDirectory}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{GetInstallFileDirectory}]{\setlength{\rightskip}{0pt plus 5cm}string ConfigMgr::GetInstallFileDirectory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classConfigMgr_ac1e2f749121a2d5548acc00a5a10d27a}
+\begin{DoxyReturn}{Returns}
+the directory where lists of installed files are stored 
+\end{DoxyReturn}
+
+
+References mInstallFileDirectory.
+
+
+
+Referenced by AppRover::Install().
+
+\index{ConfigMgr@{ConfigMgr}!GetInstallLogFilename@{GetInstallLogFilename}}
+\index{GetInstallLogFilename@{GetInstallLogFilename}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{GetInstallLogFilename}]{\setlength{\rightskip}{0pt plus 5cm}string ConfigMgr::GetInstallLogFilename (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classConfigMgr_a04d1b1d1beb53b7e9315031bf1171615}
+\begin{DoxyReturn}{Returns}
+the name of the file containing the installation log 
+\end{DoxyReturn}
+
+
+References mInstallLogFilename.
+
+
+
+Referenced by AppRover::AppRover(), AppRover::BuildPackage(), AppRover::Clean(), AppRover::ConfigurePackage(), AppRover::ExcludeFromUpdates(), AppRover::FetchPackage(), AppRover::Install(), AppRover::InstallPackage(), AppRover::Purify(), AppRover::Uninstall(), and AppRover::UnpackPackage().
+
+\index{ConfigMgr@{ConfigMgr}!GetNumProcessors@{GetNumProcessors}}
+\index{GetNumProcessors@{GetNumProcessors}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{GetNumProcessors}]{\setlength{\rightskip}{0pt plus 5cm}int ConfigMgr::GetNumProcessors (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_aca1491dd4ce15d735efec0edd7f7779d}
+\begin{DoxyReturn}{Returns}
+number of processors in system (0 if unknown) 
+\end{DoxyReturn}
+
+
+References mNumProcessors.
+
+
+
+Referenced by AppRover::BuildPackage(), AppRover::ConfigurePackage(), AppRover::InstallPackage(), and AppRover::UnpackPackage().
+
+\index{ConfigMgr@{ConfigMgr}!GetNumRepositories@{GetNumRepositories}}
+\index{GetNumRepositories@{GetNumRepositories}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{GetNumRepositories}]{\setlength{\rightskip}{0pt plus 5cm}int ConfigMgr::GetNumRepositories (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classConfigMgr_a7ea666ef25d3eb29b70c2b442a7596e8}
+\begin{DoxyReturn}{Returns}
+the number of repositories specified in the configuration 
+\end{DoxyReturn}
+
+
+References mRepositoryDirectories.
+
+
+
+Referenced by AppRover::AppRover(), and AppRover::SynchronizeRepositories().
+
+\index{ConfigMgr@{ConfigMgr}!GetRepositoryDirectory@{GetRepositoryDirectory}}
+\index{GetRepositoryDirectory@{GetRepositoryDirectory}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{GetRepositoryDirectory}]{\setlength{\rightskip}{0pt plus 5cm}string ConfigMgr::GetRepositoryDirectory (
+\begin{DoxyParamCaption}
+\item[{int}]{ repositoryNumber}
+\end{DoxyParamCaption}
+) const}\label{classConfigMgr_a849dfeecff3289fdefaf6ae18089fecf}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em repositoryNumber}]-\/ the index for the list of repositories \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the full path of the directory containing the repository (\char`\"{}\char`\"{} if repositoryNumber is invalid) 
+\end{DoxyReturn}
+
+
+References mRepositoryDirectories.
+
+
+
+Referenced by AppRover::AppRover(), and AppRover::SynchronizeRepositories().
+
+\index{ConfigMgr@{ConfigMgr}!GetStorageDirectory@{GetStorageDirectory}}
+\index{GetStorageDirectory@{GetStorageDirectory}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{GetStorageDirectory}]{\setlength{\rightskip}{0pt plus 5cm}string ConfigMgr::GetStorageDirectory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classConfigMgr_a3cdf946100eb17c0814b4d38da878ba4}
+\begin{DoxyReturn}{Returns}
+the directory used for storing fetched files 
+\end{DoxyReturn}
+
+
+References mStorageDirectory.
+
+
+
+Referenced by AppRover::AddNewPackage(), AppRover::FetchPackage(), AppRover::UnpackPackage(), and AppRover::UpdatePackageChecksums().
+
+\index{ConfigMgr@{ConfigMgr}!GetWorkDirectory@{GetWorkDirectory}}
+\index{GetWorkDirectory@{GetWorkDirectory}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{GetWorkDirectory}]{\setlength{\rightskip}{0pt plus 5cm}string ConfigMgr::GetWorkDirectory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classConfigMgr_aed87073f0d96c0aa20b6fb3b3a52b5a7}
+\begin{DoxyReturn}{Returns}
+the full path to the directory which houses individual package working directories 
+\end{DoxyReturn}
+
+
+References mWorkDirectory.
+
+
+
+Referenced by AppRover::BuildPackage(), AppRover::Clean(), AppRover::ConfigurePackage(), AppRover::Install(), AppRover::InstallPackage(), and AppRover::UnpackPackage().
+
+\index{ConfigMgr@{ConfigMgr}!Load@{Load}}
+\index{Load@{Load}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}ConfigMgrStatusType ConfigMgr::Load (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_aacf3753b7831bb34cf42674e746ddae6}
+\begin{DoxyReturn}{Returns}
+CFG\_\-FILE\_\-NOT\_\-SPECIFIED if a filename has never been specified 
+
+CFG\_\-FILE\_\-MISSING if the file does not exist 
+
+CFG\_\-FILE\_\-FORMAT\_\-ERROR if there is a problem with the file data 
+
+CFG\_\-OK if successful
+\end{DoxyReturn}
+Loads the configuration of the \doxyref{ConfigMgr}{p.}{classConfigMgr} from file. 
+
+References DetectNumProcessors(), mCfgFilename, mFeatureSettings, mInstallFileDirectory, mInstallLogFilename, mNumProcessors, mRepositoryDirectories, mStorageDirectory, and mWorkDirectory.
+
+
+
+Referenced by AppRover::AppRover().
+
+\index{ConfigMgr@{ConfigMgr}!Save@{Save}}
+\index{Save@{Save}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}ConfigMgrStatusType ConfigMgr::Save (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_a40d6d9e316f6c41d3932b35b3e57e055}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the configuration file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CFG\_\-FILE\_\-NOT\_\-SPECIFIED if filename is \char`\"{}\char`\"{} 
+
+CFG\_\-FILE\_\-NOT\_\-WRITABLE if the file cannot be opened for writing 
+
+CFG\_\-OK if successful
+\end{DoxyReturn}
+Saves the configuration of the \doxyref{ConfigMgr}{p.}{classConfigMgr} to file. 
+
+References DetectNumProcessors(), mCfgFilename, mFeatureSettings, mInstallFileDirectory, mInstallLogFilename, mNumProcessors, mRepositoryDirectories, mStorageDirectory, and mWorkDirectory.
+
+
+
+Referenced by AppRover::ActivateFeature(), AppRover::AddNewRepository(), and AppRover::AppRover().
+
+\index{ConfigMgr@{ConfigMgr}!Save@{Save}}
+\index{Save@{Save}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}ConfigMgrStatusType ConfigMgr::Save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_a039fabbe90a244173d5182e249881b51}
+\begin{DoxyReturn}{Returns}
+CFG\_\-FILE\_\-NOT\_\-SPECIFIED if a filename has never been specified 
+
+CFG\_\-FILE\_\-NOT\_\-WRITABLE if the file cannot be opened for writing 
+
+CFG\_\-OK if successful
+\end{DoxyReturn}
+Saves the configuration of the \doxyref{ConfigMgr}{p.}{classConfigMgr} to file which was last used for either saving or loading. 
+
+References mCfgFilename.
+
+\index{ConfigMgr@{ConfigMgr}!SetFeatureState@{SetFeatureState}}
+\index{SetFeatureState@{SetFeatureState}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{SetFeatureState}]{\setlength{\rightskip}{0pt plus 5cm}void ConfigMgr::SetFeatureState (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName, }
+\item[{int}]{ state}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_a58c4634807c9c4c87da8dce2b9a39205}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ the name of optional feature whose system default should be set \item[{\em state}]-\/ the system default state for the feature \end{DoxyParams}
+
+
+References mFeatureSettings.
+
+
+
+Referenced by AppRover::ActivateFeature().
+
+\index{ConfigMgr@{ConfigMgr}!SetInstallFileDirectory@{SetInstallFileDirectory}}
+\index{SetInstallFileDirectory@{SetInstallFileDirectory}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{SetInstallFileDirectory}]{\setlength{\rightskip}{0pt plus 5cm}void ConfigMgr::SetInstallFileDirectory (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_ae62ffeb81f48b7c2eccc27b78f593768}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em directory}]-\/ name of the directory where lists of installed fiels should be stored \end{DoxyParams}
+
+
+References mInstallFileDirectory.
+
+\index{ConfigMgr@{ConfigMgr}!SetStorageDirectory@{SetStorageDirectory}}
+\index{SetStorageDirectory@{SetStorageDirectory}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{SetStorageDirectory}]{\setlength{\rightskip}{0pt plus 5cm}void ConfigMgr::SetStorageDirectory (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_a4ee6aa0188a1ee7a50d6d95421b3cb5f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em directory}]-\/ the full path of the storage directory\end{DoxyParams}
+Changes the location of the storage directory. The old directory remains untouched, but is no longer used. If the new directory does not exist, it is created. 
+
+References mStorageDirectory.
+
+\index{ConfigMgr@{ConfigMgr}!SetWorkDirectory@{SetWorkDirectory}}
+\index{SetWorkDirectory@{SetWorkDirectory}!ConfigMgr@{ConfigMgr}}
+\subsubsection[{SetWorkDirectory}]{\setlength{\rightskip}{0pt plus 5cm}void ConfigMgr::SetWorkDirectory (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classConfigMgr_a32d8f23c260e1fc3814fd50008cd2420}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em directory}]-\/ the full path of the work directory\end{DoxyParams}
+Changes the location of the work directory. The old directory remains untouched, but is no longer used. If the new directory does not exist, it is created. 
+
+References mWorkDirectory.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+ConfigMgr.h\item 
+ConfigMgr.cpp\end{DoxyCompactItemize}

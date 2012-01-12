@@ -1,0 +1,635 @@
+\section{AppRover Class Reference}
+\label{classAppRover}\index{AppRover@{AppRover}}
+
+
+The main workhorse of the \doxyref{AppRover}{p.}{classAppRover} library.  
+
+
+
+
+{\ttfamily \#include $<$AppRover.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf AppRover} (string cfgFilename)
+\item 
+string {\bf Update} (bool pretend, {\bf ActionDescriptionVector} \&actionList)
+\item 
+string {\bf ExcludeFromUpdates} (string packageName, bool state)
+\item 
+string {\bf Purify} (string packageName)
+\item 
+string {\bf Install} (string packageName, string revisionStr, bool pretend, {\bf ActionDescriptionVector} \&actionList, AppRoverHaltStageType haltStage=STAGE\_\-INSTALL, bool allowReinstall=false, bool explicitInstall=true)
+\item 
+string {\bf Uninstall} (string packageName, bool pretend, {\bf ActionDescriptionVector} \&actionList)
+\item 
+string {\bf Clean} (bool pretend, {\bf ActionDescriptionVector} \&actionList, bool keepPartials=false)
+\item 
+bool {\bf AddNewRepository} (string baseLocation)
+\item 
+bool {\bf AddNewPackage} ({\bf Package} $\ast$newPackage, int repositoryNumber=0)
+\item 
+void {\bf UpdatePackageChecksums} ({\bf Package} $\ast$package)
+\item 
+{\bf Package} $\ast$ {\bf GetPackage} (string packageName, string revision, int repositoryNumber=0)
+\item 
+{\bf Package} $\ast$ {\bf GetPrecedingPackage} (string packageName, string revision, int repositoryNumber=0)
+\item 
+{\bf Package} $\ast$ {\bf GetPackage} (string packageName, int repositoryNumber=0)
+\item 
+int {\bf NumPackages} ()
+\item 
+string {\bf GetPackageName} (int packageIndex)
+\item 
+string {\bf GetInstalledRevisionNumber} (int packageIndex)
+\item 
+vector$<$ string $>$ {\bf ActivateFeature} (string featureName, bool activationState)
+\item 
+void {\bf ActivateFeatureForPackage} (string packageName, string featureName, bool activationState)
+\item 
+string {\bf SynchronizeRepositories} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Package} $\ast$ {\bf FindMostCurrentPackage} (string packageName, const {\bf PackageDependency} $\ast$dependency=NULL)
+\item 
+{\bf Package} $\ast$ {\bf FindPackage} (string packageName, string revisionStr)
+\item 
+bool {\bf FetchPackage} (const {\bf Package} $\ast$package, {\bf InstallEntry} $\ast$logEntry, bool force=false)
+\item 
+bool {\bf UnpackPackage} ({\bf Package} $\ast$package, {\bf InstallEntry} $\ast$logEntry)
+\item 
+bool {\bf ConfigurePackage} ({\bf Package} $\ast$package, {\bf InstallEntry} $\ast$logEntry)
+\item 
+bool {\bf BuildPackage} ({\bf Package} $\ast$package, {\bf InstallEntry} $\ast$logEntry)
+\item 
+bool {\bf InstallPackage} ({\bf Package} $\ast$package, {\bf InstallEntry} $\ast$logEntry)
+\item 
+void {\bf PopulatePackageList} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf ConfigMgr} {\bf mConfig}\label{classAppRover_aac53957da5747b03fd756113e8506a1e}
+
+\begin{DoxyCompactList}\small\item\em the configuration manager for the system \item\end{DoxyCompactList}\item 
+RepositoryVector {\bf mRepositories}\label{classAppRover_a32fee097ed159393f82e8583a76d5117}
+
+\begin{DoxyCompactList}\small\item\em the package repositories that are present in this system \item\end{DoxyCompactList}\item 
+{\bf InstallLog} {\bf mInstallLog}\label{classAppRover_a2121c91c1a85ebdff20dc21bf511eec9}
+
+\begin{DoxyCompactList}\small\item\em the log of all applications that have been [partially] installed \item\end{DoxyCompactList}\item 
+vector$<$ string $>$ {\bf mPackageList}\label{classAppRover_ab8d0a59c0126b5018d553c5e04e4e2ec}
+
+\begin{DoxyCompactList}\small\item\em the list of names of packages available from all of the repositories \item\end{DoxyCompactList}\item 
+vector$<$ string $>$ {\bf mRevisionList}\label{classAppRover_a64ac6dcfe0054448b540800f1bf81bfa}
+
+\begin{DoxyCompactList}\small\item\em the list of revisions of packages available from all of the repositories \item\end{DoxyCompactList}\item 
+bool {\bf mPackageListIsInvalid}\label{classAppRover_a56084437d0140881d3a9e8f626489aa3}
+
+\begin{DoxyCompactList}\small\item\em indiciates whether the name and revision lists need to be updated \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main workhorse of the \doxyref{AppRover}{p.}{classAppRover} library. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{AppRover@{AppRover}!AppRover@{AppRover}}
+\index{AppRover@{AppRover}!AppRover@{AppRover}}
+\subsubsection[{AppRover}]{\setlength{\rightskip}{0pt plus 5cm}AppRover::AppRover (
+\begin{DoxyParamCaption}
+\item[{string}]{ cfgFilename}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a72d0c41e62b18cdf9139a6d437bf79ff}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em cfgFilename}]-\/ File containing the \doxyref{AppRover}{p.}{classAppRover} XML configuration data \end{DoxyParams}
+
+
+References ConfigMgr::GetInstallLogFilename(), ConfigMgr::GetNumRepositories(), ConfigMgr::GetRepositoryDirectory(), Repository::Load(), InstallLog::Load(), ConfigMgr::Load(), mConfig, mInstallLog, mPackageListIsInvalid, mRepositories, PopulatePackageList(), Repository::Save(), InstallLog::Save(), and ConfigMgr::Save().
+
+
+
+\subsection{Member Function Documentation}
+\index{AppRover@{AppRover}!ActivateFeature@{ActivateFeature}}
+\index{ActivateFeature@{ActivateFeature}!AppRover@{AppRover}}
+\subsubsection[{ActivateFeature}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ string $>$ AppRover::ActivateFeature (
+\begin{DoxyParamCaption}
+\item[{string}]{ featureName, }
+\item[{bool}]{ activationState}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a5ee48c29bdea34c555a67b7e0534da2e}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureName}]-\/ the name of the optional feature to activate \item[{\em activationState}]-\/ the state to which the feature should be set (true to activate, false to deactivate) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the names of the installed packages which may use the optional feature
+\end{DoxyReturn}
+Sets the default state for whether the specified optional feature should be activated for a clean install of a package. Packages which are already installed are not affected. 
+
+References InstallLog::GetPackagesUsingFeature(), mConfig, mInstallLog, ConfigMgr::Save(), and ConfigMgr::SetFeatureState().
+
+\index{AppRover@{AppRover}!ActivateFeatureForPackage@{ActivateFeatureForPackage}}
+\index{ActivateFeatureForPackage@{ActivateFeatureForPackage}!AppRover@{AppRover}}
+\subsubsection[{ActivateFeatureForPackage}]{\setlength{\rightskip}{0pt plus 5cm}void AppRover::ActivateFeatureForPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ featureName, }
+\item[{bool}]{ activationState}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a262e10b2a2aad96a036fb581d7fde951}
+\begin{Desc}
+\item[{\bf Todo}]this function should be removed and activated feature should be passed as an argument to Install \end{Desc}
+
+
+References InstallLog::GetPackagesUsingFeature(), and mInstallLog.
+
+\index{AppRover@{AppRover}!AddNewPackage@{AddNewPackage}}
+\index{AddNewPackage@{AddNewPackage}!AppRover@{AppRover}}
+\subsubsection[{AddNewPackage}]{\setlength{\rightskip}{0pt plus 5cm}bool AppRover::AddNewPackage (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ newPackage, }
+\item[{int}]{ repositoryNumber = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a5e19f2665d91869a5786944d48e55976}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em newPackage}]-\/ the package to insert into the repository \item[{\em repositoryNumber}]-\/ the index of the repository to receive the package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if null package, invalid repositoryNumber or package is a duplicate of another in the repository
+\end{DoxyReturn}
+Adds a package into the specified repository 
+
+References ConfigMgr::GetStorageDirectory(), mConfig, mPackageListIsInvalid, mRepositories, PopulatePackageList(), and Package::RecordSourceChecksums().
+
+
+
+Referenced by AppRoverKWindow::CreateNewPackage().
+
+\index{AppRover@{AppRover}!AddNewRepository@{AddNewRepository}}
+\index{AddNewRepository@{AddNewRepository}!AppRover@{AppRover}}
+\subsubsection[{AddNewRepository}]{\setlength{\rightskip}{0pt plus 5cm}bool AppRover::AddNewRepository (
+\begin{DoxyParamCaption}
+\item[{string}]{ baseLocation}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a459c227dcd951f8b68831dba1bde1e34}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em baseLocation}]-\/ The directory containing the repository.cfg file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if directory is not specified, is not writable, or the repository already exists
+\end{DoxyReturn}
+Creates an empty repository in the specified directory. 
+
+References ConfigMgr::AddRepositoryDirectory(), mConfig, mRepositories, ConfigMgr::Save(), Repository::Save(), and Repository::SetDirectory().
+
+\index{AppRover@{AppRover}!BuildPackage@{BuildPackage}}
+\index{BuildPackage@{BuildPackage}!AppRover@{AppRover}}
+\subsubsection[{BuildPackage}]{\setlength{\rightskip}{0pt plus 5cm}bool AppRover::BuildPackage (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ package, }
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRover_ab4ceb34b3543c993355e688efc4b8f22}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ the package to build \item[{\em logEntry}]-\/ the entry in the install log corresponding to the package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ false if there is a failure
+\end{DoxyReturn}
+Configures the package if needed. Processes any package specific building instructions and executes them from the package's working directory. This should only be needed for source-\/based packages. 
+
+References Package::Build(), ConfigurePackage(), ConfigMgr::GetInstallLogFilename(), ConfigMgr::GetNumProcessors(), ConfigMgr::GetWorkDirectory(), InstallEntry::IsAtLeastConfigured(), mConfig, mInstallLog, and InstallLog::Save().
+
+
+
+Referenced by Install(), and InstallPackage().
+
+\index{AppRover@{AppRover}!Clean@{Clean}}
+\index{Clean@{Clean}!AppRover@{AppRover}}
+\subsubsection[{Clean}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::Clean (
+\begin{DoxyParamCaption}
+\item[{bool}]{ pretend, }
+\item[{{\bf ActionDescriptionVector} \&}]{ actionList, }
+\item[{bool}]{ keepPartials = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classAppRover_acb5a68574b017a27d8df27dbb3249feb}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em pretend}]-\/ If true, generates a list of actions to be performed \item[{\em actionList}]-\/ List which receives the actions if operating in pretend mode \item[{\em keepPartials}]-\/ If true, partially installed packages are unaffected \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string containing any error message
+\end{DoxyReturn}
+Removes all partially installed packages and uninstalls packages which are no longer needed (i.e. not explicity installed and is not a dependency of an explicity installed package). 
+
+References InstallLog::DeleteEntry(), ConfigMgr::GetInstallLogFilename(), InstallLog::GetPartiallyInstalledPackages(), InstallLog::GetUnneededPackages(), ConfigMgr::GetWorkDirectory(), Interpreter::Interpret(), mConfig, mInstallLog, PopulatePackageList(), ActionDescriptionVector::push\_\-back(), InstallLog::Save(), ActionDescription::SetAction(), ActionDescription::SetOldRevision(), and ActionDescription::SetPackageName().
+
+\index{AppRover@{AppRover}!ConfigurePackage@{ConfigurePackage}}
+\index{ConfigurePackage@{ConfigurePackage}!AppRover@{AppRover}}
+\subsubsection[{ConfigurePackage}]{\setlength{\rightskip}{0pt plus 5cm}bool AppRover::ConfigurePackage (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ package, }
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRover_a0df149dba65bac54640f454a04932178}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ the package to configure \item[{\em logEntry}]-\/ the entry in the install log corresponding to the package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if there is a failure
+\end{DoxyReturn}
+Unpacks the package if needed. Processes any package specific configuration instructions and executes them from the package's working directory. This should only be needed for source-\/based packages. In most cases where this is used, the instructions will call ./configure with correct options. 
+
+References Package::Configure(), ConfigMgr::GetInstallLogFilename(), ConfigMgr::GetNumProcessors(), ConfigMgr::GetWorkDirectory(), InstallEntry::IsAtLeastUnpacked(), mConfig, mInstallLog, InstallLog::Save(), and UnpackPackage().
+
+
+
+Referenced by BuildPackage(), and Install().
+
+\index{AppRover@{AppRover}!ExcludeFromUpdates@{ExcludeFromUpdates}}
+\index{ExcludeFromUpdates@{ExcludeFromUpdates}!AppRover@{AppRover}}
+\subsubsection[{ExcludeFromUpdates}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::ExcludeFromUpdates (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{bool}]{ state}
+\end{DoxyParamCaption}
+)}\label{classAppRover_ad675e823b438a08dc1535503b5aa0bd3}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]name of package \item[{\em state}]true to exclude, false to include \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error message
+\end{DoxyReturn}
+Flags whether the specified package should or should not be processed by the Update function. 
+
+References InstallLog::GetInstalledEntries(), ConfigMgr::GetInstallLogFilename(), mConfig, mInstallLog, and InstallLog::Save().
+
+\index{AppRover@{AppRover}!FetchPackage@{FetchPackage}}
+\index{FetchPackage@{FetchPackage}!AppRover@{AppRover}}
+\subsubsection[{FetchPackage}]{\setlength{\rightskip}{0pt plus 5cm}bool AppRover::FetchPackage (
+\begin{DoxyParamCaption}
+\item[{const {\bf Package} $\ast$}]{ package, }
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{bool}]{ force = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRover_a42c0b261f8ae5a664756d42bfff25208}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ the package to fetch \item[{\em logEntry}]-\/ the entry in the install log corresponding to the package \item[{\em force}]-\/ if true, fetch all files even if a local copy exists \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if there is a failure in fetching the files
+\end{DoxyReturn}
+Downloads all files needed to install the package and places them in the storage directory. If force is false, only the files which are not already stored locally will be downloaded. 
+
+References Package::Fetch(), ConfigMgr::GetInstallLogFilename(), ConfigMgr::GetStorageDirectory(), mConfig, mInstallLog, and InstallLog::Save().
+
+
+
+Referenced by Install(), and UnpackPackage().
+
+\index{AppRover@{AppRover}!FindMostCurrentPackage@{FindMostCurrentPackage}}
+\index{FindMostCurrentPackage@{FindMostCurrentPackage}!AppRover@{AppRover}}
+\subsubsection[{FindMostCurrentPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ AppRover::FindMostCurrentPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{const {\bf PackageDependency} $\ast$}]{ dependency = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRover_ab9a6ddbb221c74d82127a86745691dab}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the package \item[{\em dependency}]-\/ the dependency requirements \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The package with the highest revision or the package with the highest revision which satisfies the dependency
+\end{DoxyReturn}
+Locates the most current revision of the package with the specified name. If dependency is non-\/null, it locates the most current revision which statisfies the dependency. 
+
+References Package::IsNewerThan(), PackageDependency::IsSatisfiedBy(), and mRepositories.
+
+
+
+Referenced by Install().
+
+\index{AppRover@{AppRover}!FindPackage@{FindPackage}}
+\index{FindPackage@{FindPackage}!AppRover@{AppRover}}
+\subsubsection[{FindPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ AppRover::FindPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revisionStr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRover_ae649bb8cf54f2b8b8698b06af92e009a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the package \item[{\em revisionStr}]-\/ the desired revision of the package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The package specified name and revision 
+\end{DoxyReturn}
+
+
+References mRepositories.
+
+
+
+Referenced by Install().
+
+\index{AppRover@{AppRover}!GetInstalledRevisionNumber@{GetInstalledRevisionNumber}}
+\index{GetInstalledRevisionNumber@{GetInstalledRevisionNumber}!AppRover@{AppRover}}
+\subsubsection[{GetInstalledRevisionNumber}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::GetInstalledRevisionNumber (
+\begin{DoxyParamCaption}
+\item[{int}]{ packageIndex}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a6ecce044b2ccc6181cb834b7e8f95938}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageIndex}]-\/ the index into the list of package names \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string containing the revision number that has been installed for the specified package (\char`\"{}\char`\"{} if invalid index or package has not been installed) 
+\end{DoxyReturn}
+
+
+References mRevisionList.
+
+
+
+Referenced by AppRoverKWindow::FillOutPackageList(), and Update().
+
+\index{AppRover@{AppRover}!GetPackage@{GetPackage}}
+\index{GetPackage@{GetPackage}!AppRover@{AppRover}}
+\subsubsection[{GetPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ AppRover::GetPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revision, }
+\item[{int}]{ repositoryNumber = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a107fd2af141aa7748a0f3269f52e2621}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the application whose package should be retrieved \item[{\em revision}]-\/ the revision of the application handled by the package \item[{\em repositoryNumber}]-\/ the index representing the repository from which the package should be retrieved. \end{DoxyParams}
+
+
+References mRepositories.
+
+\index{AppRover@{AppRover}!GetPackage@{GetPackage}}
+\index{GetPackage@{GetPackage}!AppRover@{AppRover}}
+\subsubsection[{GetPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ AppRover::GetPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{int}]{ repositoryNumber = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a2d7437a3cdf9f132abab1244e30abb09}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the application whose latest package should be retrieved \item[{\em repositoryNumber}]-\/ the index representing the repository from which the package should be retrieved. \end{DoxyParams}
+
+
+References mRepositories.
+
+\index{AppRover@{AppRover}!GetPackageName@{GetPackageName}}
+\index{GetPackageName@{GetPackageName}!AppRover@{AppRover}}
+\subsubsection[{GetPackageName}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::GetPackageName (
+\begin{DoxyParamCaption}
+\item[{int}]{ packageIndex}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a677dd38159267966355c92e1385c9229}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageIndex}]-\/ the index into the list of package names \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}\char`\"{} if invalid index, otherwise the name of an available package 
+\end{DoxyReturn}
+
+
+References mPackageList.
+
+
+
+Referenced by AppRoverKWindow::FillOutPackageList(), PopulatePackageList(), and Update().
+
+\index{AppRover@{AppRover}!GetPrecedingPackage@{GetPrecedingPackage}}
+\index{GetPrecedingPackage@{GetPrecedingPackage}!AppRover@{AppRover}}
+\subsubsection[{GetPrecedingPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ AppRover::GetPrecedingPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revision, }
+\item[{int}]{ repositoryNumber = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a6c5a6754d5a233f7c1246c9fdf9431c9}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the application whose package should be retrieved \item[{\em revision}]-\/ the upper bound revision of the application handled by the package \item[{\em repositoryNumber}]-\/ the index representing the repository from which the package should be retrieved. \end{DoxyParams}
+
+
+References mRepositories.
+
+\index{AppRover@{AppRover}!Install@{Install}}
+\index{Install@{Install}!AppRover@{AppRover}}
+\subsubsection[{Install}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::Install (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revisionStr, }
+\item[{bool}]{ pretend, }
+\item[{{\bf ActionDescriptionVector} \&}]{ actionList, }
+\item[{AppRoverHaltStageType}]{ haltStage = {\ttfamily STAGE\_\-INSTALL}, }
+\item[{bool}]{ allowReinstall = {\ttfamily false}, }
+\item[{bool}]{ explicitInstall = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a5758b110f26be98601dd0cd730f1b25a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ The name of the package to install \item[{\em pretend}]-\/ if true, only generate a list of actions that would be performed \item[{\em actionList}]-\/ List to receive the actions if operating in pretend mode \item[{\em haltStage}]-\/ The last stage of the installation process which should be executed \item[{\em allowReinstall}]-\/ If true, the package should be installed even if it has already been installed \item[{\em explicitInstall}]-\/ If true, the user has explicitly requested the package to be installed, otherwise it is assumed to be a dependency of another package \end{DoxyParams}
+
+
+\begin{Desc}
+\item[{\bf Todo}]This does a minimal update. Need to make an option to do a full update or a full reinstall \end{Desc}
+
+
+
+
+References InstallEntry::AddDependency(), InstallLog::AddEntry(), InstallEntry::AddFeature(), BuildPackage(), InstallEntry::ClearDependencies(), ConfigurePackage(), InstallLog::DeleteEntry(), FeatureOption::Disable(), FeatureOption::Enable(), FetchPackage(), InstallLog::FindEntry(), InstallLog::FindInstalledSlotOccupant(), FindMostCurrentPackage(), FindPackage(), InstallLog::FindPartiallyInstalledEntry(), ActionDescription::GetAction(), InstallEntry::GetBinaryCompatabilityRevision(), Package::GetBinaryCompatabilityRevision(), Package::GetDependency(), InstallEntry::GetErrorMessage(), Package::GetFeature(), InstallEntry::GetFeatures(), ConfigMgr::GetFeatureState(), InstallEntry::GetFeatureState(), ConfigMgr::GetInstallFileDirectory(), ConfigMgr::GetInstallLogFilename(), PackageDependency::GetName(), FeatureOption::GetName(), Package::GetName(), Package::GetNumDependencies(), Package::GetNumFeatures(), InstallEntry::GetNumReverseDependencies(), InstallEntry::GetReverseDependencyName(), InstallEntry::GetRevision(), Package::GetRevision(), Package::GetSlot(), PackageDependency::GetString(), Revision::GetString(), ConfigMgr::GetWorkDirectory(), InstallEntry::HasFeature(), InstallPackage(), PackageDependency::IsActive(), InstallEntry::IsAtLeastConfigured(), InstallEntry::IsAtLeastUnpacked(), InstallEntry::IsBuilt(), InstallEntry::IsExplicitlyInstalled(), InstallEntry::IsInstalled(), mConfig, mInstallLog, PopulatePackageList(), ActionDescriptionVector::push\_\-back(), InstallLog::RegisterReverseDependency(), InstallLog::RemovePartiallyInstalledSlotMates(), InstallEntry::ReverseDependencyIsStatic(), InstallLog::Satisfies(), InstallLog::Save(), ActionDescription::SetAction(), InstallEntry::SetBinaryCompatabilityRevision(), ActionDescription::SetError(), InstallEntry::SetExplicitlyInstalled(), ActionDescription::SetFeatures(), InstallEntry::SetInstallListFilename(), InstallEntry::SetName(), ActionDescription::SetNewRevision(), ActionDescription::SetOldRevision(), ActionDescription::SetPackageName(), InstallEntry::SetRevision(), InstallEntry::SetSlot(), InstallEntry::TransferFilesTo(), InstallEntry::TransferReverseDependenciesTo(), and UnpackPackage().
+
+
+
+Referenced by AppRoverKWindow::Install(), Purify(), and Update().
+
+\index{AppRover@{AppRover}!InstallPackage@{InstallPackage}}
+\index{InstallPackage@{InstallPackage}!AppRover@{AppRover}}
+\subsubsection[{InstallPackage}]{\setlength{\rightskip}{0pt plus 5cm}bool AppRover::InstallPackage (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ package, }
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRover_ac81e23386f61cf784de4a9a15c0c0043}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ the package to build \item[{\em logEntry}]-\/ the entry in the install log corresponding to the package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if there is a failure
+\end{DoxyReturn}
+Builds the package if needed. Processes any package specific building instructions and executes them from the package's working directory. 
+
+References BuildPackage(), ConfigMgr::GetInstallLogFilename(), ConfigMgr::GetNumProcessors(), ConfigMgr::GetWorkDirectory(), Package::Install(), InstallEntry::IsBuilt(), mConfig, mInstallLog, and InstallLog::Save().
+
+
+
+Referenced by Install().
+
+\index{AppRover@{AppRover}!NumPackages@{NumPackages}}
+\index{NumPackages@{NumPackages}!AppRover@{AppRover}}
+\subsubsection[{NumPackages}]{\setlength{\rightskip}{0pt plus 5cm}int AppRover::NumPackages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a9af3bb57799e6b04b1e16d34891d69e0}
+\begin{DoxyReturn}{Returns}
+The number of unique package names in all combined repositories 
+\end{DoxyReturn}
+
+
+References mPackageList.
+
+
+
+Referenced by AppRoverKWindow::FillOutPackageList(), and Update().
+
+\index{AppRover@{AppRover}!PopulatePackageList@{PopulatePackageList}}
+\index{PopulatePackageList@{PopulatePackageList}!AppRover@{AppRover}}
+\subsubsection[{PopulatePackageList}]{\setlength{\rightskip}{0pt plus 5cm}void AppRover::PopulatePackageList (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRover_a8a9ff6b2675e102c268b48357f80ed57}
+Generates a consolidated list of packages and revisions for use with the functions GetNumPackages, GetPackageName, and GetInstalledRevisionNumber. 
+
+\begin{Desc}
+\item[{\bf Todo}]Sort the list and make sure there are no duplicate entries \end{Desc}
+
+
+
+
+References GetPackageName(), InstallLog::GetRevisionInstalled(), mInstallLog, mPackageList, mPackageListIsInvalid, mRepositories, and mRevisionList.
+
+
+
+Referenced by AddNewPackage(), AppRover(), Clean(), Install(), and Uninstall().
+
+\index{AppRover@{AppRover}!Purify@{Purify}}
+\index{Purify@{Purify}!AppRover@{AppRover}}
+\subsubsection[{Purify}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::Purify (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName}
+\end{DoxyParamCaption}
+)}\label{classAppRover_add7801c97dea6d502208da60aec36f0f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]name of package \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error message
+\end{DoxyReturn}
+Removes leftover files and rebuilds the package in order to purge remnants of older installed versions of the package. 
+
+References InstallLog::GetInstalledEntries(), ConfigMgr::GetInstallLogFilename(), Install(), mConfig, mInstallLog, and InstallLog::Save().
+
+\index{AppRover@{AppRover}!SynchronizeRepositories@{SynchronizeRepositories}}
+\index{SynchronizeRepositories@{SynchronizeRepositories}!AppRover@{AppRover}}
+\subsubsection[{SynchronizeRepositories}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::SynchronizeRepositories (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classAppRover_af6381f68717fe044c73c70ad6e527277}
+\begin{DoxyReturn}{Returns}
+string containing any error message
+\end{DoxyReturn}
+Updates all repositories to match their sources (not applicable for local repositories). 
+
+References Repository::GetDirectory(), ConfigMgr::GetNumRepositories(), ConfigMgr::GetRepositoryDirectory(), Repository::Load(), mConfig, mRepositories, and Repository::Save().
+
+\index{AppRover@{AppRover}!Uninstall@{Uninstall}}
+\index{Uninstall@{Uninstall}!AppRover@{AppRover}}
+\subsubsection[{Uninstall}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::Uninstall (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{bool}]{ pretend, }
+\item[{{\bf ActionDescriptionVector} \&}]{ actionList}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a43fd77c6777299e9627043d76b5eb89a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ The name of the package to update \item[{\em pretend}]-\/ If true, generates a list of actions which would be performed \item[{\em actionList}]-\/ List which receives the actions if operating in pretend mode \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string containing an error message (\char`\"{}\char`\"{} if successful)
+\end{DoxyReturn}
+Uninstalls all versions of the specified package. 
+
+\begin{Desc}
+\item[{\bf Todo}]May want to add a means to protect some versions \end{Desc}
+
+
+
+
+References InstallLog::DeleteEntry(), InstallLog::FindNextOldestInstalledEntry(), InstallLog::FindOldestInstalledEntry(), ConfigMgr::GetInstallLogFilename(), InstallEntry::GetRevision(), Revision::GetString(), mConfig, mInstallLog, PopulatePackageList(), ActionDescriptionVector::push\_\-back(), InstallLog::Save(), ActionDescription::SetAction(), ActionDescription::SetOldRevision(), ActionDescription::SetPackageName(), and InstallEntry::Uninstall().
+
+
+
+Referenced by AppRoverKWindow::Uninstall().
+
+\index{AppRover@{AppRover}!UnpackPackage@{UnpackPackage}}
+\index{UnpackPackage@{UnpackPackage}!AppRover@{AppRover}}
+\subsubsection[{UnpackPackage}]{\setlength{\rightskip}{0pt plus 5cm}bool AppRover::UnpackPackage (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ package, }
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRover_a83009756c00c1aaff46fd35001d1b7c0}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ the package to unpack \item[{\em logEntry}]-\/ the entry in the install log corresponding to the package\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if there is a failure
+\end{DoxyReturn}
+Fetches the package if needed. Creates a working directory for the package and copies all of the needed files from the storage directory to the working directory. If the package contains any specific unpacking instructions (like untarring, uncompressing, or patching files) they are then executed in the working directory. 
+
+References FetchPackage(), ConfigMgr::GetInstallLogFilename(), ConfigMgr::GetNumProcessors(), ConfigMgr::GetStorageDirectory(), ConfigMgr::GetWorkDirectory(), mConfig, mInstallLog, InstallLog::Save(), and Package::Unpack().
+
+
+
+Referenced by ConfigurePackage(), and Install().
+
+\index{AppRover@{AppRover}!Update@{Update}}
+\index{Update@{Update}!AppRover@{AppRover}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}string AppRover::Update (
+\begin{DoxyParamCaption}
+\item[{bool}]{ pretend, }
+\item[{{\bf ActionDescriptionVector} \&}]{ actionList}
+\end{DoxyParamCaption}
+)}\label{classAppRover_adc41e93ee5042f8dd25d55f5d71dde1e}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em pretend}]-\/ if true, only generate a list of actions that would be performed \item[{\em actionList}]-\/ List to receive the actions if operating in pretend mode \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error message
+\end{DoxyReturn}
+Installs the latest version of each of the installed packages. If a package is already at the latest revisiion, it is NOT rebuilt. 
+
+References InstallLog::FindEntry(), GetInstalledRevisionNumber(), GetPackageName(), Package::GetRevision(), Revision::GetString(), Install(), InstallEntry::IsExcludedFromUpdates(), InstallEntry::IsExplicitlyInstalled(), mInstallLog, and NumPackages().
+
+\index{AppRover@{AppRover}!UpdatePackageChecksums@{UpdatePackageChecksums}}
+\index{UpdatePackageChecksums@{UpdatePackageChecksums}!AppRover@{AppRover}}
+\subsubsection[{UpdatePackageChecksums}]{\setlength{\rightskip}{0pt plus 5cm}void AppRover::UpdatePackageChecksums (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ package}
+\end{DoxyParamCaption}
+)}\label{classAppRover_a18e0c29b04b28773b249414d6bbb878e}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ the package whose source file checksums need to be updated\end{DoxyParams}
+Recalculates and records the checksums for all files which are required to install the package 
+
+References ConfigMgr::GetStorageDirectory(), mConfig, and Package::RecordSourceChecksums().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+AppRover.h\item 
+AppRover.cpp\end{DoxyCompactItemize}

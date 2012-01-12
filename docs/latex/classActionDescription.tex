@@ -1,0 +1,307 @@
+\section{ActionDescription Class Reference}
+\label{classActionDescription}\index{ActionDescription@{ActionDescription}}
+
+
+Class reponsible representing an action to be performed on a package.  
+
+
+
+
+{\ttfamily \#include $<$ActionDescription.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf GetOldRevision} ()
+\item 
+void {\bf SetOldRevision} (string revision)
+\item 
+string {\bf GetNewRevision} ()
+\item 
+void {\bf SetNewRevision} (string revision)
+\item 
+string {\bf GetPackageName} ()
+\item 
+void {\bf SetPackageName} (string name)
+\item 
+string {\bf GetError} ()
+\item 
+void {\bf SetError} (string errorMsg)
+\item 
+ActionType {\bf GetAction} ()
+\item 
+void {\bf SetAction} (ActionType action)
+\item 
+int {\bf GetNumFeatures} () const 
+\item 
+const {\bf FeatureOption} $\ast$ {\bf GetFeature} (int featureNumber) const 
+\item 
+void {\bf SetFeatures} (const FeatureOptionVector \&features)
+\item 
+bool {\bf operator==} (const {\bf ActionDescription} \&refAction) const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mOldRevision}\label{classActionDescription_a370f83c512798634318c61662c007cc8}
+
+\begin{DoxyCompactList}\small\item\em the already installed revision of the affected application \item\end{DoxyCompactList}\item 
+string {\bf mNewRevision}\label{classActionDescription_a982c81ecd58daa7c78336ac9abe315a7}
+
+\begin{DoxyCompactList}\small\item\em the revision to be [partially] installed \item\end{DoxyCompactList}\item 
+string {\bf mPackageName}\label{classActionDescription_a8ca9b5385fc382d68b223678343a6c70}
+
+\begin{DoxyCompactList}\small\item\em the name of the affected application \item\end{DoxyCompactList}\item 
+string {\bf mErrorMessage}\label{classActionDescription_a05829cf8962e313ef93c497711b036d1}
+
+\begin{DoxyCompactList}\small\item\em the problem with processing the request \item\end{DoxyCompactList}\item 
+ActionType {\bf mAction}\label{classActionDescription_a5296c149f84fbd9ca7e964712c97e671}
+
+\begin{DoxyCompactList}\small\item\em the action that will be performed on the application \item\end{DoxyCompactList}\item 
+FeatureOptionVector {\bf mFeatures}\label{classActionDescription_ad4aa176baa02a99ffd3483fcd6f5bebb}
+
+\begin{DoxyCompactList}\small\item\em the list of optional features relevant to the application \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class reponsible representing an action to be performed on a package. 
+
+\subsection{Member Function Documentation}
+\index{ActionDescription@{ActionDescription}!GetAction@{GetAction}}
+\index{GetAction@{GetAction}!ActionDescription@{ActionDescription}}
+\subsubsection[{GetAction}]{\setlength{\rightskip}{0pt plus 5cm}ActionType ActionDescription::GetAction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a40838629a305d9e3cd041f6752575538}
+\begin{DoxyReturn}{Returns}
+the action to be performed on the affected application 
+\end{DoxyReturn}
+
+
+References mAction.
+
+
+
+Referenced by AppRover::Install().
+
+\index{ActionDescription@{ActionDescription}!GetError@{GetError}}
+\index{GetError@{GetError}!ActionDescription@{ActionDescription}}
+\subsubsection[{GetError}]{\setlength{\rightskip}{0pt plus 5cm}string ActionDescription::GetError (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_aea83ae096fcd354681ef9031a606c82f}
+\begin{DoxyReturn}{Returns}
+a string describing the error with processing 
+\end{DoxyReturn}
+
+
+References mErrorMessage.
+
+\index{ActionDescription@{ActionDescription}!GetFeature@{GetFeature}}
+\index{GetFeature@{GetFeature}!ActionDescription@{ActionDescription}}
+\subsubsection[{GetFeature}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf FeatureOption} $\ast$ ActionDescription::GetFeature (
+\begin{DoxyParamCaption}
+\item[{int}]{ featureNumber}
+\end{DoxyParamCaption}
+) const}\label{classActionDescription_a6f1e0f30f8f8129cc4faa9f72cec7a90}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureNumber}]-\/ the index into the list of optional feature relevant to the affected application \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the feature option at the desired location 
+
+NULL if the featureNumber is invalid 
+\end{DoxyReturn}
+
+
+References mFeatures.
+
+\index{ActionDescription@{ActionDescription}!GetNewRevision@{GetNewRevision}}
+\index{GetNewRevision@{GetNewRevision}!ActionDescription@{ActionDescription}}
+\subsubsection[{GetNewRevision}]{\setlength{\rightskip}{0pt plus 5cm}string ActionDescription::GetNewRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a4a2924a94b744f2366b647b6a3ea3c00}
+\begin{DoxyReturn}{Returns}
+string containing the revision to be [partially] installed for the affected application 
+\end{DoxyReturn}
+
+
+References mNewRevision.
+
+\index{ActionDescription@{ActionDescription}!GetNumFeatures@{GetNumFeatures}}
+\index{GetNumFeatures@{GetNumFeatures}!ActionDescription@{ActionDescription}}
+\subsubsection[{GetNumFeatures}]{\setlength{\rightskip}{0pt plus 5cm}int ActionDescription::GetNumFeatures (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classActionDescription_a2aec6c305912854716940fa30de2d072}
+\begin{DoxyReturn}{Returns}
+the number of optional features relevant to the affected application 
+\end{DoxyReturn}
+
+
+References mFeatures.
+
+\index{ActionDescription@{ActionDescription}!GetOldRevision@{GetOldRevision}}
+\index{GetOldRevision@{GetOldRevision}!ActionDescription@{ActionDescription}}
+\subsubsection[{GetOldRevision}]{\setlength{\rightskip}{0pt plus 5cm}string ActionDescription::GetOldRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a966b099dc4ed911641f7e0b05e492c75}
+\begin{DoxyReturn}{Returns}
+string containing the currently installed revision of the affected application 
+\end{DoxyReturn}
+
+
+References mOldRevision.
+
+\index{ActionDescription@{ActionDescription}!GetPackageName@{GetPackageName}}
+\index{GetPackageName@{GetPackageName}!ActionDescription@{ActionDescription}}
+\subsubsection[{GetPackageName}]{\setlength{\rightskip}{0pt plus 5cm}string ActionDescription::GetPackageName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a68478a1088b0181011b88bdcdaf386dc}
+\begin{DoxyReturn}{Returns}
+the name of the affected application 
+\end{DoxyReturn}
+
+
+References mPackageName.
+
+\index{ActionDescription@{ActionDescription}!operator==@{operator==}}
+\index{operator==@{operator==}!ActionDescription@{ActionDescription}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool ActionDescription::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf ActionDescription} \&}]{ refAction}
+\end{DoxyParamCaption}
+) const}\label{classActionDescription_ac15e44a9697eb402e89d1a0f2e89254e}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refAction}]-\/ the action description to compare against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if package name, revisions, and action are the same 
+\end{DoxyReturn}
+
+
+References mAction, mNewRevision, mOldRevision, and mPackageName.
+
+\index{ActionDescription@{ActionDescription}!SetAction@{SetAction}}
+\index{SetAction@{SetAction}!ActionDescription@{ActionDescription}}
+\subsubsection[{SetAction}]{\setlength{\rightskip}{0pt plus 5cm}void ActionDescription::SetAction (
+\begin{DoxyParamCaption}
+\item[{ActionType}]{ action}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a3bfc3aae5ca97fbbe0f8ad08169113f7}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em action}]-\/ the action to be performed on the affected application \end{DoxyParams}
+
+
+References mAction.
+
+
+
+Referenced by AppRover::Clean(), AppRover::Install(), and AppRover::Uninstall().
+
+\index{ActionDescription@{ActionDescription}!SetError@{SetError}}
+\index{SetError@{SetError}!ActionDescription@{ActionDescription}}
+\subsubsection[{SetError}]{\setlength{\rightskip}{0pt plus 5cm}void ActionDescription::SetError (
+\begin{DoxyParamCaption}
+\item[{string}]{ errorMsg}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a27d80a32a8f61711ba3fe2c046491254}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]-\/ a string describing the error with processing \end{DoxyParams}
+
+
+References mAction, and mErrorMessage.
+
+
+
+Referenced by AppRover::Install().
+
+\index{ActionDescription@{ActionDescription}!SetFeatures@{SetFeatures}}
+\index{SetFeatures@{SetFeatures}!ActionDescription@{ActionDescription}}
+\subsubsection[{SetFeatures}]{\setlength{\rightskip}{0pt plus 5cm}void ActionDescription::SetFeatures (
+\begin{DoxyParamCaption}
+\item[{const FeatureOptionVector \&}]{ features}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a37449253acb6eef39f295355f37d3aa7}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em features}]-\/ the list of optional feature associated with the affected application \end{DoxyParams}
+
+
+References mFeatures.
+
+
+
+Referenced by AppRover::Install().
+
+\index{ActionDescription@{ActionDescription}!SetNewRevision@{SetNewRevision}}
+\index{SetNewRevision@{SetNewRevision}!ActionDescription@{ActionDescription}}
+\subsubsection[{SetNewRevision}]{\setlength{\rightskip}{0pt plus 5cm}void ActionDescription::SetNewRevision (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a8a3eaca97703a2a8f39f3b201c8bb2d2}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ the revision to be [partially] installed for the affected application \end{DoxyParams}
+
+
+References mNewRevision.
+
+
+
+Referenced by AppRover::Install().
+
+\index{ActionDescription@{ActionDescription}!SetOldRevision@{SetOldRevision}}
+\index{SetOldRevision@{SetOldRevision}!ActionDescription@{ActionDescription}}
+\subsubsection[{SetOldRevision}]{\setlength{\rightskip}{0pt plus 5cm}void ActionDescription::SetOldRevision (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a0484835f19c2a181ab799fbe06e8dcb5}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ the currently installed revision of the affected application \end{DoxyParams}
+
+
+References mOldRevision.
+
+
+
+Referenced by AppRover::Clean(), AppRover::Install(), and AppRover::Uninstall().
+
+\index{ActionDescription@{ActionDescription}!SetPackageName@{SetPackageName}}
+\index{SetPackageName@{SetPackageName}!ActionDescription@{ActionDescription}}
+\subsubsection[{SetPackageName}]{\setlength{\rightskip}{0pt plus 5cm}void ActionDescription::SetPackageName (
+\begin{DoxyParamCaption}
+\item[{string}]{ name}
+\end{DoxyParamCaption}
+)}\label{classActionDescription_a7a05f90e1820ab9a2b1d3d37155ec987}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]-\/ the name of the affected application \end{DoxyParams}
+
+
+References mPackageName.
+
+
+
+Referenced by AppRover::Clean(), AppRover::Install(), and AppRover::Uninstall().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+ActionDescription.h\item 
+ActionDescription.cpp\end{DoxyCompactItemize}

@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:UML="org.omg/standards/UML" verified="false" timestamp="" xmi.version="1.2" >
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>umbrello uml modeller http://uml.sf.net</XMI.exporter>
+   <XMI.exporterVersion>1.1</XMI.exporterVersion>
+  </XMI.documentation>
+  <XMI.model xmi.name="AppRover" href="/home/gabe/beta/AppRover/docs/AppRover.xmi" />
+  <XMI.metamodel xmi.name="UML" href="UML.xml" xmi.version="1.3" />
+ </XMI.header>
+ <XMI.content>
+  <docsettings viewid="297" documentation="" uniqueid="319" />
+  <umlobjects>
+   <UML:Class stereotype="" package="" xmi.id="2" abstract="0" documentation="" name="InstallEntry" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="10" type="void" abstract="0" documentation="" name="AddInstalledDirectory" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="11" value="" type="string" abstract="0" documentation="" name="directory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="12" type="void" abstract="0" documentation="" name="AddInstalledFile" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="13" value="" type="string" abstract="0" documentation="" name="filename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="14" type="string" abstract="0" documentation="" name="GetErrorMessage" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="15" type="string" abstract="0" documentation="" name="GetName" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="16" type="string" abstract="0" documentation="" name="GetRevision" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="17" type="" abstract="0" documentation="" name="InstallEntry" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="18" type="bool" abstract="0" documentation="" name="IsAtLeastConfigured" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="19" type="bool" abstract="0" documentation="" name="IsAtLeastUnpacked" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="20" type="bool" abstract="0" documentation="" name="IsBuilt" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="21" type="bool" abstract="0" documentation="" name="IsConfigured" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="22" type="bool" abstract="0" documentation="" name="IsInstalled" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="23" type="bool" abstract="0" documentation="" name="IsUnpacked" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="24" type="bool" abstract="0" documentation="" name="Load" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="25" value="" type="xmlNodePtr" abstract="0" documentation="" name="entryNode" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="26" type="bool" abstract="0" documentation="" name="Save" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="27" value="" type="xmlNodePtr" abstract="0" documentation="" name="parentNode" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="28" type="void" abstract="0" documentation="" name="SetBuilt" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="29" type="void" abstract="0" documentation="" name="SetConfigured" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="30" type="void" abstract="0" documentation="" name="SetErrorMessage" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="31" value="" type="string" abstract="0" documentation="" name="errMsg" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="32" type="void" abstract="0" documentation="" name="SetInstalled" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="33" type="void" abstract="0" documentation="" name="SetName" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="34" value="" type="string" abstract="0" documentation="" name="name" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="35" type="void" abstract="0" documentation="" name="SetRevision" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="36" value="" type="string" abstract="0" documentation="" name="revision" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="37" type="void" abstract="0" documentation="" name="SetUninstallInstructions" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="38" value="" type="const InstructionSequence &amp;" abstract="0" documentation="" name="instructions" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="39" type="void" abstract="0" documentation="" name="SetUnpacked" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="40" type="bool" abstract="0" documentation="" name="Uninstall" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="41" value="" type="bool" abstract="0" documentation="" name="force" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="42" type="" abstract="0" documentation="" name="~InstallEntry" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="3" value="" type="string" abstract="0" documentation="" name="mErrorMessage" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="4" value="" type="vector" abstract="0" documentation="" name="mInstalledDirectories" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="5" value="" type="vector" abstract="0" documentation="" name="mInstalledFiles" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="6" value="" type="string" abstract="0" documentation="" name="mPackageName" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="7" value="" type="string" abstract="0" documentation="" name="mPackageRevision" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="8" value="" type="string" abstract="0" documentation="" name="mPackageStatus" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="9" value="" type="InstructionSequence" abstract="0" documentation="" name="mUninstallInstructions" static="0" scope="201" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="43" abstract="0" documentation="" name="Repository" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="46" type="bool" abstract="0" documentation="" name="AddPackage" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="47" value="" type="Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="48" type="Package *" abstract="0" documentation="" name="FindMostCurrentPackage" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="49" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="50" type="string" abstract="0" documentation="" name="GetDirectory" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="51" type="string" abstract="0" documentation="" name="GetPackageName" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="52" value="" type="int" abstract="0" documentation="" name="packageIndex" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="53" type="RepositoryStatusType" abstract="0" documentation="" name="Load" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="54" value="" type="string" abstract="0" documentation="" name="direcotry" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="55" type="int" abstract="0" documentation="" name="NumPackages" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="56" type="" abstract="0" documentation="" name="Repository" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="57" type="RepositoryStatusType" abstract="0" documentation="" name="Save" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="58" type="void" abstract="0" documentation="" name="SetDirectory" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="59" value="" type="string" abstract="0" documentation="" name="directory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="60" type="" abstract="0" documentation="" name="~Repository" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="44" value="" type="string" abstract="0" documentation="" name="mDirectory" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="45" value="" type="PackageIndexVector" abstract="0" documentation="" name="mPackages" static="0" scope="201" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="61" abstract="0" documentation="" name="Interpreter" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="62" type="bool" abstract="0" documentation="" name="Interpret" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="63" value="" type="string" abstract="0" documentation="" name="command" static="0" scope="200" />
+    </UML:Operation>
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="64" abstract="0" documentation="" name="InstallLog" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="66" type="bool" abstract="0" documentation="" name="AddEntry" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="67" value="" type="InstallEntry *" abstract="0" documentation="" name="newEntry" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="68" type="bool" abstract="0" documentation="" name="DeleteEntry" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="69" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="70" value="" type="string" abstract="0" documentation="" name="packageRevision" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="71" type="InstallEntry *" abstract="0" documentation="" name="FindEntry" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="72" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="73" value="" type="string" abstract="0" documentation="" name="packageRevision" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="74" type="InstallEntry *" abstract="0" documentation="" name="FindOldestInstalledEntry" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="75" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="76" type="string" abstract="0" documentation="" name="GetRevisionInstalled" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="77" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="78" type="" abstract="0" documentation="" name="InstallLog" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="79" type="InstallLogStatusType" abstract="0" documentation="" name="Load" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="80" value="" type="string" abstract="0" documentation="" name="filename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="81" type="bool" abstract="0" documentation="" name="Satisfies" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="82" value="" type="const PackageDependency *" abstract="0" documentation="" name="dependency" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="83" type="InstallLogStatusType" abstract="0" documentation="" name="Save" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="84" value="" type="string" abstract="0" documentation="" name="filename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="85" type="" abstract="0" documentation="" name="~InstallLog" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="65" value="" type="InstallEntryVector" abstract="0" documentation="" name="mInstallEntries" static="0" scope="201" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="86" abstract="0" documentation="" name="Fetcher" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="87" type="bool" abstract="0" documentation="" name="Fetch" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="88" value="" type="string" abstract="0" documentation="" name="fileLocation" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="89" value="" type="string" abstract="0" documentation="" name="storageDirectory" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="90" value="" type="bool" abstract="0" documentation="" name="force" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="91" type="" abstract="0" documentation="" name="Fetcher" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="92" type="" abstract="0" documentation="" name="~Fetcher" static="0" scope="200" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="93" abstract="0" documentation="" name="ConfigMgr" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="99" type="bool" abstract="0" documentation="" name="AddRepositoryDirectory" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="100" value="" type="string" abstract="0" documentation="" name="directory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="101" type="" abstract="0" documentation="" name="ConfigMgr" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="102" type="string" abstract="0" documentation="" name="GetInstallLogFilename" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="103" type="int" abstract="0" documentation="" name="GetNumRepositories" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="104" type="string" abstract="0" documentation="" name="GetRepositoryDirectory" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="105" value="" type="int" abstract="0" documentation="" name="repositoryNumber" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="106" type="string" abstract="0" documentation="" name="GetStorageDirectory" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="107" type="string" abstract="0" documentation="" name="GetWorkDirectory" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="108" type="ConfigMgrStatusType" abstract="0" documentation="" name="Load" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="109" value="" type="string" abstract="0" documentation="" name="filename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="110" type="ConfigMgrStatusType" abstract="0" documentation="" name="Save" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="111" type="ConfigMgrStatusType" abstract="0" documentation="" name="Save" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="112" value="" type="string" abstract="0" documentation="" name="filename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="113" type="void" abstract="0" documentation="" name="SetStorageDirectory" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="114" value="" type="string" abstract="0" documentation="" name="directory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="115" type="void" abstract="0" documentation="" name="SetWorkDirectory" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="116" value="" type="string" abstract="0" documentation="" name="directory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="117" type="" abstract="0" documentation="" name="~ConfigMgr" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="94" value="" type="string" abstract="0" documentation="" name="mCfgFilename" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="95" value="" type="string" abstract="0" documentation="" name="mInstallLogFilename" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="96" value="" type="vector" abstract="0" documentation="" name="mRepositoryDirectories" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="97" value="" type="string" abstract="0" documentation="" name="mStorageDirectory" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="98" value="" type="string" abstract="0" documentation="" name="mWorkDirectory" static="0" scope="201" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="118" abstract="0" documentation="" name="AppRover" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="125" type="bool" abstract="0" documentation="" name="AddNewPackage" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="126" value="" type="Package *" abstract="0" documentation="" name="newPackage" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="127" value="" type="int" abstract="0" documentation="" name="repositoryNumber" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="128" type="bool" abstract="0" documentation="" name="AddNewRepository" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="129" value="" type="string" abstract="0" documentation="" name="baseLocation" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="130" type="" abstract="0" documentation="" name="AppRover" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="131" value="" type="string" abstract="0" documentation="" name="cfgFilename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="132" type="bool" abstract="0" documentation="" name="Build" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="133" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="134" type="bool" abstract="0" documentation="" name="BuildPackage" static="0" scope="202" >
+     <UML:Parameter stereotype="" package="" xmi.id="135" value="" type="const Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="136" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="137" type="bool" abstract="0" documentation="" name="Configure" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="138" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="139" type="bool" abstract="0" documentation="" name="ConfigurePackage" static="0" scope="202" >
+     <UML:Parameter stereotype="" package="" xmi.id="140" value="" type="const Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="141" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="142" type="bool" abstract="0" documentation="" name="Fetch" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="143" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="144" type="bool" abstract="0" documentation="" name="FetchPackage" static="0" scope="202" >
+     <UML:Parameter stereotype="" package="" xmi.id="145" value="" type="const Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="146" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="147" value="" type="bool" abstract="0" documentation="" name="force" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="148" type="const Package *" abstract="0" documentation="" name="FindMostCurrentPackage" static="0" scope="202" >
+     <UML:Parameter stereotype="" package="" xmi.id="149" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="150" value="" type="const PackageDependency *" abstract="0" documentation="" name="dependency" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="151" type="string" abstract="0" documentation="" name="GetInstalledRevisionNumber" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="152" value="" type="int" abstract="0" documentation="" name="packageIndex" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="153" type="bool" abstract="0" documentation="" name="GetPackageDependencies" static="0" scope="202" >
+     <UML:Parameter stereotype="" package="" xmi.id="154" value="" type="const Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="155" value="" type="PackageVector &amp;" abstract="0" documentation="" name="dependencies" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="156" type="string" abstract="0" documentation="" name="GetPackageName" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="157" value="" type="int" abstract="0" documentation="" name="packageIndex" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="158" type="bool" abstract="0" documentation="" name="Install" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="159" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="160" type="bool" abstract="0" documentation="" name="InstallPackage" static="0" scope="202" >
+     <UML:Parameter stereotype="" package="" xmi.id="161" value="" type="const Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="162" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="163" type="int" abstract="0" documentation="" name="NumPackages" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="164" type="void" abstract="0" documentation="" name="PopulatePackageList" static="0" scope="202" />
+    <UML:Operation stereotype="" package="" xmi.id="165" type="bool" abstract="0" documentation="" name="Uninstall" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="166" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="167" type="bool" abstract="0" documentation="" name="Unpack" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="168" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="169" type="bool" abstract="0" documentation="" name="UnpackPackage" static="0" scope="202" >
+     <UML:Parameter stereotype="" package="" xmi.id="170" value="" type="const Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="171" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="172" type="bool" abstract="0" documentation="" name="Update" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="173" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="174" type="" abstract="0" documentation="" name="~AppRover" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="119" value="" type="ConfigMgr" abstract="0" documentation="" name="mConfig" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="120" value="" type="InstallLog" abstract="0" documentation="" name="mInstallLog" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="121" value="" type="vector" abstract="0" documentation="" name="mPackageList" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="122" value="" type="bool" abstract="0" documentation="" name="mPackageListIsInvalid" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="123" value="" type="RepositoryVector" abstract="0" documentation="" name="mRepositories" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="124" value="" type="vector" abstract="0" documentation="" name="mRevisionList" static="0" scope="201" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="175" abstract="0" documentation="" name="Package" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="187" type="void" abstract="0" documentation="" name="AddBuildInstruction" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="188" value="" type="string" abstract="0" documentation="" name="instructions" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="189" type="void" abstract="0" documentation="" name="AddConfigureInstruction" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="190" value="" type="string" abstract="0" documentation="" name="instructions" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="191" type="void" abstract="0" documentation="" name="AddDependency" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="192" value="" type="PackageDependency *" abstract="0" documentation="" name="dependency" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="193" type="void" abstract="0" documentation="" name="AddInstallInstruction" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="194" value="" type="string" abstract="0" documentation="" name="instructions" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="195" type="void" abstract="0" documentation="" name="AddSourceFile" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="196" value="" type="string" abstract="0" documentation="" name="fileLocation" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="197" type="void" abstract="0" documentation="" name="AddUninstallInstruction" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="198" value="" type="string" abstract="0" documentation="" name="instructions" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="199" type="void" abstract="0" documentation="" name="AddUnpackInstruction" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="200" value="" type="string" abstract="0" documentation="" name="instruction" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="201" type="bool" abstract="0" documentation="" name="Build" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="202" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="203" value="" type="string" abstract="0" documentation="" name="workDirectory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="204" type="void" abstract="0" documentation="" name="ClearBuildInstructions" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="205" type="void" abstract="0" documentation="" name="ClearConfigureInstructions" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="206" type="void" abstract="0" documentation="" name="ClearDependencies" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="207" type="void" abstract="0" documentation="" name="ClearInstallInstructions" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="208" type="void" abstract="0" documentation="" name="ClearSourceFiles" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="209" type="void" abstract="0" documentation="" name="ClearUninstallInstructions" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="210" type="void" abstract="0" documentation="" name="ClearUnpackInstructions" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="211" type="bool" abstract="0" documentation="" name="Configure" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="212" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="213" value="" type="string" abstract="0" documentation="" name="workDirectory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="214" type="bool" abstract="0" documentation="" name="Fetch" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="215" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="216" value="" type="string" abstract="0" documentation="" name="storageDirectory" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="217" value="" type="bool" abstract="0" documentation="" name="force" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="218" type="const PackageDependency *" abstract="0" documentation="" name="GetDependency" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="219" value="" type="int" abstract="0" documentation="" name="dependencyNumber" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="220" type="string" abstract="0" documentation="" name="GetName" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="221" type="int" abstract="0" documentation="" name="GetNumDependencies" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="222" type="string" abstract="0" documentation="" name="GetRevision" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="223" type="bool" abstract="0" documentation="" name="Install" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="224" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="225" value="" type="string" abstract="0" documentation="" name="workDirectory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="226" type="bool" abstract="0" documentation="" name="IsNewerThan" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="227" value="" type="const Package *" abstract="0" documentation="" name="refPackage" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="228" type="bool" abstract="0" documentation="" name="Load" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="229" value="" type="string" abstract="0" documentation="" name="filename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="230" type="" abstract="0" documentation="" name="Package" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="231" type="bool" abstract="0" documentation="" name="Save" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="232" value="" type="string" abstract="0" documentation="" name="filename" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="233" type="void" abstract="0" documentation="" name="SetName" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="234" value="" type="string" abstract="0" documentation="" name="packageName" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="235" type="void" abstract="0" documentation="" name="SetRevision" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="236" value="" type="string" abstract="0" documentation="" name="revision" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="237" type="bool" abstract="0" documentation="" name="Unpack" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="238" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="239" value="" type="string" abstract="0" documentation="" name="storageDirectory" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="240" value="" type="string" abstract="0" documentation="" name="workDirectory" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="241" type="" abstract="0" documentation="" name="~Package" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="176" value="" type="InstructionSequence" abstract="0" documentation="" name="mBuildInstructions" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="177" value="" type="InstructionSequence" abstract="0" documentation="" name="mConfigureInstructions" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="178" value="" type="PackageDependencyVector" abstract="0" documentation="" name="mDependencies" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="179" value="" type="InstructionSequence" abstract="0" documentation="" name="mInstallInstructions" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="180" value="" type="vector" abstract="0" documentation="" name="mInstalledDirectories" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="181" value="" type="vector" abstract="0" documentation="" name="mInstalledFiles" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="182" value="" type="string" abstract="0" documentation="" name="mPackageName" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="183" value="" type="string" abstract="0" documentation="" name="mPackageRevision" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="184" value="" type="vector" abstract="0" documentation="" name="mSourceFiles" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="185" value="" type="InstructionSequence" abstract="0" documentation="" name="mUninstallInstructions" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="186" value="" type="InstructionSequence" abstract="0" documentation="" name="mUnpackInstructions" static="0" scope="201" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="242" abstract="0" documentation="" name="InstructionSequence" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="244" type="InstructionSequence &amp;" abstract="0" documentation="" name="=" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="245" value="" type="const InstructionSequence &amp;" abstract="0" documentation="" name="src" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="246" type="void" abstract="0" documentation="" name="AddInstruction" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="247" value="" type="string" abstract="0" documentation="" name="instruction" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="248" type="void" abstract="0" documentation="" name="Clear" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="249" type="bool" abstract="0" documentation="" name="Execute" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="250" value="" type="InstallEntry *" abstract="0" documentation="" name="logEntry" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="251" type="" abstract="0" documentation="" name="InstructionSequence" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="252" type="bool" abstract="0" documentation="" name="IsEmpty" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="253" type="bool" abstract="0" documentation="" name="Load" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="254" value="" type="xmlNodePtr" abstract="0" documentation="" name="parentNode" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="255" type="bool" abstract="0" documentation="" name="Save" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="256" value="" type="xmlNodePtr" abstract="0" documentation="" name="parentNode" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="257" type="" abstract="0" documentation="" name="~InstructionSequence" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="243" value="" type="vector" abstract="0" documentation="" name="mInstructions" static="0" scope="201" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="258" abstract="0" documentation="" name="PackageIndex" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="264" type="bool" abstract="0" documentation="" name="AddPackage" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="265" value="" type="Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="266" type="bool" abstract="0" documentation="" name="ContainsRevision" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="267" value="" type="string" abstract="0" documentation="" name="revision" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="268" type="Package *" abstract="0" documentation="" name="GetMostCurrentPackage" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="269" type="string" abstract="0" documentation="" name="GetName" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="270" type="bool" abstract="0" documentation="" name="Load" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="271" value="" type="xmlNodePtr" abstract="0" documentation="" name="packageIndexNode" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="272" type="" abstract="0" documentation="" name="PackageIndex" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="273" type="bool" abstract="0" documentation="" name="Save" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="274" value="" type="xmlNodePtr" abstract="0" documentation="" name="parentNode" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="275" type="void" abstract="0" documentation="" name="SetBaseLocation" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="276" value="" type="string" abstract="0" documentation="" name="baseLocation" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="277" type="" abstract="0" documentation="" name="~PackageIndex" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="259" value="" type="string" abstract="0" documentation="" name="mBaseLocation" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="260" value="" type="PackageVector" abstract="0" documentation="" name="mLoadedPackages" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="261" value="" type="vector" abstract="0" documentation="" name="mPackageFilenames" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="262" value="" type="string" abstract="0" documentation="" name="mPackageName" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="263" value="" type="vector" abstract="0" documentation="" name="mPackageRevisions" static="0" scope="201" />
+   </UML:Class>
+   <UML:Class stereotype="" package="" xmi.id="278" abstract="0" documentation="" name="PackageDependency" static="0" scope="200" >
+    <UML:Operation stereotype="" package="" xmi.id="281" type="string" abstract="0" documentation="" name="GetName" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="282" type="bool" abstract="0" documentation="" name="IsSatisfiedBy" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="283" value="" type="const InstallEntry *" abstract="0" documentation="" name="package" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="284" type="bool" abstract="0" documentation="" name="IsSatisfiedBy" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="285" value="" type="const Package *" abstract="0" documentation="" name="package" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="286" type="bool" abstract="0" documentation="" name="Load" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="287" value="" type="xmlNodePtr" abstract="0" documentation="" name="dependencyNode" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="288" type="" abstract="0" documentation="" name="PackageDependency" static="0" scope="200" />
+    <UML:Operation stereotype="" package="" xmi.id="289" type="" abstract="0" documentation="" name="PackageDependency" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="290" value="" type="string" abstract="0" documentation="" name="name" static="0" scope="200" />
+     <UML:Parameter stereotype="" package="" xmi.id="291" value="" type="string" abstract="0" documentation="" name="revision" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="292" type="bool" abstract="0" documentation="" name="Save" static="0" scope="200" >
+     <UML:Parameter stereotype="" package="" xmi.id="293" value="" type="xmlNodePtr" abstract="0" documentation="" name="parentNode" static="0" scope="200" />
+    </UML:Operation>
+    <UML:Operation stereotype="" package="" xmi.id="294" type="" abstract="0" documentation="" name="~PackageDependency" static="0" scope="200" />
+    <UML:Attribute stereotype="" package="" xmi.id="279" value="" type="string" abstract="0" documentation="" name="mPackageName" static="0" scope="201" />
+    <UML:Attribute stereotype="" package="" xmi.id="280" value="" type="string" abstract="0" documentation="" name="mRevision" static="0" scope="201" />
+   </UML:Class>
+  </umlobjects>
+  <diagrams>
+   <diagram snapgrid="0" showattsig="1" fillcolor="#ffffc0" showgrid="0" showopsig="1" usefillcolor="1" snapx="10" snapy="10" showatts="1" xmi.id="1" documentation="" type="402" showops="1" showpackage="0" name="repository class diagram" localid="30000" showstereotype="0" showscope="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" linecolor="#ff0000" >
+    <widgets>
+     <UML:ConceptWidget usesdiagramfillcolour="1" width="380" showattsigs="601" usesdiagramusefillcolour="1" x="32" linecolour="none" y="18" showopsigs="601" usesdiagramlinecolour="1" fillcolour="none" height="195" usefillcolor="1" showattributes="1" xmi.id="43" showoperations="1" showpackage="0" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="1" width="292" showattsigs="601" usesdiagramusefillcolour="1" x="79" linecolour="none" y="308" showopsigs="601" usesdiagramlinecolour="1" fillcolour="none" height="225" usefillcolor="1" showattributes="1" xmi.id="258" showoperations="1" showpackage="0" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="1" width="542" showattsigs="601" usesdiagramusefillcolour="1" x="14" linecolour="none" y="636" showopsigs="601" usesdiagramlinecolour="1" fillcolour="none" height="630" usefillcolor="1" showattributes="1" xmi.id="175" showoperations="1" showpackage="0" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+    </widgets>
+    <messages/>
+    <associations>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="43" widgetaid="258" documentation="" type="501" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="210" linecolour="none" y="287" operation="" usesdiagramlinecolour="1" role="701" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="*" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="224" linecolour="none" y="215" operation="" usesdiagramlinecolour="1" role="702" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="225" starty="308" />
+       <endpoint endx="222" endy="213" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="258" widgetaid="175" documentation="" type="501" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="262" linecolour="none" y="615" operation="" usesdiagramlinecolour="1" role="701" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1.." font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="227" linecolour="none" y="535" operation="" usesdiagramlinecolour="1" role="702" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="285" starty="636" />
+       <endpoint endx="225" endy="533" />
+      </linepath>
+     </UML:AssocWidget>
+    </associations>
+   </diagram>
+   <diagram snapgrid="0" showattsig="1" fillcolor="#ffffc0" showgrid="0" showopsig="1" usefillcolor="1" snapx="10" snapy="10" showatts="1" xmi.id="295" documentation="" type="402" showops="1" showpackage="0" name="AppRover class diagram" localid="30000" showstereotype="0" showscope="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" linecolor="#ff0000" >
+    <widgets>
+     <UML:ConceptWidget usesdiagramfillcolour="1" width="672" showattsigs="601" usesdiagramusefillcolour="1" x="25" linecolour="none" y="16" showopsigs="601" usesdiagramlinecolour="1" fillcolour="none" height="435" usefillcolor="1" showattributes="1" xmi.id="118" showoperations="1" showpackage="0" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="1" width="356" showattsigs="601" usesdiagramusefillcolour="1" x="800" linecolour="none" y="82" showopsigs="601" usesdiagramlinecolour="1" fillcolour="none" height="285" usefillcolor="1" showattributes="1" xmi.id="93" showoperations="1" showpackage="0" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="1" width="459" showattsigs="601" usesdiagramusefillcolour="1" x="25" linecolour="none" y="550" showopsigs="601" usesdiagramlinecolour="1" fillcolour="none" height="180" usefillcolor="1" showattributes="1" xmi.id="64" showoperations="1" showpackage="0" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="1" width="467" showattsigs="601" usesdiagramusefillcolour="1" x="29" linecolour="none" y="820" showopsigs="601" usesdiagramlinecolour="1" fillcolour="none" height="480" usefillcolor="1" showattributes="1" xmi.id="2" showoperations="1" showpackage="0" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ConceptWidget usesdiagramfillcolour="1" width="380" showattsigs="601" usesdiagramusefillcolour="1" x="652" linecolour="none" y="645" showopsigs="601" usesdiagramlinecolour="1" fillcolour="none" height="195" usefillcolor="1" showattributes="1" xmi.id="43" showoperations="1" showpackage="0" showscope="1" showstereotype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+    </widgets>
+    <messages/>
+    <associations>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="118" widgetaid="93" documentation="" type="510" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="783" linecolour="none" y="226" operation="" usesdiagramlinecolour="1" role="701" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="699" linecolour="none" y="212" operation="" usesdiagramlinecolour="1" role="702" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="748" linecolour="none" y="228" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="800" starty="224" />
+       <endpoint endx="697" endy="233" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="3" indexb="1" widgetbid="118" widgetaid="64" documentation="" type="510" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="237" linecolour="none" y="529" operation="" usesdiagramlinecolour="1" role="701" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="251" linecolour="none" y="453" operation="" usesdiagramlinecolour="1" role="702" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="251" linecolour="none" y="500" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="254" starty="550" />
+       <endpoint endx="249" endy="451" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="64" widgetaid="2" documentation="" type="510" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="247" linecolour="none" y="799" operation="" usesdiagramlinecolour="1" role="701" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="*" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="256" linecolour="none" y="732" operation="" usesdiagramlinecolour="1" role="702" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="258" linecolour="none" y="775" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="262" starty="820" />
+       <endpoint endx="254" endy="730" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="3" indexb="2" widgetbid="118" widgetaid="43" documentation="" type="510" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="819" linecolour="none" y="624" operation="" usesdiagramlinecolour="1" role="701" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1.." font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="475" linecolour="none" y="453" operation="" usesdiagramlinecolour="1" role="702" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="657" linecolour="none" y="548" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="842" starty="645" />
+       <endpoint endx="473" endy="451" />
+      </linepath>
+     </UML:AssocWidget>
+    </associations>
+   </diagram>
+   <diagram snapgrid="0" showattsig="1" fillcolor="#ffffc0" showgrid="0" showopsig="1" usefillcolor="1" snapx="10" snapy="10" showatts="1" xmi.id="297" documentation="" type="405" showops="1" showpackage="0" name="update diagram" localid="30000" showstereotype="0" showscope="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" linecolor="#ff0000" >
+    <widgets>
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="10" activityname="Activity" usesdiagramusefillcolour="1" x="326" linecolour="none" y="18" usesdiagramlinecolour="1" fillcolour="none" height="10" usefillcolor="1" xmi.id="298" documentation="" activitytype="0" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="93" activityname="request update" usesdiagramusefillcolour="1" x="285" linecolour="none" y="90" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="299" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="111" activityname="find latest revision" usesdiagramusefillcolour="1" x="276" linecolour="none" y="167" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="300" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="20" activityname="Activity" usesdiagramusefillcolour="1" x="324" linecolour="none" y="235" usesdiagramlinecolour="1" fillcolour="none" height="20" usefillcolor="1" xmi.id="301" documentation="" activitytype="3" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="40" activityname="fetch" usesdiagramusefillcolour="1" x="166" linecolour="none" y="415" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="306" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="51" activityname="unpack" usesdiagramusefillcolour="1" x="159" linecolour="none" y="528" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="307" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="40" activityname="build" usesdiagramusefillcolour="1" x="313" linecolour="none" y="939" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="308" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="20" activityname="Activity" usesdiagramusefillcolour="1" x="446" linecolour="none" y="949" usesdiagramlinecolour="1" fillcolour="none" height="20" usefillcolor="1" xmi.id="309" documentation="" activitytype="3" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="122" activityname="uninstall old version" usesdiagramusefillcolour="1" x="399" linecolour="none" y="1090" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="310" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="42" activityname="install" usesdiagramusefillcolour="1" x="20" linecolour="none" y="1092" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="311" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="10" activityname="Activity" usesdiagramusefillcolour="1" x="36" linecolour="none" y="1188" usesdiagramlinecolour="1" fillcolour="none" height="10" usefillcolor="1" xmi.id="312" documentation="" activitytype="2" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="125" activityname="create new log entry" usesdiagramusefillcolour="1" x="148" linecolour="none" y="329" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="313" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="20" activityname="Activity" usesdiagramusefillcolour="1" x="520" linecolour="none" y="420" usesdiagramlinecolour="1" fillcolour="none" height="20" usefillcolor="1" xmi.id="314" documentation="" activitytype="3" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="62" activityname="configure" usesdiagramusefillcolour="1" x="160" linecolour="none" y="671" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="316" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="131" activityname="update dependencies" usesdiagramusefillcolour="1" x="134" linecolour="none" y="586" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="317" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="312" activityname="add package to dependencies' reverse dependencies" usesdiagramusefillcolour="1" x="31" linecolour="none" y="765" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="318" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+     <UML:ActivityWidget usesdiagramfillcolour="1" width="236" activityname="purge partial installs sharing needed slot" usesdiagramusefillcolour="1" x="75" linecolour="none" y="474" usesdiagramlinecolour="1" fillcolour="none" height="25" usefillcolor="1" xmi.id="319" documentation="" activitytype="1" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+    </widgets>
+    <messages/>
+    <associations>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="299" widgetaid="298" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="331" starty="28" />
+       <endpoint endx="331" endy="90" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="300" widgetaid="299" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="331" starty="115" />
+       <endpoint endx="331" endy="167" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="301" widgetaid="300" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="331" starty="192" />
+       <endpoint endx="334" endy="235" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="3" indexb="1" widgetbid="309" widgetaid="308" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="353" starty="951" />
+       <endpoint endx="446" endy="955" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="310" widgetaid="309" documentation="" type="515" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="458" linecolour="none" y="1029" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="[slot occupied]" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="456" starty="969" />
+       <endpoint endx="460" endy="1090" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="3" indexa="2" totalcountb="3" indexb="1" widgetbid="311" widgetaid="309" documentation="" type="515" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="254" linecolour="none" y="1031" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="[slot unoccupied]" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="446" starty="962" />
+       <endpoint endx="62" endy="1100" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="3" indexb="2" widgetbid="311" widgetaid="310" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="399" starty="1102" />
+       <endpoint endx="62" endy="1108" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="312" widgetaid="311" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="41" starty="1117" />
+       <endpoint endx="41" endy="1188" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="313" widgetaid="301" documentation="" type="515" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="267" linecolour="none" y="287" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="[no log entry for revision]" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="324" starty="245" />
+       <endpoint endx="210" endy="329" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="306" widgetaid="313" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="210" starty="354" />
+       <endpoint endx="186" endy="415" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="4" indexb="1" widgetbid="314" widgetaid="301" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="344" starty="245" />
+       <endpoint endx="520" endy="425" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="4" indexa="2" totalcountb="2" indexb="1" widgetbid="306" widgetaid="314" documentation="" type="515" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="363" linecolour="none" y="428" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="[revision has not been unpacked]" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="520" starty="430" />
+       <endpoint endx="206" endy="427" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="3" indexa="1" totalcountb="2" indexb="1" widgetbid="308" widgetaid="314" documentation="" type="515" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="296" linecolour="none" y="658" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="[revision has been configured]" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="526" starty="440" />
+       <endpoint endx="333" endy="939" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="3" indexa="2" totalcountb="2" indexb="1" widgetbid="309" widgetaid="314" documentation="" type="515" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="494" linecolour="none" y="694" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="[revision has been built]" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="533" starty="440" />
+       <endpoint endx="456" endy="949" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="3" indexb="1" widgetbid="317" widgetaid="307" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="184" starty="553" />
+       <endpoint endx="177" endy="586" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="316" widgetaid="317" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="199" starty="611" />
+       <endpoint endx="191" endy="671" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="318" widgetaid="316" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="191" starty="696" />
+       <endpoint endx="187" endy="765" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="308" widgetaid="318" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="187" starty="790" />
+       <endpoint endx="313" endy="951" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="4" indexa="3" totalcountb="3" indexb="2" widgetbid="317" widgetaid="314" documentation="" type="515" >
+      <UML:FloatingTextWidget usesdiagramfillcolour="1" width="0" usesdiagramusefillcolour="1" x="370" linecolour="none" y="510" operation="" usesdiagramlinecolour="1" role="703" fillcolour="none" height="0" usefillcolor="1" seqnum="" xmi.id="-1" text="[revision has been unpacked]" font="Helvetica,9,-1,5,50,0,0,0,0,0" />
+      <linepath>
+       <startpoint startx="520" starty="435" />
+       <endpoint endx="221" endy="586" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="319" widgetaid="306" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="166" starty="427" />
+       <endpoint endx="193" endy="474" />
+      </linepath>
+     </UML:AssocWidget>
+     <UML:AssocWidget totalcounta="2" indexa="1" totalcountb="2" indexb="1" widgetbid="307" widgetaid="319" documentation="" type="515" >
+      <linepath>
+       <startpoint startx="193" starty="499" />
+       <endpoint endx="184" endy="528" />
+      </linepath>
+     </UML:AssocWidget>
+    </associations>
+   </diagram>
+  </diagrams>
+  <listview>
+   <listitem open="1" type="800" id="-1" label="Views" >
+    <listitem open="1" type="801" id="-1" label="Logical View" >
+     <listitem open="1" type="813" id="118" label="AppRover" >
+      <listitem open="0" type="815" id="125" label="AddNewPackage" />
+      <listitem open="0" type="815" id="128" label="AddNewRepository" />
+      <listitem open="0" type="815" id="130" label="AppRover" />
+      <listitem open="0" type="815" id="132" label="Build" />
+      <listitem open="0" type="815" id="134" label="BuildPackage" />
+      <listitem open="0" type="815" id="137" label="Configure" />
+      <listitem open="0" type="815" id="139" label="ConfigurePackage" />
+      <listitem open="0" type="815" id="142" label="Fetch" />
+      <listitem open="0" type="815" id="144" label="FetchPackage" />
+      <listitem open="0" type="815" id="148" label="FindMostCurrentPackage" />
+      <listitem open="0" type="815" id="151" label="GetInstalledRevisionNumber" />
+      <listitem open="0" type="815" id="153" label="GetPackageDependencies" />
+      <listitem open="0" type="815" id="156" label="GetPackageName" />
+      <listitem open="0" type="815" id="158" label="Install" />
+      <listitem open="0" type="815" id="160" label="InstallPackage" />
+      <listitem open="0" type="815" id="163" label="NumPackages" />
+      <listitem open="0" type="815" id="164" label="PopulatePackageList" />
+      <listitem open="0" type="815" id="165" label="Uninstall" />
+      <listitem open="0" type="815" id="167" label="Unpack" />
+      <listitem open="0" type="815" id="169" label="UnpackPackage" />
+      <listitem open="0" type="815" id="172" label="Update" />
+      <listitem open="0" type="814" id="119" label="mConfig" />
+      <listitem open="0" type="814" id="120" label="mInstallLog" />
+      <listitem open="0" type="814" id="121" label="mPackageList" />
+      <listitem open="0" type="814" id="122" label="mPackageListIsInvalid" />
+      <listitem open="0" type="814" id="123" label="mRepositories" />
+      <listitem open="0" type="814" id="124" label="mRevisionList" />
+      <listitem open="0" type="815" id="174" label="~AppRover" />
+     </listitem>
+     <listitem open="0" type="807" id="295" label="AppRover class diagram" />
+     <listitem open="1" type="813" id="93" label="ConfigMgr" >
+      <listitem open="0" type="815" id="99" label="AddRepositoryDirectory" />
+      <listitem open="0" type="815" id="101" label="ConfigMgr" />
+      <listitem open="0" type="815" id="102" label="GetInstallLogFilename" />
+      <listitem open="0" type="815" id="103" label="GetNumRepositories" />
+      <listitem open="0" type="815" id="104" label="GetRepositoryDirectory" />
+      <listitem open="0" type="815" id="106" label="GetStorageDirectory" />
+      <listitem open="0" type="815" id="107" label="GetWorkDirectory" />
+      <listitem open="0" type="815" id="108" label="Load" />
+      <listitem open="0" type="815" id="111" label="Save" />
+      <listitem open="0" type="815" id="110" label="Save" />
+      <listitem open="0" type="815" id="113" label="SetStorageDirectory" />
+      <listitem open="0" type="815" id="115" label="SetWorkDirectory" />
+      <listitem open="0" type="814" id="94" label="mCfgFilename" />
+      <listitem open="0" type="814" id="95" label="mInstallLogFilename" />
+      <listitem open="0" type="814" id="96" label="mRepositoryDirectories" />
+      <listitem open="0" type="814" id="97" label="mStorageDirectory" />
+      <listitem open="0" type="814" id="98" label="mWorkDirectory" />
+      <listitem open="0" type="815" id="117" label="~ConfigMgr" />
+     </listitem>
+     <listitem open="1" type="813" id="86" label="Fetcher" >
+      <listitem open="0" type="815" id="87" label="Fetch" />
+      <listitem open="0" type="815" id="91" label="Fetcher" />
+      <listitem open="0" type="815" id="92" label="~Fetcher" />
+     </listitem>
+     <listitem open="1" type="813" id="2" label="InstallEntry" >
+      <listitem open="0" type="815" id="10" label="AddInstalledDirectory" />
+      <listitem open="0" type="815" id="12" label="AddInstalledFile" />
+      <listitem open="0" type="815" id="14" label="GetErrorMessage" />
+      <listitem open="0" type="815" id="15" label="GetName" />
+      <listitem open="0" type="815" id="16" label="GetRevision" />
+      <listitem open="0" type="815" id="17" label="InstallEntry" />
+      <listitem open="0" type="815" id="18" label="IsAtLeastConfigured" />
+      <listitem open="0" type="815" id="19" label="IsAtLeastUnpacked" />
+      <listitem open="0" type="815" id="20" label="IsBuilt" />
+      <listitem open="0" type="815" id="21" label="IsConfigured" />
+      <listitem open="0" type="815" id="22" label="IsInstalled" />
+      <listitem open="0" type="815" id="23" label="IsUnpacked" />
+      <listitem open="0" type="815" id="24" label="Load" />
+      <listitem open="0" type="815" id="26" label="Save" />
+      <listitem open="0" type="815" id="28" label="SetBuilt" />
+      <listitem open="0" type="815" id="29" label="SetConfigured" />
+      <listitem open="0" type="815" id="30" label="SetErrorMessage" />
+      <listitem open="0" type="815" id="32" label="SetInstalled" />
+      <listitem open="0" type="815" id="33" label="SetName" />
+      <listitem open="0" type="815" id="35" label="SetRevision" />
+      <listitem open="0" type="815" id="37" label="SetUninstallInstructions" />
+      <listitem open="0" type="815" id="39" label="SetUnpacked" />
+      <listitem open="0" type="815" id="40" label="Uninstall" />
+      <listitem open="0" type="814" id="3" label="mErrorMessage" />
+      <listitem open="0" type="814" id="4" label="mInstalledDirectories" />
+      <listitem open="0" type="814" id="5" label="mInstalledFiles" />
+      <listitem open="0" type="814" id="6" label="mPackageName" />
+      <listitem open="0" type="814" id="7" label="mPackageRevision" />
+      <listitem open="0" type="814" id="8" label="mPackageStatus" />
+      <listitem open="0" type="814" id="9" label="mUninstallInstructions" />
+      <listitem open="0" type="815" id="42" label="~InstallEntry" />
+     </listitem>
+     <listitem open="1" type="813" id="64" label="InstallLog" >
+      <listitem open="0" type="815" id="66" label="AddEntry" />
+      <listitem open="0" type="815" id="68" label="DeleteEntry" />
+      <listitem open="0" type="815" id="71" label="FindEntry" />
+      <listitem open="0" type="815" id="74" label="FindOldestInstalledEntry" />
+      <listitem open="0" type="815" id="76" label="GetRevisionInstalled" />
+      <listitem open="0" type="815" id="78" label="InstallLog" />
+      <listitem open="0" type="815" id="79" label="Load" />
+      <listitem open="0" type="815" id="81" label="Satisfies" />
+      <listitem open="0" type="815" id="83" label="Save" />
+      <listitem open="0" type="814" id="65" label="mInstallEntries" />
+      <listitem open="0" type="815" id="85" label="~InstallLog" />
+     </listitem>
+     <listitem open="1" type="813" id="242" label="InstructionSequence" >
+      <listitem open="0" type="815" id="244" label="=" />
+      <listitem open="0" type="815" id="246" label="AddInstruction" />
+      <listitem open="0" type="815" id="248" label="Clear" />
+      <listitem open="0" type="815" id="249" label="Execute" />
+      <listitem open="0" type="815" id="251" label="InstructionSequence" />
+      <listitem open="0" type="815" id="252" label="IsEmpty" />
+      <listitem open="0" type="815" id="253" label="Load" />
+      <listitem open="0" type="815" id="255" label="Save" />
+      <listitem open="0" type="814" id="243" label="mInstructions" />
+      <listitem open="0" type="815" id="257" label="~InstructionSequence" />
+     </listitem>
+     <listitem open="1" type="813" id="61" label="Interpreter" >
+      <listitem open="0" type="815" id="62" label="Interpret" />
+     </listitem>
+     <listitem open="1" type="813" id="175" label="Package" >
+      <listitem open="0" type="815" id="187" label="AddBuildInstruction" />
+      <listitem open="0" type="815" id="189" label="AddConfigureInstruction" />
+      <listitem open="0" type="815" id="191" label="AddDependency" />
+      <listitem open="0" type="815" id="193" label="AddInstallInstruction" />
+      <listitem open="0" type="815" id="195" label="AddSourceFile" />
+      <listitem open="0" type="815" id="197" label="AddUninstallInstruction" />
+      <listitem open="0" type="815" id="199" label="AddUnpackInstruction" />
+      <listitem open="0" type="815" id="201" label="Build" />
+      <listitem open="0" type="815" id="204" label="ClearBuildInstructions" />
+      <listitem open="0" type="815" id="205" label="ClearConfigureInstructions" />
+      <listitem open="0" type="815" id="206" label="ClearDependencies" />
+      <listitem open="0" type="815" id="207" label="ClearInstallInstructions" />
+      <listitem open="0" type="815" id="208" label="ClearSourceFiles" />
+      <listitem open="0" type="815" id="209" label="ClearUninstallInstructions" />
+      <listitem open="0" type="815" id="210" label="ClearUnpackInstructions" />
+      <listitem open="0" type="815" id="211" label="Configure" />
+      <listitem open="0" type="815" id="214" label="Fetch" />
+      <listitem open="0" type="815" id="218" label="GetDependency" />
+      <listitem open="0" type="815" id="220" label="GetName" />
+      <listitem open="0" type="815" id="221" label="GetNumDependencies" />
+      <listitem open="0" type="815" id="222" label="GetRevision" />
+      <listitem open="0" type="815" id="223" label="Install" />
+      <listitem open="0" type="815" id="226" label="IsNewerThan" />
+      <listitem open="0" type="815" id="228" label="Load" />
+      <listitem open="0" type="815" id="230" label="Package" />
+      <listitem open="0" type="815" id="231" label="Save" />
+      <listitem open="0" type="815" id="233" label="SetName" />
+      <listitem open="0" type="815" id="235" label="SetRevision" />
+      <listitem open="0" type="815" id="237" label="Unpack" />
+      <listitem open="0" type="814" id="176" label="mBuildInstructions" />
+      <listitem open="0" type="814" id="177" label="mConfigureInstructions" />
+      <listitem open="0" type="814" id="178" label="mDependencies" />
+      <listitem open="0" type="814" id="179" label="mInstallInstructions" />
+      <listitem open="0" type="814" id="180" label="mInstalledDirectories" />
+      <listitem open="0" type="814" id="181" label="mInstalledFiles" />
+      <listitem open="0" type="814" id="182" label="mPackageName" />
+      <listitem open="0" type="814" id="183" label="mPackageRevision" />
+      <listitem open="0" type="814" id="184" label="mSourceFiles" />
+      <listitem open="0" type="814" id="185" label="mUninstallInstructions" />
+      <listitem open="0" type="814" id="186" label="mUnpackInstructions" />
+      <listitem open="0" type="815" id="241" label="~Package" />
+     </listitem>
+     <listitem open="1" type="813" id="278" label="PackageDependency" >
+      <listitem open="0" type="815" id="281" label="GetName" />
+      <listitem open="0" type="815" id="282" label="IsSatisfiedBy" />
+      <listitem open="0" type="815" id="284" label="IsSatisfiedBy" />
+      <listitem open="0" type="815" id="286" label="Load" />
+      <listitem open="0" type="815" id="289" label="PackageDependency" />
+      <listitem open="0" type="815" id="288" label="PackageDependency" />
+      <listitem open="0" type="815" id="292" label="Save" />
+      <listitem open="0" type="814" id="279" label="mPackageName" />
+      <listitem open="0" type="814" id="280" label="mRevision" />
+      <listitem open="0" type="815" id="294" label="~PackageDependency" />
+     </listitem>
+     <listitem open="1" type="813" id="258" label="PackageIndex" >
+      <listitem open="0" type="815" id="264" label="AddPackage" />
+      <listitem open="0" type="815" id="266" label="ContainsRevision" />
+      <listitem open="0" type="815" id="268" label="GetMostCurrentPackage" />
+      <listitem open="0" type="815" id="269" label="GetName" />
+      <listitem open="0" type="815" id="270" label="Load" />
+      <listitem open="0" type="815" id="272" label="PackageIndex" />
+      <listitem open="0" type="815" id="273" label="Save" />
+      <listitem open="0" type="815" id="275" label="SetBaseLocation" />
+      <listitem open="0" type="814" id="259" label="mBaseLocation" />
+      <listitem open="0" type="814" id="260" label="mLoadedPackages" />
+      <listitem open="0" type="814" id="261" label="mPackageFilenames" />
+      <listitem open="0" type="814" id="262" label="mPackageName" />
+      <listitem open="0" type="814" id="263" label="mPackageRevisions" />
+      <listitem open="0" type="815" id="277" label="~PackageIndex" />
+     </listitem>
+     <listitem open="1" type="813" id="43" label="Repository" >
+      <listitem open="0" type="815" id="46" label="AddPackage" />
+      <listitem open="0" type="815" id="48" label="FindMostCurrentPackage" />
+      <listitem open="0" type="815" id="50" label="GetDirectory" />
+      <listitem open="0" type="815" id="51" label="GetPackageName" />
+      <listitem open="0" type="815" id="53" label="Load" />
+      <listitem open="0" type="815" id="55" label="NumPackages" />
+      <listitem open="0" type="815" id="56" label="Repository" />
+      <listitem open="0" type="815" id="57" label="Save" />
+      <listitem open="0" type="815" id="58" label="SetDirectory" />
+      <listitem open="0" type="814" id="44" label="mDirectory" />
+      <listitem open="0" type="814" id="45" label="mPackages" />
+      <listitem open="0" type="815" id="60" label="~Repository" />
+     </listitem>
+     <listitem open="0" type="807" id="1" label="repository class diagram" />
+     <listitem open="0" type="809" id="297" label="update diagram" />
+    </listitem>
+    <listitem open="1" type="802" id="-1" label="Use Case View" />
+   </listitem>
+  </listview>
+ </XMI.content>
+</XMI>

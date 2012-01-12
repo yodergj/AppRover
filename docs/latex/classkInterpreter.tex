@@ -1,0 +1,68 @@
+\section{kInterpreter Class Reference}
+\label{classkInterpreter}\index{kInterpreter@{kInterpreter}}
+
+
+Command interpreter class used by the KDE \doxyref{AppRover}{p.}{classAppRover} GUI.  
+
+
+
+
+{\ttfamily \#include $<$kInterpreter.h$>$}
+
+Inheritance diagram for kInterpreter:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classkInterpreter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bf Interpret} (string command, bool pleaseWait=false)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf WaitDialog} $\ast$ {\bf mWaitDialog}\label{classkInterpreter_aee05d20647d84011dbb579999af9c5a3}
+
+\begin{DoxyCompactList}\small\item\em Dialog used to prompt the user to wait for execution to finish. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Command interpreter class used by the KDE \doxyref{AppRover}{p.}{classAppRover} GUI. 
+
+\subsection{Member Function Documentation}
+\index{kInterpreter@{kInterpreter}!Interpret@{Interpret}}
+\index{Interpret@{Interpret}!kInterpreter@{kInterpreter}}
+\subsubsection[{Interpret}]{\setlength{\rightskip}{0pt plus 5cm}bool kInterpreter::Interpret (
+\begin{DoxyParamCaption}
+\item[{string}]{ command, }
+\item[{bool}]{ pleaseWait = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classkInterpreter_a44330e0014189296045471ceda2634ba}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em command}]-\/ the instruction to execute \item[{\em pleaseWait}]-\/ if true, indicates that the user should be prompted to wair for execution to finish \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if the instruction fails
+\end{DoxyReturn}
+Executes the specified instruction from the present working directory. 
+
+\begin{Desc}
+\item[{\bf Todo}]If command starts with \char`\"{}@\char`\"{}, make it execute silently \end{Desc}
+
+
+
+
+Reimplemented from {\bf Interpreter} \doxyref{}{p.}{classInterpreter_ab7faef219a7956ee43338569f5cc1d2f}.
+
+
+
+References WaitDialog::hide(), mWaitDialog, and WaitDialog::show().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+kInterpreter.h\item 
+kInterpreter.cpp\end{DoxyCompactItemize}

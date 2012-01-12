@@ -1,0 +1,393 @@
+\section{InstructionSequence Class Reference}
+\label{classInstructionSequence}\index{InstructionSequence@{InstructionSequence}}
+
+
+Class for managing a series of command line instructions to be executed.  
+
+
+
+
+{\ttfamily \#include $<$InstructionSequence.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf InstructionSequence} (const {\bf InstructionSequence} \&refSequence)
+\item 
+void {\bf AddInstruction} (string instruction)
+\item 
+void {\bf SetStartingDirectory} (string directory)
+\item 
+string {\bf GetStartingDirectory} () const 
+\item 
+void {\bf SetShell} (string shell)
+\item 
+bool {\bf Execute} ({\bf InstallEntry} $\ast$logEntry, int numProcessors, bool logFilesWritten) const 
+\item 
+bool {\bf DumpToFile} (FILE $\ast$file) const 
+\item 
+bool {\bf Save} (xmlNodePtr parentNode, string type) const 
+\item 
+bool {\bf Load} (xmlNodePtr instructionNode)
+\item 
+bool {\bf IsEmpty} () const 
+\item 
+void {\bf ReplaceString} (string oldString, string newString, bool includeStartingDir)
+\item 
+void {\bf Clear} ()
+\item 
+{\bf InstructionSequence} \& {\bf operator=} (const {\bf InstructionSequence} \&src)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf Translate} ({\bf InstallEntry} $\ast$logEntry, int numProcessors) const 
+\item 
+bool {\bf HandleIfStatement} ({\bf InstallEntry} $\ast$logEntry, FILE $\ast$outputFile, bool skipLines, int \&lineNumber) const 
+\item 
+bool {\bf ConditionFulfilled} (const FeatureOptionVector \&variables, int lineNumber) const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ string $>$ {\bf mInstructions}\label{classInstructionSequence_abc9bdcd379492c0a48c19e8b52e3ac1b}
+
+\begin{DoxyCompactList}\small\item\em The list of instructions in this sequence. \item\end{DoxyCompactList}\item 
+string {\bf mBaseDirectory}\label{classInstructionSequence_a31d144260aa24516ee571ea83f36aaa3}
+
+\begin{DoxyCompactList}\small\item\em The directory to change to before executing the instructions. \item\end{DoxyCompactList}\item 
+string {\bf mShell}\label{classInstructionSequence_a221d8a5ef911714bdefa00e94c4011f2}
+
+\begin{DoxyCompactList}\small\item\em The shell used to interpret the instructions. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for managing a series of command line instructions to be executed. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{InstructionSequence@{InstructionSequence}!InstructionSequence@{InstructionSequence}}
+\index{InstructionSequence@{InstructionSequence}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{InstructionSequence}]{\setlength{\rightskip}{0pt plus 5cm}InstructionSequence::InstructionSequence (
+\begin{DoxyParamCaption}
+\item[{const {\bf InstructionSequence} \&}]{ refSequence}
+\end{DoxyParamCaption}
+)}\label{classInstructionSequence_a4e007faccc75d92b7dba50995ea8a7aa}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refSequence}]-\/ instruction sequence to copy\end{DoxyParams}
+Creates an \doxyref{InstructionSequence}{p.}{classInstructionSequence} object which is an exact copy of refSequence. 
+
+References mBaseDirectory, mInstructions, and mShell.
+
+
+
+\subsection{Member Function Documentation}
+\index{InstructionSequence@{InstructionSequence}!AddInstruction@{AddInstruction}}
+\index{AddInstruction@{AddInstruction}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{AddInstruction}]{\setlength{\rightskip}{0pt plus 5cm}void InstructionSequence::AddInstruction (
+\begin{DoxyParamCaption}
+\item[{string}]{ instruction}
+\end{DoxyParamCaption}
+)}\label{classInstructionSequence_a1338f293a04a8d1c1c1876ca060df308}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em instruction}]-\/ an instruction to process\end{DoxyParams}
+Adds an instruction to the end of the list of instructions. 
+
+References mInstructions.
+
+
+
+Referenced by Package::AddBuildInstruction(), Package::AddConfigureInstruction(), Package::AddInstallInstruction(), Package::AddUninstallInstruction(), and Package::AddUnpackInstruction().
+
+\index{InstructionSequence@{InstructionSequence}!Clear@{Clear}}
+\index{Clear@{Clear}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{Clear}]{\setlength{\rightskip}{0pt plus 5cm}void InstructionSequence::Clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classInstructionSequence_a85f821d3becd594d1b0f4078908d8404}
+Deletes all of the stored instructions. 
+
+References mInstructions.
+
+
+
+Referenced by Package::ClearBuildInstructions(), Package::ClearConfigureInstructions(), Package::ClearInstallInstructions(), Package::ClearUninstallInstructions(), and Package::ClearUnpackInstructions().
+
+\index{InstructionSequence@{InstructionSequence}!ConditionFulfilled@{ConditionFulfilled}}
+\index{ConditionFulfilled@{ConditionFulfilled}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{ConditionFulfilled}]{\setlength{\rightskip}{0pt plus 5cm}bool InstructionSequence::ConditionFulfilled (
+\begin{DoxyParamCaption}
+\item[{const FeatureOptionVector \&}]{ variables, }
+\item[{int}]{ lineNumber}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [private]}}\label{classInstructionSequence_ae574fcbcdfc0cf5c7bf911e6e55b2d04}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em variables}]-\/ list of optional features and their activation states \item[{\em lineNumber}]-\/ the current instruction line to evaluate \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a condition string was successfully parsed and evaluated to true 
+\end{DoxyReturn}
+
+
+\begin{Desc}
+\item[{\bf Todo}]decide how to handle this case \end{Desc}
+
+
+
+
+References BooleanExpression::EvaluatesToTrue(), mInstructions, and BooleanExpression::ParseFromString().
+
+
+
+Referenced by HandleIfStatement().
+
+\index{InstructionSequence@{InstructionSequence}!DumpToFile@{DumpToFile}}
+\index{DumpToFile@{DumpToFile}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{DumpToFile}]{\setlength{\rightskip}{0pt plus 5cm}bool InstructionSequence::DumpToFile (
+\begin{DoxyParamCaption}
+\item[{FILE $\ast$}]{ file}
+\end{DoxyParamCaption}
+) const}\label{classInstructionSequence_aeaadcfcb37dd4172e51c48060d3af1d6}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]-\/ the file to receive the contents of these instructions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if the file is NULL 
+\end{DoxyReturn}
+
+
+References mInstructions.
+
+
+
+Referenced by Package::DumpBuildInstructionsToFile(), Package::DumpConfigureInstructionsToFile(), Package::DumpInstallInstructionsToFile(), Package::DumpUninstallInstructionsToFile(), and Package::DumpUnpackInstructionsToFile().
+
+\index{InstructionSequence@{InstructionSequence}!Execute@{Execute}}
+\index{Execute@{Execute}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{Execute}]{\setlength{\rightskip}{0pt plus 5cm}bool InstructionSequence::Execute (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{int}]{ numProcessors, }
+\item[{bool}]{ logFilesWritten}
+\end{DoxyParamCaption}
+) const}\label{classInstructionSequence_ae1f79c079ab7a7ae7e27c06ca3d4dcf2}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em logEntry}]-\/ the log entry to receive error messages \item[{\em numProcessors}]-\/ number of processors in system (for parallelization) \item[{\em logFilesWritten}]-\/ should the names of files written be logged \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if an instruction fails
+\end{DoxyReturn}
+Executes the stored sequence of instructions. If any instruction fails, it immediately returns false. Eventually error messages will be logged. 
+
+References Interpreter::Interpret(), mBaseDirectory, InstallEntry::SetErrorMessage(), and Translate().
+
+
+
+Referenced by Package::Build(), Package::Configure(), Package::Install(), InstallEntry::Uninstall(), and Package::Unpack().
+
+\index{InstructionSequence@{InstructionSequence}!GetStartingDirectory@{GetStartingDirectory}}
+\index{GetStartingDirectory@{GetStartingDirectory}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{GetStartingDirectory}]{\setlength{\rightskip}{0pt plus 5cm}string InstructionSequence::GetStartingDirectory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstructionSequence_a84d314d135d713a984b98fa1344f8712}
+\begin{DoxyReturn}{Returns}
+the directory to change to before executing 
+\end{DoxyReturn}
+
+
+References mBaseDirectory.
+
+
+
+Referenced by Package::Install().
+
+\index{InstructionSequence@{InstructionSequence}!HandleIfStatement@{HandleIfStatement}}
+\index{HandleIfStatement@{HandleIfStatement}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{HandleIfStatement}]{\setlength{\rightskip}{0pt plus 5cm}bool InstructionSequence::HandleIfStatement (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{FILE $\ast$}]{ outputFile, }
+\item[{bool}]{ skipLines, }
+\item[{int \&}]{ lineNumber}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [private]}}\label{classInstructionSequence_a5dfc78acaf6c98d164c3496c4ff4b112}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em logEntry}]-\/ the log entry to receive any error messages \item[{\em outputFile}]-\/ the script file to receive the translated instructions \item[{\em skipLines}]-\/ if true, indicates that we are processing a section of an if statement which will not be executed due to feature conditions \item[{\em lineNumber}]-\/ the current line in the list of instructions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successfully parsed 
+\end{DoxyReturn}
+
+
+References ConditionFulfilled(), InstallEntry::GetFeatures(), mInstructions, and InstallEntry::SetErrorMessage().
+
+
+
+Referenced by Translate().
+
+\index{InstructionSequence@{InstructionSequence}!IsEmpty@{IsEmpty}}
+\index{IsEmpty@{IsEmpty}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{IsEmpty}]{\setlength{\rightskip}{0pt plus 5cm}bool InstructionSequence::IsEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstructionSequence_a0053ed9f5ffd788b0d1eb7d016be9833}
+\begin{DoxyReturn}{Returns}
+true there are no stored instructions 
+\end{DoxyReturn}
+
+
+References mInstructions.
+
+
+
+Referenced by InstallEntry::Save(), and InstallEntry::Uninstall().
+
+\index{InstructionSequence@{InstructionSequence}!Load@{Load}}
+\index{Load@{Load}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool InstructionSequence::Load (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ instructionNode}
+\end{DoxyParamCaption}
+)}\label{classInstructionSequence_a983fec28d4877fea4110a415ad356179}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em instructionNode}]-\/ the xml node which is the parent of the text nodes containing the actual instructions \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if parentNode is NULL
+\end{DoxyReturn}
+Loads the instructions stored as child text nodes of the specified instruction node. 
+
+References mInstructions, and SetShell().
+
+
+
+Referenced by Package::Load(), and InstallEntry::Load().
+
+\index{InstructionSequence@{InstructionSequence}!operator=@{operator=}}
+\index{operator=@{operator=}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InstructionSequence} \& InstructionSequence::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf InstructionSequence} \&}]{ src}
+\end{DoxyParamCaption}
+)}\label{classInstructionSequence_a3100c304cfb43f70646c403599cbc07f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]-\/ the instruction sequence to be copied\end{DoxyParams}
+Copies an \doxyref{InstructionSequence}{p.}{classInstructionSequence} 
+
+References mBaseDirectory, mInstructions, and mShell.
+
+\index{InstructionSequence@{InstructionSequence}!ReplaceString@{ReplaceString}}
+\index{ReplaceString@{ReplaceString}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{ReplaceString}]{\setlength{\rightskip}{0pt plus 5cm}void InstructionSequence::ReplaceString (
+\begin{DoxyParamCaption}
+\item[{string}]{ oldString, }
+\item[{string}]{ newString, }
+\item[{bool}]{ includeStartingDir}
+\end{DoxyParamCaption}
+)}\label{classInstructionSequence_a6fc6c4c08a313d7a155a802e3453ebcc}
+Deletes all of the stored instructions. 
+
+References mBaseDirectory, and mInstructions.
+
+
+
+Referenced by Package::Package().
+
+\index{InstructionSequence@{InstructionSequence}!Save@{Save}}
+\index{Save@{Save}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool InstructionSequence::Save (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ parentNode, }
+\item[{string}]{ type}
+\end{DoxyParamCaption}
+) const}\label{classInstructionSequence_a1ab6f4f613435965439d64c4074b4366}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em parentNode}]-\/ the xml node to serve as the parent of the instruction node \item[{\em type}]-\/ string identifying what these instructions are used for \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if parentNode is null
+\end{DoxyReturn}
+Saves the instructions as child nodes of the specified parent node. 
+
+References mInstructions, and mShell.
+
+
+
+Referenced by Package::Save(), and InstallEntry::Save().
+
+\index{InstructionSequence@{InstructionSequence}!SetShell@{SetShell}}
+\index{SetShell@{SetShell}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{SetShell}]{\setlength{\rightskip}{0pt plus 5cm}void InstructionSequence::SetShell (
+\begin{DoxyParamCaption}
+\item[{string}]{ shell}
+\end{DoxyParamCaption}
+)}\label{classInstructionSequence_a940c1e3bcd4e732b51b815feb8aca535}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em shell}]-\/ the shell used to interpret the instructions \end{DoxyParams}
+
+
+References mShell.
+
+
+
+Referenced by Load().
+
+\index{InstructionSequence@{InstructionSequence}!SetStartingDirectory@{SetStartingDirectory}}
+\index{SetStartingDirectory@{SetStartingDirectory}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{SetStartingDirectory}]{\setlength{\rightskip}{0pt plus 5cm}void InstructionSequence::SetStartingDirectory (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classInstructionSequence_acd6a6c708b361825b99198e637c5cf9c}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em directory}]-\/ the directory to change to before executing \end{DoxyParams}
+
+
+References mBaseDirectory.
+
+
+
+Referenced by Package::Build(), Package::Configure(), Package::Install(), and Package::Unpack().
+
+\index{InstructionSequence@{InstructionSequence}!Translate@{Translate}}
+\index{Translate@{Translate}!InstructionSequence@{InstructionSequence}}
+\subsubsection[{Translate}]{\setlength{\rightskip}{0pt plus 5cm}bool InstructionSequence::Translate (
+\begin{DoxyParamCaption}
+\item[{{\bf InstallEntry} $\ast$}]{ logEntry, }
+\item[{int}]{ numProcessors}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [private]}}\label{classInstructionSequence_adb6fd85789b61bd71ccb1b69c358e828}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em logEntry}]-\/ the log entry to receive any error messages \item[{\em numProcessors}]-\/ number of processors in system (for parallelization) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if these instructions were successfully used to create a script file 
+\end{DoxyReturn}
+
+
+\begin{Desc}
+\item[{\bf Todo}]Add support for constants for things like package name \end{Desc}
+
+
+
+
+References HandleIfStatement(), Interpreter::Interpret(), mBaseDirectory, mInstructions, mShell, and InstallEntry::SetErrorMessage().
+
+
+
+Referenced by Execute().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+InstructionSequence.h\item 
+InstructionSequence.cpp\end{DoxyCompactItemize}

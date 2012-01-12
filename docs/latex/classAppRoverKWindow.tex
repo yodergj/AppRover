@@ -1,0 +1,131 @@
+\section{AppRoverKWindow Class Reference}
+\label{classAppRoverKWindow}\index{AppRoverKWindow@{AppRoverKWindow}}
+
+
+Window class of the KDE \doxyref{AppRover}{p.}{classAppRover} GUI.  
+
+
+
+
+{\ttfamily \#include $<$kAppRover.h$>$}
+
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Install} ()
+\item 
+void {\bf Uninstall} ()
+\item 
+void {\bf CreateNewPackage} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf AppRoverKWindow} (const char $\ast$title)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf FillOutPackageList} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+KListView $\ast$ {\bf mPackageList}\label{classAppRoverKWindow_a75114469a8e5b11938f5a3f7005399e1}
+
+\begin{DoxyCompactList}\small\item\em the view which lists the available packages \item\end{DoxyCompactList}\item 
+{\bf AppRover} $\ast$ {\bf mAppRover}\label{classAppRoverKWindow_ad02aceee8c01265cf310473b785f0546}
+
+\begin{DoxyCompactList}\small\item\em the \doxyref{AppRover}{p.}{classAppRover} work horse object \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Window class of the KDE \doxyref{AppRover}{p.}{classAppRover} GUI. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{AppRoverKWindow@{AppRoverKWindow}!AppRoverKWindow@{AppRoverKWindow}}
+\index{AppRoverKWindow@{AppRoverKWindow}!AppRoverKWindow@{AppRoverKWindow}}
+\subsubsection[{AppRoverKWindow}]{\setlength{\rightskip}{0pt plus 5cm}AppRoverKWindow::AppRoverKWindow (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ title}
+\end{DoxyParamCaption}
+)}\label{classAppRoverKWindow_a452b45e5e1932609e8bd4eb5b822a6e9}
+Initializes the window and creates the \doxyref{AppRover}{p.}{classAppRover} object to handle the bulk of the processing. 
+
+References CreateNewPackage(), FillOutPackageList(), Install(), Interpreter::Interpret(), mAppRover, mPackageList, and Uninstall().
+
+
+
+\subsection{Member Function Documentation}
+\index{AppRoverKWindow@{AppRoverKWindow}!CreateNewPackage@{CreateNewPackage}}
+\index{CreateNewPackage@{CreateNewPackage}!AppRoverKWindow@{AppRoverKWindow}}
+\subsubsection[{CreateNewPackage}]{\setlength{\rightskip}{0pt plus 5cm}void AppRoverKWindow::CreateNewPackage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classAppRoverKWindow_a7a6322b583e0b1cfbc3fc974810c4adf}
+Creates a new package by invoking a \doxyref{PackageWizard}{p.}{classPackageWizard}. 
+
+References AppRover::AddNewPackage(), FillOutPackageList(), and mAppRover.
+
+
+
+Referenced by AppRoverKWindow().
+
+\index{AppRoverKWindow@{AppRoverKWindow}!FillOutPackageList@{FillOutPackageList}}
+\index{FillOutPackageList@{FillOutPackageList}!AppRoverKWindow@{AppRoverKWindow}}
+\subsubsection[{FillOutPackageList}]{\setlength{\rightskip}{0pt plus 5cm}void AppRoverKWindow::FillOutPackageList (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classAppRoverKWindow_a2db5d59907817bb85210bb9833118c68}
+Obtains a list of packages from the \doxyref{AppRover}{p.}{classAppRover} and uses it to populate the package list widget. 
+
+\begin{Desc}
+\item[{\bf Todo}]Clean this up so it doesn't do so many allocations / deallocations \end{Desc}
+
+
+
+
+References AppRover::GetInstalledRevisionNumber(), AppRover::GetPackageName(), mAppRover, mPackageList, and AppRover::NumPackages().
+
+
+
+Referenced by AppRoverKWindow(), CreateNewPackage(), Install(), and Uninstall().
+
+\index{AppRoverKWindow@{AppRoverKWindow}!Install@{Install}}
+\index{Install@{Install}!AppRoverKWindow@{AppRoverKWindow}}
+\subsubsection[{Install}]{\setlength{\rightskip}{0pt plus 5cm}void AppRoverKWindow::Install (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classAppRoverKWindow_a933d142529b3a43d17e02a8069ed986e}
+Installs the packages currently selected in the package list widget. 
+
+References FillOutPackageList(), AppRover::Install(), mAppRover, and mPackageList.
+
+
+
+Referenced by AppRoverKWindow().
+
+\index{AppRoverKWindow@{AppRoverKWindow}!Uninstall@{Uninstall}}
+\index{Uninstall@{Uninstall}!AppRoverKWindow@{AppRoverKWindow}}
+\subsubsection[{Uninstall}]{\setlength{\rightskip}{0pt plus 5cm}void AppRoverKWindow::Uninstall (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classAppRoverKWindow_acf58ad5852f8d945e8e1837a66429f71}
+Uninstalls the packages currently selected in the package list widget. 
+
+References FillOutPackageList(), mAppRover, mPackageList, and AppRover::Uninstall().
+
+
+
+Referenced by AppRoverKWindow().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+kAppRover.h\item 
+kAppRover.cpp\end{DoxyCompactItemize}

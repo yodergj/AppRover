@@ -1,0 +1,182 @@
+\section{FeatureOption Class Reference}
+\label{classFeatureOption}\index{FeatureOption@{FeatureOption}}
+
+
+Class for managing a specific optional feature for a package (like USE flags in Gentoo's portage).  
+
+
+
+
+{\ttfamily \#include $<$FeatureOption.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf FeatureOption} (const {\bf FeatureOption} $\ast$clone)
+\item 
+bool {\bf Save} (xmlNodePtr parentNode) const 
+\item 
+bool {\bf Load} (xmlNodePtr featureNode)
+\item 
+string {\bf GetName} () const 
+\item 
+void {\bf SetName} (string name)
+\item 
+bool {\bf IsEnabled} () const 
+\item 
+void {\bf Enable} ()
+\item 
+void {\bf Disable} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mName}\label{classFeatureOption_aecab936d2ed4e3a196563f6ac7522397}
+
+\begin{DoxyCompactList}\small\item\em The name of this optional feature. \item\end{DoxyCompactList}\item 
+bool {\bf mEnabled}\label{classFeatureOption_a65ccbe27ec934d2c95ec805395ddae73}
+
+\begin{DoxyCompactList}\small\item\em The state of whether this feature should be used by a package. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for managing a specific optional feature for a package (like USE flags in Gentoo's portage). 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{FeatureOption@{FeatureOption}!FeatureOption@{FeatureOption}}
+\index{FeatureOption@{FeatureOption}!FeatureOption@{FeatureOption}}
+\subsubsection[{FeatureOption}]{\setlength{\rightskip}{0pt plus 5cm}FeatureOption::FeatureOption (
+\begin{DoxyParamCaption}
+\item[{const {\bf FeatureOption} $\ast$}]{ clone}
+\end{DoxyParamCaption}
+)}\label{classFeatureOption_a1a6476690508fcc40acf2e28063d32fc}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em clone}]-\/ the optional feature to copy \end{DoxyParams}
+
+
+References mEnabled, and mName.
+
+
+
+\subsection{Member Function Documentation}
+\index{FeatureOption@{FeatureOption}!Disable@{Disable}}
+\index{Disable@{Disable}!FeatureOption@{FeatureOption}}
+\subsubsection[{Disable}]{\setlength{\rightskip}{0pt plus 5cm}void FeatureOption::Disable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classFeatureOption_a20542d792fa736721e10c93aa663b0c1}
+Sets the state of this feature to disabled 
+
+References mEnabled.
+
+
+
+Referenced by AppRover::Install().
+
+\index{FeatureOption@{FeatureOption}!Enable@{Enable}}
+\index{Enable@{Enable}!FeatureOption@{FeatureOption}}
+\subsubsection[{Enable}]{\setlength{\rightskip}{0pt plus 5cm}void FeatureOption::Enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classFeatureOption_ae7c6b27417c70f16b126c592083f4d65}
+Sets the state of this feature to enabled 
+
+References mEnabled.
+
+
+
+Referenced by AppRover::Install().
+
+\index{FeatureOption@{FeatureOption}!GetName@{GetName}}
+\index{GetName@{GetName}!FeatureOption@{FeatureOption}}
+\subsubsection[{GetName}]{\setlength{\rightskip}{0pt plus 5cm}string FeatureOption::GetName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classFeatureOption_a9fbeb82e8912ffead8c0bbaf6e9edc4c}
+\begin{DoxyReturn}{Returns}
+the name of this optional feature 
+\end{DoxyReturn}
+
+
+References mName.
+
+
+
+Referenced by AppRover::Install().
+
+\index{FeatureOption@{FeatureOption}!IsEnabled@{IsEnabled}}
+\index{IsEnabled@{IsEnabled}!FeatureOption@{FeatureOption}}
+\subsubsection[{IsEnabled}]{\setlength{\rightskip}{0pt plus 5cm}bool FeatureOption::IsEnabled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classFeatureOption_ab87f74a13ec1fb4e789f07485e7d1836}
+\begin{DoxyReturn}{Returns}
+true if this feature is enabled 
+\end{DoxyReturn}
+
+
+References mEnabled.
+
+\index{FeatureOption@{FeatureOption}!Load@{Load}}
+\index{Load@{Load}!FeatureOption@{FeatureOption}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool FeatureOption::Load (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ featureNode}
+\end{DoxyParamCaption}
+)}\label{classFeatureOption_a399b62277e20e82d09b0618ea410d264}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em featureNode}]-\/ the XML DOM node containing date for this feature \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if featureNode is null or does not contain a feature name 
+\end{DoxyReturn}
+
+
+References mEnabled, and mName.
+
+
+
+Referenced by Package::Load(), and InstallEntry::Load().
+
+\index{FeatureOption@{FeatureOption}!Save@{Save}}
+\index{Save@{Save}!FeatureOption@{FeatureOption}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool FeatureOption::Save (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ parentNode}
+\end{DoxyParamCaption}
+) const}\label{classFeatureOption_a4e5c7271b0d0967aeae81248cb2992ab}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em parentNode}]-\/ the XML DOM node which will be the parent to the node for this feature \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if parentNode is NULL 
+\end{DoxyReturn}
+
+
+References mEnabled, and mName.
+
+\index{FeatureOption@{FeatureOption}!SetName@{SetName}}
+\index{SetName@{SetName}!FeatureOption@{FeatureOption}}
+\subsubsection[{SetName}]{\setlength{\rightskip}{0pt plus 5cm}void FeatureOption::SetName (
+\begin{DoxyParamCaption}
+\item[{string}]{ name}
+\end{DoxyParamCaption}
+)}\label{classFeatureOption_a8498d709e317ecbc56a9cc87cc429139}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]-\/ the new name for this optional feature \end{DoxyParams}
+
+
+References mName.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+FeatureOption.h\item 
+FeatureOption.cpp\end{DoxyCompactItemize}

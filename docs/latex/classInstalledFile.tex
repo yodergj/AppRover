@@ -1,0 +1,326 @@
+\section{InstalledFile Class Reference}
+\label{classInstalledFile}\index{InstalledFile@{InstalledFile}}
+
+
+A class describing a file installed by a package.  
+
+
+
+
+{\ttfamily \#include $<$InstalledFile.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf InstalledFile} (string filename)
+\item 
+string {\bf GetFilename} () const 
+\item 
+void {\bf SetFilename} (string filename)
+\item 
+string {\bf GetBackupFilename} () const 
+\item 
+string {\bf GetChecksum} () const 
+\item 
+void {\bf SetChecksum} (string checksum)
+\item 
+bool {\bf IsAnInheritedFile} () const 
+\item 
+void {\bf SetInherited} (bool inherited)
+\item 
+bool {\bf NeedsBackedUp} () const 
+\item 
+bool {\bf IsABackupFile} () const 
+\item 
+void {\bf SetBackup} (bool backupState)
+\item 
+bool {\bf Save} (xmlNodePtr parentNode)
+\item 
+bool {\bf Load} (xmlNodePtr fileNode)
+\item 
+bool {\bf operator==} (const {\bf InstalledFile} \&refFile) const 
+\item 
+bool {\bf operator$<$} (const {\bf InstalledFile} \&refFile) const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mFilename}\label{classInstalledFile_a0711ddefa35381d3db54b74fc608b642}
+
+\begin{DoxyCompactList}\small\item\em The full path of this file. \item\end{DoxyCompactList}\item 
+string {\bf mFilePart}\label{classInstalledFile_aada62fd16c2ed19a5b090ae180c38521}
+
+\begin{DoxyCompactList}\small\item\em The filename portion without the path. \item\end{DoxyCompactList}\item 
+string {\bf mDirectory}\label{classInstalledFile_aa48fb1ef4521894c07cc748962467530}
+
+\begin{DoxyCompactList}\small\item\em The directory where this file is located. \item\end{DoxyCompactList}\item 
+string {\bf mChecksum}\label{classInstalledFile_ac92b113608f66295da78764e1464f631}
+
+\begin{DoxyCompactList}\small\item\em The checksum for this file. \item\end{DoxyCompactList}\item 
+bool {\bf mIsABackupFile}\label{classInstalledFile_a2795aa52985aa260fb765f6ef7eebb58}
+
+\begin{DoxyCompactList}\small\item\em Is this file a backup copy of another installed file. \item\end{DoxyCompactList}\item 
+bool {\bf mIsAnInheritedFile}\label{classInstalledFile_ac384a77efa70db13f78096f28aee4819}
+
+\begin{DoxyCompactList}\small\item\em Is this a file whose ownership was transferred. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class describing a file installed by a package. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{InstalledFile@{InstalledFile}!InstalledFile@{InstalledFile}}
+\index{InstalledFile@{InstalledFile}!InstalledFile@{InstalledFile}}
+\subsubsection[{InstalledFile}]{\setlength{\rightskip}{0pt plus 5cm}InstalledFile::InstalledFile (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classInstalledFile_a0b12a9640204cd89cdee27e767250114}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the absolute path of the installed file \end{DoxyParams}
+
+
+References mChecksum, mFilename, mIsABackupFile, and mIsAnInheritedFile.
+
+
+
+\subsection{Member Function Documentation}
+\index{InstalledFile@{InstalledFile}!GetBackupFilename@{GetBackupFilename}}
+\index{GetBackupFilename@{GetBackupFilename}!InstalledFile@{InstalledFile}}
+\subsubsection[{GetBackupFilename}]{\setlength{\rightskip}{0pt plus 5cm}string InstalledFile::GetBackupFilename (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstalledFile_a7488a7ed646eb82161ab48f5889afddb}
+\begin{DoxyReturn}{Returns}
+the absolute path that would identify a backup of this file 
+\end{DoxyReturn}
+
+
+References mDirectory, and mFilePart.
+
+\index{InstalledFile@{InstalledFile}!GetChecksum@{GetChecksum}}
+\index{GetChecksum@{GetChecksum}!InstalledFile@{InstalledFile}}
+\subsubsection[{GetChecksum}]{\setlength{\rightskip}{0pt plus 5cm}string InstalledFile::GetChecksum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstalledFile_a8a1870d8ec7404a7094879bdd6956d2d}
+\begin{DoxyReturn}{Returns}
+the checksum of this file 
+\end{DoxyReturn}
+
+
+References mChecksum.
+
+
+
+Referenced by NeedsBackedUp().
+
+\index{InstalledFile@{InstalledFile}!GetFilename@{GetFilename}}
+\index{GetFilename@{GetFilename}!InstalledFile@{InstalledFile}}
+\subsubsection[{GetFilename}]{\setlength{\rightskip}{0pt plus 5cm}string InstalledFile::GetFilename (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstalledFile_a741027a8e814c4e1b4da1bafa9750977}
+\begin{DoxyReturn}{Returns}
+the absolute path of the installed file 
+\end{DoxyReturn}
+
+
+References mFilename.
+
+\index{InstalledFile@{InstalledFile}!IsABackupFile@{IsABackupFile}}
+\index{IsABackupFile@{IsABackupFile}!InstalledFile@{InstalledFile}}
+\subsubsection[{IsABackupFile}]{\setlength{\rightskip}{0pt plus 5cm}bool InstalledFile::IsABackupFile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstalledFile_a84911e1d3e4c5b47446be62ccf4fbecf}
+\begin{DoxyReturn}{Returns}
+the backup state of this file 
+\end{DoxyReturn}
+
+
+References mIsABackupFile.
+
+\index{InstalledFile@{InstalledFile}!IsAnInheritedFile@{IsAnInheritedFile}}
+\index{IsAnInheritedFile@{IsAnInheritedFile}!InstalledFile@{InstalledFile}}
+\subsubsection[{IsAnInheritedFile}]{\setlength{\rightskip}{0pt plus 5cm}bool InstalledFile::IsAnInheritedFile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstalledFile_a20ffa334a24f3c44137969aa473ec44b}
+\begin{DoxyReturn}{Returns}
+the inherited state of this file 
+\end{DoxyReturn}
+
+
+References mIsAnInheritedFile.
+
+\index{InstalledFile@{InstalledFile}!Load@{Load}}
+\index{Load@{Load}!InstalledFile@{InstalledFile}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool InstalledFile::Load (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ fileNode}
+\end{DoxyParamCaption}
+)}\label{classInstalledFile_a4cbd6c6fe354af0a474ad7892f9eed72}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fileNode}]-\/ the XML DOM node containing the file data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if fileNode is NULL or there is a format error
+\end{DoxyReturn}
+Loads the file data from the specified node. 
+
+References mChecksum, mIsABackupFile, mIsAnInheritedFile, and SetFilename().
+
+
+
+Referenced by InstallEntry::LoadFileList().
+
+\index{InstalledFile@{InstalledFile}!NeedsBackedUp@{NeedsBackedUp}}
+\index{NeedsBackedUp@{NeedsBackedUp}!InstalledFile@{InstalledFile}}
+\subsubsection[{NeedsBackedUp}]{\setlength{\rightskip}{0pt plus 5cm}bool InstalledFile::NeedsBackedUp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classInstalledFile_ab5ea057e70a38a81b778dcbedb26f9e2}
+\begin{DoxyReturn}{Returns}
+true if this file has data that may need protection from overwriting 
+\end{DoxyReturn}
+
+
+References GetChecksum(), mChecksum, mFilename, mFilePart, and mIsABackupFile.
+
+\index{InstalledFile@{InstalledFile}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!InstalledFile@{InstalledFile}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool InstalledFile::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf InstalledFile} \&}]{ refFile}
+\end{DoxyParamCaption}
+) const}\label{classInstalledFile_ae6ec18f542cfdc5ca69f6c7318b1fcbc}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refFile}]-\/ the installed file to compare against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the filename of this file precedes refFile's filename 
+\end{DoxyReturn}
+
+
+References mDirectory, and mFilePart.
+
+\index{InstalledFile@{InstalledFile}!operator==@{operator==}}
+\index{operator==@{operator==}!InstalledFile@{InstalledFile}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool InstalledFile::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf InstalledFile} \&}]{ refFile}
+\end{DoxyParamCaption}
+) const}\label{classInstalledFile_ab32f40734a1de4f1c8a3fc15a6383307}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em refFile}]-\/ the installed file to compare against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if filenames are the same 
+\end{DoxyReturn}
+
+
+References mFilename.
+
+\index{InstalledFile@{InstalledFile}!Save@{Save}}
+\index{Save@{Save}!InstalledFile@{InstalledFile}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool InstalledFile::Save (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ parentNode}
+\end{DoxyParamCaption}
+)}\label{classInstalledFile_a1f69337446aa077d73808e7c2eae2101}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em parentNode}]-\/ the parent XML DOM node for the file node \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if parentNode is NULL
+\end{DoxyReturn}
+Saves the file data as a child node of the specified parent. 
+
+References mChecksum, mFilename, mIsABackupFile, and mIsAnInheritedFile.
+
+\index{InstalledFile@{InstalledFile}!SetBackup@{SetBackup}}
+\index{SetBackup@{SetBackup}!InstalledFile@{InstalledFile}}
+\subsubsection[{SetBackup}]{\setlength{\rightskip}{0pt plus 5cm}void InstalledFile::SetBackup (
+\begin{DoxyParamCaption}
+\item[{bool}]{ backupState}
+\end{DoxyParamCaption}
+)}\label{classInstalledFile_aea68ccf2d8e6bd50a5b9a7015369263b}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em backupState}]-\/ the backup state of this file \end{DoxyParams}
+
+
+References mIsABackupFile.
+
+
+
+Referenced by InstallEntry::TransferFilesTo().
+
+\index{InstalledFile@{InstalledFile}!SetChecksum@{SetChecksum}}
+\index{SetChecksum@{SetChecksum}!InstalledFile@{InstalledFile}}
+\subsubsection[{SetChecksum}]{\setlength{\rightskip}{0pt plus 5cm}void InstalledFile::SetChecksum (
+\begin{DoxyParamCaption}
+\item[{string}]{ checksum}
+\end{DoxyParamCaption}
+)}\label{classInstalledFile_a8196dbf44c7bf0f49eee7cf497abf388}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em checksum}]-\/ the checksum of this file \end{DoxyParams}
+
+
+References mChecksum.
+
+
+
+Referenced by InstallEntry::AddInstalledFile(), and InstallEntry::TransferFilesTo().
+
+\index{InstalledFile@{InstalledFile}!SetFilename@{SetFilename}}
+\index{SetFilename@{SetFilename}!InstalledFile@{InstalledFile}}
+\subsubsection[{SetFilename}]{\setlength{\rightskip}{0pt plus 5cm}void InstalledFile::SetFilename (
+\begin{DoxyParamCaption}
+\item[{string}]{ filename}
+\end{DoxyParamCaption}
+)}\label{classInstalledFile_af5c5a6691b1baecf91f334565e696ed0}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the absolute path of the installed file \end{DoxyParams}
+
+
+References mDirectory, mFilename, and mFilePart.
+
+
+
+Referenced by Load().
+
+\index{InstalledFile@{InstalledFile}!SetInherited@{SetInherited}}
+\index{SetInherited@{SetInherited}!InstalledFile@{InstalledFile}}
+\subsubsection[{SetInherited}]{\setlength{\rightskip}{0pt plus 5cm}void InstalledFile::SetInherited (
+\begin{DoxyParamCaption}
+\item[{bool}]{ inherited}
+\end{DoxyParamCaption}
+)}\label{classInstalledFile_af8f811ea9016793c101751ad14333875}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em inherited}]-\/ the inherited state of this file \end{DoxyParams}
+
+
+References mIsAnInheritedFile.
+
+
+
+Referenced by InstallEntry::TransferFilesTo().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+InstalledFile.h\item 
+InstalledFile.cpp\end{DoxyCompactItemize}

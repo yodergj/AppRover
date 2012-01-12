@@ -1,0 +1,8 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="kAppRover">
+<MenuBar>
+  <Menu name="package"><text>&amp;Package</text>
+    <Action name="create_new_package"/>
+  </Menu>
+</MenuBar>
+</kpartgui>

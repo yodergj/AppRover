@@ -1,0 +1,214 @@
+\section{BooleanExpression Class Reference}
+\label{classBooleanExpression}\index{BooleanExpression@{BooleanExpression}}
+
+
+Class for evaluating the value of a boolean expression.  
+
+
+
+
+{\ttfamily \#include $<$BooleanExpression.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf GetString} () const 
+\item 
+bool {\bf ParseFromString} (string expression)
+\item 
+bool {\bf IsEmpty} () const 
+\item 
+bool {\bf EvaluatesToTrue} (const FeatureOptionVector \&features) const 
+\item 
+{\bf BooleanExpression} \& {\bf operator=} (const {\bf BooleanExpression} \&src)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf GetFeatureValue} (const FeatureOptionVector \&features, string feature) const 
+\item 
+bool {\bf ParseString} (string expression, bool isTopLevel)
+\item 
+string {\bf PopArgument} (string \&arguments) const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ string $>$ {\bf mArgumentsInReversePolishNotation}\label{classBooleanExpression_adf33140090b366e263ded0f920e7a88a}
+
+\begin{DoxyCompactList}\small\item\em the operands and operators of the experession listed in reverse polish notation \item\end{DoxyCompactList}\item 
+string {\bf mDisplayString}\label{classBooleanExpression_afb0b8bbd30908f228b30422e66a76c3d}
+
+\begin{DoxyCompactList}\small\item\em the expression shown in \char`\"{}normal\char`\"{} notation \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for evaluating the value of a boolean expression. 
+
+\subsection{Member Function Documentation}
+\index{BooleanExpression@{BooleanExpression}!EvaluatesToTrue@{EvaluatesToTrue}}
+\index{EvaluatesToTrue@{EvaluatesToTrue}!BooleanExpression@{BooleanExpression}}
+\subsubsection[{EvaluatesToTrue}]{\setlength{\rightskip}{0pt plus 5cm}bool BooleanExpression::EvaluatesToTrue (
+\begin{DoxyParamCaption}
+\item[{const FeatureOptionVector \&}]{ features}
+\end{DoxyParamCaption}
+) const}\label{classBooleanExpression_a2f438b89d529322b8891d4c09a6c410e}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em features}]-\/ the list of optional feature states used to evaluate the value of the expression \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the expression evaluates to true 
+
+false if the expression evaluates to false or is empty 
+\end{DoxyReturn}
+
+
+References GetFeatureValue(), and mArgumentsInReversePolishNotation.
+
+
+
+Referenced by InstructionSequence::ConditionFulfilled(), SourceFile::IsActive(), and PackageDependency::IsActive().
+
+\index{BooleanExpression@{BooleanExpression}!GetFeatureValue@{GetFeatureValue}}
+\index{GetFeatureValue@{GetFeatureValue}!BooleanExpression@{BooleanExpression}}
+\subsubsection[{GetFeatureValue}]{\setlength{\rightskip}{0pt plus 5cm}bool BooleanExpression::GetFeatureValue (
+\begin{DoxyParamCaption}
+\item[{const FeatureOptionVector \&}]{ features, }
+\item[{string}]{ feature}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [private]}}\label{classBooleanExpression_af6a256a587bfb41868079be26c58ab2d}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em features}]-\/ the list of optional feature states used to evaluate this expression \item[{\em feature}]-\/ the name of an optional feature whose state is desired \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the feature is found in the list and is enabled 
+\end{DoxyReturn}
+
+
+\begin{Desc}
+\item[{\bf Todo}]Decide how to handle this case. Perhaps I will exit \end{Desc}
+
+
+
+
+Referenced by EvaluatesToTrue().
+
+\index{BooleanExpression@{BooleanExpression}!GetString@{GetString}}
+\index{GetString@{GetString}!BooleanExpression@{BooleanExpression}}
+\subsubsection[{GetString}]{\setlength{\rightskip}{0pt plus 5cm}string BooleanExpression::GetString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classBooleanExpression_a84f8b8d210372e2072ee1d3c3ff14017}
+\begin{DoxyReturn}{Returns}
+string containing the expression in \char`\"{}normal\char`\"{} notation 
+\end{DoxyReturn}
+
+
+References mDisplayString.
+
+
+
+Referenced by PackageDependency::GetDependentString(), PackageDependency::GetString(), SourceFile::Save(), and PackageDependency::Save().
+
+\index{BooleanExpression@{BooleanExpression}!IsEmpty@{IsEmpty}}
+\index{IsEmpty@{IsEmpty}!BooleanExpression@{BooleanExpression}}
+\subsubsection[{IsEmpty}]{\setlength{\rightskip}{0pt plus 5cm}bool BooleanExpression::IsEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classBooleanExpression_a364520efaadb114971b39e6c4c8331a7}
+\begin{DoxyReturn}{Returns}
+true if the expression does not contain any elements 
+\end{DoxyReturn}
+
+
+References mDisplayString.
+
+
+
+Referenced by SourceFile::IsActive(), and PackageDependency::IsActive().
+
+\index{BooleanExpression@{BooleanExpression}!operator=@{operator=}}
+\index{operator=@{operator=}!BooleanExpression@{BooleanExpression}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BooleanExpression} \& BooleanExpression::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf BooleanExpression} \&}]{ src}
+\end{DoxyParamCaption}
+)}\label{classBooleanExpression_ace625386040f9b9c7fd4e9ca513a82c4}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]-\/ the boolean expression to copy \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to this boolean expression 
+\end{DoxyReturn}
+
+
+References mArgumentsInReversePolishNotation, and mDisplayString.
+
+\index{BooleanExpression@{BooleanExpression}!ParseFromString@{ParseFromString}}
+\index{ParseFromString@{ParseFromString}!BooleanExpression@{BooleanExpression}}
+\subsubsection[{ParseFromString}]{\setlength{\rightskip}{0pt plus 5cm}bool BooleanExpression::ParseFromString (
+\begin{DoxyParamCaption}
+\item[{string}]{ expression}
+\end{DoxyParamCaption}
+)}\label{classBooleanExpression_a71fe77f10564e49d448583002eb4468a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em expression}]-\/ a new boolean expression in \char`\"{}normal\char`\"{} notation \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the expression could be properly parsed
+\end{DoxyReturn}
+Clears the current contents of the expression. If the new expression can be parsed, it will be used, otherwise the expression is left empty. 
+
+References mArgumentsInReversePolishNotation, mDisplayString, and ParseString().
+
+
+
+Referenced by InstructionSequence::ConditionFulfilled(), SourceFile::Load(), and PackageDependency::Load().
+
+\index{BooleanExpression@{BooleanExpression}!ParseString@{ParseString}}
+\index{ParseString@{ParseString}!BooleanExpression@{BooleanExpression}}
+\subsubsection[{ParseString}]{\setlength{\rightskip}{0pt plus 5cm}bool BooleanExpression::ParseString (
+\begin{DoxyParamCaption}
+\item[{string}]{ expression, }
+\item[{bool}]{ isTopLevel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [private]}}\label{classBooleanExpression_aeb6e3e60eeb471cb8f4de40f5ddae9a1}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em expression}]-\/ the remaining portion of an expression to be parsed \item[{\em isTopLevel}]-\/ if true, indiciates that we are working with the entire boolean expression \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the relevant portion of the expression could be successfully parsed
+\end{DoxyReturn}
+This function recursively parses an expression. The top level call fails if any characters are left unparsed. 
+
+References mArgumentsInReversePolishNotation, and PopArgument().
+
+
+
+Referenced by ParseFromString().
+
+\index{BooleanExpression@{BooleanExpression}!PopArgument@{PopArgument}}
+\index{PopArgument@{PopArgument}!BooleanExpression@{BooleanExpression}}
+\subsubsection[{PopArgument}]{\setlength{\rightskip}{0pt plus 5cm}string BooleanExpression::PopArgument (
+\begin{DoxyParamCaption}
+\item[{string \&}]{ arguments}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [private]}}\label{classBooleanExpression_a8454ebd6ad315c418a18d1234bfe2871}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em arguments}]-\/ string of tokens separated by whitespace \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string containing the next token (\char`\"{}\char`\"{} if there are no token remaining)
+\end{DoxyReturn}
+Modifies the input arguments to remove the leading token from the string and returns the token. 
+
+Referenced by ParseString().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+BooleanExpression.h\item 
+BooleanExpression.cpp\end{DoxyCompactItemize}

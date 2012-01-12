@@ -1,0 +1,46 @@
+\section{ActionDescriptionVector Class Reference}
+\label{classActionDescriptionVector}\index{ActionDescriptionVector@{ActionDescriptionVector}}
+
+
+Vector class for ActionDescriptions which prevents duplicate entries.  
+
+
+
+
+{\ttfamily \#include $<$ActionDescription.h$>$}
+
+
+
+Inherits std::vector$<$ ActionDescription $\ast$ $>$.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf push\_\-back} ({\bf ActionDescription} $\ast$element)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Vector class for ActionDescriptions which prevents duplicate entries. 
+
+\subsection{Member Function Documentation}
+\index{ActionDescriptionVector@{ActionDescriptionVector}!push\_\-back@{push\_\-back}}
+\index{push\_\-back@{push\_\-back}!ActionDescriptionVector@{ActionDescriptionVector}}
+\subsubsection[{push\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}void ActionDescriptionVector::push\_\-back (
+\begin{DoxyParamCaption}
+\item[{{\bf ActionDescription} $\ast$}]{ element}
+\end{DoxyParamCaption}
+)}\label{classActionDescriptionVector_a6128c70058381500dce3b310107b4591}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em element}]-\/ the action description to add to the vector\end{DoxyParams}
+Adds the element to the end of the vector. If the element matches an element that is already in the vector, the new element is simply deleted. 
+
+Referenced by AppRover::Clean(), AppRover::Install(), and AppRover::Uninstall().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+ActionDescription.h\item 
+ActionDescription.cpp\end{DoxyCompactItemize}

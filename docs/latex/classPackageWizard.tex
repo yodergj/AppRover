@@ -1,0 +1,320 @@
+\section{PackageWizard Class Reference}
+\label{classPackageWizard}\index{PackageWizard@{PackageWizard}}
+
+
+Wizard class used to create and edit packages within the KDE \doxyref{AppRover}{p.}{classAppRover} GUI.  
+
+
+
+
+{\ttfamily \#include $<$kPackageWizard.h$>$}
+
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf NameChanged} (const QString \&newName)
+\item 
+void {\bf RevisionChanged} (const QString \&newName)
+\item 
+void {\bf AddDependency} ()
+\item 
+void {\bf RemoveDependency} ()
+\item 
+void {\bf AddFile} ()
+\item 
+void {\bf RemoveFile} ()
+\item 
+void {\bf InstallChanged} ()
+\item 
+void {\bf UninstallChanged} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf PackageWizard} ({\bf Package} $\ast$package, QWidget $\ast$parent=NULL, const char $\ast$name=NULL)
+\item 
+void {\bf showPage} (QWidget $\ast$page)
+\end{DoxyCompactItemize}
+\subsection*{Protected Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bf next} ()
+\item 
+virtual void {\bf back} ()
+\item 
+virtual void {\bf accept} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QVBox $\ast$ {\bf mNamePage}\label{classPackageWizard_ac5b18cfb95fbe241d80862b6f5f80733}
+
+\begin{DoxyCompactList}\small\item\em Wizard page for editing things like name and revision. \item\end{DoxyCompactList}\item 
+QVBox $\ast$ {\bf mDependencyPage}\label{classPackageWizard_a119a72708472133e75542f9c3c8700ce}
+
+\begin{DoxyCompactList}\small\item\em Wizard page for editing package dependencies. \item\end{DoxyCompactList}\item 
+QVBox $\ast$ {\bf mFilePage}\label{classPackageWizard_a4ccdf49325095144bdbf4c108c3d86b8}
+
+\begin{DoxyCompactList}\small\item\em Wizard page for editing source files. \item\end{DoxyCompactList}\item 
+QVBox $\ast$ {\bf mUnpackPage}\label{classPackageWizard_a7f0d7726511025b47a0e26e1b1dd45aa}
+
+\begin{DoxyCompactList}\small\item\em Wizard page for setting unpacking instructions. \item\end{DoxyCompactList}\item 
+QVBox $\ast$ {\bf mConfigurePage}\label{classPackageWizard_a031ae55f91e472058a6e4932d79cf4f2}
+
+\begin{DoxyCompactList}\small\item\em Wizard page for setting configuration instructions. \item\end{DoxyCompactList}\item 
+QVBox $\ast$ {\bf mBuildPage}\label{classPackageWizard_ae837e9c9a2df7c582f2353d8cbc31596}
+
+\begin{DoxyCompactList}\small\item\em Wizard page for setting build instructions. \item\end{DoxyCompactList}\item 
+QVBox $\ast$ {\bf mInstallPage}\label{classPackageWizard_a2c1ad2568577a7317c70a69c0e18bb99}
+
+\begin{DoxyCompactList}\small\item\em Wizard page for setting install instructions. \item\end{DoxyCompactList}\item 
+QVBox $\ast$ {\bf mUninstallPage}\label{classPackageWizard_a15afaeb7b6bef4ae1863ca4eb6b0749e}
+
+\begin{DoxyCompactList}\small\item\em Wizard page for setting uninstall instructions. \item\end{DoxyCompactList}\item 
+KLineEdit $\ast$ {\bf mNameEdit}\label{classPackageWizard_a80a7c81866663bedbf0df1477ec30493}
+
+\begin{DoxyCompactList}\small\item\em Edit box for package name. \item\end{DoxyCompactList}\item 
+KLineEdit $\ast$ {\bf mFileEdit}\label{classPackageWizard_a6c865b20e2d77b1f006cd9d8563f5bcb}
+
+\begin{DoxyCompactList}\small\item\em Edit box for entering a new source file. \item\end{DoxyCompactList}\item 
+KListView $\ast$ {\bf mFileList}\label{classPackageWizard_add227db17b1bb86dafaf960573fd6789}
+
+\begin{DoxyCompactList}\small\item\em List view of all source files. \item\end{DoxyCompactList}\item 
+KLineEdit $\ast$ {\bf mDependencyNameEdit}\label{classPackageWizard_aab4fdb60c208fa361e02cd36087a7a64}
+
+\begin{DoxyCompactList}\small\item\em Edit box for entering dependency name. \item\end{DoxyCompactList}\item 
+KLineEdit $\ast$ {\bf mDependencyRevisionEdit}\label{classPackageWizard_ab468ea0dd867c1d25fb0378e25b4d92c}
+
+\begin{DoxyCompactList}\small\item\em Edit box for entering dependency revision. \item\end{DoxyCompactList}\item 
+KListView $\ast$ {\bf mDependencyList}\label{classPackageWizard_a9e7cb809715d86a70332679bc43dcdd2}
+
+\begin{DoxyCompactList}\small\item\em List view of all package dependencies. \item\end{DoxyCompactList}\item 
+QTextEdit $\ast$ {\bf mUnpackInstructions}\label{classPackageWizard_ae464ac28af0037a697ffb853afb8e897}
+
+\begin{DoxyCompactList}\small\item\em Edit box for unpacking instructions. \item\end{DoxyCompactList}\item 
+QTextEdit $\ast$ {\bf mConfigureInstructions}\label{classPackageWizard_a32a95356a87557b81718bdb07e4c9010}
+
+\begin{DoxyCompactList}\small\item\em Edit box for configuration instructions. \item\end{DoxyCompactList}\item 
+QTextEdit $\ast$ {\bf mBuildInstructions}\label{classPackageWizard_ae7c41940855ee27ce1b4ceb89eac1652}
+
+\begin{DoxyCompactList}\small\item\em Edit box for build instructions. \item\end{DoxyCompactList}\item 
+QTextEdit $\ast$ {\bf mInstallInstructions}\label{classPackageWizard_ac1876f6bcc865e9fc9cd60083ec45e4b}
+
+\begin{DoxyCompactList}\small\item\em Edit box for install instructions. \item\end{DoxyCompactList}\item 
+QTextEdit $\ast$ {\bf mUninstallInstructions}\label{classPackageWizard_a20126f96e20b474344e51a51908a531a}
+
+\begin{DoxyCompactList}\small\item\em Edit box for uninstall instructions. \item\end{DoxyCompactList}\item 
+{\bf Package} $\ast$ {\bf mPackage}\label{classPackageWizard_a8ebdf3c77ec36b25e3547ae8c608e513}
+
+\begin{DoxyCompactList}\small\item\em The package to create or edit. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wizard class used to create and edit packages within the KDE \doxyref{AppRover}{p.}{classAppRover} GUI. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{PackageWizard@{PackageWizard}!PackageWizard@{PackageWizard}}
+\index{PackageWizard@{PackageWizard}!PackageWizard@{PackageWizard}}
+\subsubsection[{PackageWizard}]{\setlength{\rightskip}{0pt plus 5cm}PackageWizard::PackageWizard (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ package, }
+\item[{QWidget $\ast$}]{ parent = {\ttfamily NULL}, }
+\item[{const char $\ast$}]{ name = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{classPackageWizard_a257353afe7f1c86ecfbed2903fcb0f53}
+Creates a package wizard to set the values of the specified package. 
+
+References AddDependency(), AddFile(), InstallChanged(), mBuildInstructions, mBuildPage, mConfigureInstructions, mConfigurePage, mDependencyList, mDependencyNameEdit, mDependencyPage, mDependencyRevisionEdit, mFileEdit, mFileList, mFilePage, mInstallInstructions, mInstallPage, mNameEdit, mNamePage, mPackage, mUninstallInstructions, mUninstallPage, mUnpackInstructions, mUnpackPage, NameChanged(), RemoveDependency(), RemoveFile(), RevisionChanged(), and UninstallChanged().
+
+
+
+\subsection{Member Function Documentation}
+\index{PackageWizard@{PackageWizard}!accept@{accept}}
+\index{accept@{accept}!PackageWizard@{PackageWizard}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::accept (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, virtual, slot]}}\label{classPackageWizard_a85225263c867da896c5021b49f3c36d5}
+Overrides KWizard::accept in order to save the data from the last page to the package. 
+
+References Package::AddUninstallInstruction(), Package::ClearUninstallInstructions(), mPackage, and mUninstallInstructions.
+
+\index{PackageWizard@{PackageWizard}!AddDependency@{AddDependency}}
+\index{AddDependency@{AddDependency}!PackageWizard@{PackageWizard}}
+\subsubsection[{AddDependency}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::AddDependency (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classPackageWizard_a76a3cce2ae330235326b4c74659523dd}
+Uses the data from the dependency edit box to add a new dependency to the dependency list widget. 
+
+References mDependencyList, mDependencyNameEdit, and mDependencyRevisionEdit.
+
+
+
+Referenced by PackageWizard().
+
+\index{PackageWizard@{PackageWizard}!AddFile@{AddFile}}
+\index{AddFile@{AddFile}!PackageWizard@{PackageWizard}}
+\subsubsection[{AddFile}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::AddFile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classPackageWizard_a2e7902743bacf370349f42ee8c2b30b5}
+Uses the data from the filename edit box to add a new filename to the file list widget. After adding the file, the \char`\"{}next\char`\"{} button is enabled. 
+
+References mFileEdit, and mFileList.
+
+
+
+Referenced by PackageWizard().
+
+\index{PackageWizard@{PackageWizard}!back@{back}}
+\index{back@{back}!PackageWizard@{PackageWizard}}
+\subsubsection[{back}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::back (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, virtual, slot]}}\label{classPackageWizard_a64571b220903df8f2432a2298a0d6e18}
+Overrides KWizard::back in order to clear the data from each page and the package. 
+
+References Package::ClearBuildInstructions(), Package::ClearConfigureInstructions(), Package::ClearDependencies(), Package::ClearInstallInstructions(), Package::ClearSourceFiles(), Package::ClearUninstallInstructions(), Package::ClearUnpackInstructions(), mBuildInstructions, mBuildPage, mConfigureInstructions, mConfigurePage, mDependencyList, mDependencyNameEdit, mDependencyPage, mDependencyRevisionEdit, mFileEdit, mFileList, mFilePage, mInstallInstructions, mInstallPage, mPackage, mUninstallInstructions, mUninstallPage, mUnpackInstructions, and mUnpackPage.
+
+\index{PackageWizard@{PackageWizard}!InstallChanged@{InstallChanged}}
+\index{InstallChanged@{InstallChanged}!PackageWizard@{PackageWizard}}
+\subsubsection[{InstallChanged}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::InstallChanged (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classPackageWizard_a33e9265a6164f32304c2939a7eae7af4}
+Called when the install instructions are changed in order to enable or disable the \char`\"{}next\char`\"{} button. 
+
+References mInstallInstructions.
+
+
+
+Referenced by PackageWizard().
+
+\index{PackageWizard@{PackageWizard}!NameChanged@{NameChanged}}
+\index{NameChanged@{NameChanged}!PackageWizard@{PackageWizard}}
+\subsubsection[{NameChanged}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::NameChanged (
+\begin{DoxyParamCaption}
+\item[{const QString \&}]{ newName}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classPackageWizard_acdfeabafeedf12e9b5fa3e86ebe24a63}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em newName}]-\/ the value of the package name\end{DoxyParams}
+Sets the name of the package and enables/disables the \char`\"{}next\char`\"{} button when applicable. 
+
+References Package::GetRevision(), Revision::GetString(), mPackage, and Package::SetName().
+
+
+
+Referenced by PackageWizard().
+
+\index{PackageWizard@{PackageWizard}!next@{next}}
+\index{next@{next}!PackageWizard@{PackageWizard}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, virtual, slot]}}\label{classPackageWizard_abf0561836252a6e736e0d04a489a214e}
+Overrides KWizard::next in order to save the data from each page to the package. 
+
+\begin{Desc}
+\item[{\bf Todo}]: use paragraph option for text to separately add instructions \end{Desc}
+
+
+\begin{Desc}
+\item[{\bf Todo}]update package wizard for dependency types \end{Desc}
+
+
+
+
+References Package::AddBuildInstruction(), Package::AddConfigureInstruction(), Package::AddDependency(), Package::AddInstallInstruction(), Package::AddSourceFile(), Package::AddUnpackInstruction(), Package::ClearBuildInstructions(), Package::ClearConfigureInstructions(), Package::ClearDependencies(), Package::ClearInstallInstructions(), Package::ClearSourceFiles(), Package::ClearUnpackInstructions(), mBuildInstructions, mBuildPage, mConfigureInstructions, mConfigurePage, mDependencyList, mDependencyPage, mFileList, mFilePage, mInstallInstructions, mInstallPage, mPackage, mUnpackInstructions, and mUnpackPage.
+
+\index{PackageWizard@{PackageWizard}!RemoveDependency@{RemoveDependency}}
+\index{RemoveDependency@{RemoveDependency}!PackageWizard@{PackageWizard}}
+\subsubsection[{RemoveDependency}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::RemoveDependency (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classPackageWizard_a37d2a68ba14b63369f11b06ab146a8e6}
+Removes the selected dependency from the dependency list widget. 
+
+References mDependencyList.
+
+
+
+Referenced by PackageWizard().
+
+\index{PackageWizard@{PackageWizard}!RemoveFile@{RemoveFile}}
+\index{RemoveFile@{RemoveFile}!PackageWizard@{PackageWizard}}
+\subsubsection[{RemoveFile}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::RemoveFile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classPackageWizard_afd41ece2e1c6d7035087bf6928ac78c4}
+Removes the selected file from the file list widget and disables the \char`\"{}next\char`\"{} button if the list becomes empty. 
+
+References mFileList.
+
+
+
+Referenced by PackageWizard().
+
+\index{PackageWizard@{PackageWizard}!RevisionChanged@{RevisionChanged}}
+\index{RevisionChanged@{RevisionChanged}!PackageWizard@{PackageWizard}}
+\subsubsection[{RevisionChanged}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::RevisionChanged (
+\begin{DoxyParamCaption}
+\item[{const QString \&}]{ newRevision}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classPackageWizard_af5cf3c936f251fe2dc562e1df1428117}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em newRevision}]-\/ the value of the package revision\end{DoxyParams}
+Sets the revision of the package and enables/disables the \char`\"{}next\char`\"{} button when applicable. 
+
+References Package::GetName(), mPackage, and Package::SetRevision().
+
+
+
+Referenced by PackageWizard().
+
+\index{PackageWizard@{PackageWizard}!showPage@{showPage}}
+\index{showPage@{showPage}!PackageWizard@{PackageWizard}}
+\subsubsection[{showPage}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::showPage (
+\begin{DoxyParamCaption}
+\item[{QWidget $\ast$}]{ page}
+\end{DoxyParamCaption}
+)}\label{classPackageWizard_a7036c01502e09e282d44ac00f6ee2cc4}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em page}]-\/ the page to show\end{DoxyParams}
+Overrides QWizard::showPage in order to properly intialize focus and disable the \char`\"{}next\char`\"{} button when applicable. 
+
+References Package::GetName(), Package::GetRevision(), Revision::GetString(), mBuildInstructions, mBuildPage, mConfigureInstructions, mConfigurePage, mDependencyNameEdit, mDependencyPage, mFileEdit, mFileList, mFilePage, mInstallInstructions, mInstallPage, mNameEdit, mNamePage, mPackage, mUninstallInstructions, mUninstallPage, mUnpackInstructions, and mUnpackPage.
+
+\index{PackageWizard@{PackageWizard}!UninstallChanged@{UninstallChanged}}
+\index{UninstallChanged@{UninstallChanged}!PackageWizard@{PackageWizard}}
+\subsubsection[{UninstallChanged}]{\setlength{\rightskip}{0pt plus 5cm}void PackageWizard::UninstallChanged (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [slot]}}\label{classPackageWizard_a709216ac82c73149950e73124304b6f6}
+Called when the uninstall instructions are changed in order to enable or disable the \char`\"{}finish\char`\"{} button. 
+
+References mUninstallInstructions.
+
+
+
+Referenced by PackageWizard().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+kPackageWizard.h\item 
+kPackageWizard.cpp\end{DoxyCompactItemize}

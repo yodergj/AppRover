@@ -1,0 +1,136 @@
+///////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2004-2009 Gabriel Yoder
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+///////////////////////////////////////////////////////////////////////////////
+#ifndef INSTALL_ENTRY_H
+#define INSTALL_ENTRY_H
+
+#include <libxml/tree.h>
+#include <vector>
+#include <string>
+#include "InstructionSequence.h"
+#include "PackageDependency.h"
+#include "Revision.h"
+#include "InstalledFile.h"
+
+using std::string;
+using std::vector;
+
+class InstallLog;
+class InstallEntry;
+typedef vector<InstallEntry *> InstallEntryVector;
+
+//! Class responsible for managing all data concerning a package which has been at least partially installed
+class InstallEntry
+{
+public:
+  InstallEntry();
+  ~InstallEntry();
+  bool Save(xmlNodePtr parentNode);
+  bool Load(xmlNodePtr entryNode);
+  string GetName() const;
+  void SetName(string name);
+  const Revision& GetRevision() const;
+  void SetRevision(string revision);
+  string GetSlot() const;
+  void SetSlot(string slot);
+  int GetBinaryCompatabilityRevision() const;
+  void SetBinaryCompatabilityRevision(int revision);
+  bool IsUnpacked() const;
+  bool IsAtLeastUnpacked() const;
+  void SetUnpacked();
+  bool IsConfigured() const;
+  bool IsAtLeastConfigured() const;
+  void SetConfigured();
+  bool IsBuilt() const;
+  void SetBuilt();
+  bool IsInstalled() const;
+  void SetInstalled();
+  string GetErrorMessage() const;
+  void SetErrorMessage(string errMsg);
+  string Uninstall(bool backup=true);
+  void SetInstallListFilename(string filename);
+  void AddInstalledFile(string filename);
+  void AddInstalledSymLink(string linkname);
+  void AddInstalledDirectory(string directory);
+  bool TransferFilesTo(InstallEntry* target);
+  void ConsolidateFiles();
+  bool PurgeLegacyFiles();
+  void SetUninstallInstructions(const InstructionSequence& instructions);
+  void AddDependency(const PackageDependency& dependency);
+  void ClearDependencies(InstallLog& installLog);
+  int GetNumDependencies() const;
+  const PackageDependency* GetDependency(int depNumber);
+  void AddReverseDependency(string packageName, string revision, const PackageDependency& forwardDependency);
+  void RemoveReverseDependency(string packageName, string revision, int maxEntries=1);
+  bool TransferReverseDependenciesTo(InstallEntry* target);
+  int GetNumReverseDependencies() const;
+  string GetReverseDependencyName(int depNumber) const;
+  bool ReverseDependencyIsStatic(int depNumber) const;
+  bool ReverseDependenciesAreInList(const InstallEntryVector& packages) const;
+  const FeatureOptionVector& GetFeatures() const;
+  void AddFeature(FeatureOption* feature);
+  bool HasFeature(string featureName);
+  bool GetFeatureState(string featureName);
+  bool ActivateFeature(string featureName);
+  bool DeactivateFeature(string featureName);
+  bool IsExplicitlyInstalled();
+  void SetExplicitlyInstalled(bool state);
+  bool IsExcludedFromUpdates();
+  void SetExcludeFromUpdates(bool state);
+private:
+  bool LoadFileList();
+  //! The name of the package pertaining to this entry
+  string mPackageName;
+  //! The revision of the package pertaining to this entry
+  Revision mPackageRevision;
+  //! The slot occupied by the package pertaining to this entry
+  string mPackageSlot;
+  //! The state of whether this installation was explicitly requested by the user
+  bool mExplicitInstall;
+  //! Should this package be allowed to update when not necessary or expilcity stated
+  bool mExcludeFromUpdates;
+  //! Value used to track whether two revisions of a package have binary compatable interfaces
+  int mBinaryCompatabilityRevision;
+  //! The state to which this package has been installed (unpacked, configured, etc)
+  string mPackageStatus;
+  //! Indicates that this package was just installed, and its files must be recorded
+  bool mInstalledInThisSession;
+  //! The error message(s) generated by the last action performed on the package
+  string mErrorMessage;
+  //! The name of the file listing the files installed by this package
+  string mInstallListFilename;
+  //! The files installed by this package
+  vector<InstalledFile*> mInstalledFiles;
+  //! The names of the symbolic links installed by this package
+  vector<string> mInstalledSymLinks;
+  //! The names of the directories installed by this package
+  vector<string> mInstalledDirectories;
+  //! The instructions (if any) executed to remove this package from this system
+  InstructionSequence mUninstallInstructions;
+  //! The list of dependencies this package has on other packages
+  PackageDependencyVector mDependencies;
+  //! The list of the packages which depend on this package
+  PackageDependencyVector mReverseDependencies;
+  //! The list of optional features and their states used by this package
+  FeatureOptionVector mFeatures;
+};
+
+#endif

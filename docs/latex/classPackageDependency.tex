@@ -1,0 +1,480 @@
+\section{PackageDependency Class Reference}
+\label{classPackageDependency}\index{PackageDependency@{PackageDependency}}
+
+
+Class responsible for representing a dependency between two packages.  
+
+
+
+
+{\ttfamily \#include $<$PackageDependency.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf PackageDependency} (const {\bf PackageDependency} \&clone)
+\item 
+{\bf PackageDependency} (const {\bf PackageDependency} \&clone, string minRevision, string maxRevision)
+\item 
+{\bf PackageDependency} (string name, string minRevision, string maxRevision, string type)
+\item 
+bool {\bf IsSatisfiedBy} (const {\bf Package} $\ast$package) const 
+\item 
+bool {\bf IsSatisfiedBy} (const {\bf InstallEntry} $\ast$package) const 
+\item 
+bool {\bf IsSatisfiedBy} (const string \&packageName, const {\bf Revision} \&revision) const 
+\item 
+string {\bf GetName} () const 
+\item 
+string {\bf GetString} () const 
+\item 
+string {\bf GetType} () const 
+\item 
+string {\bf GetMinRevision} () const 
+\item 
+string {\bf GetMaxRevision} () const 
+\item 
+bool {\bf SetType} (string type)
+\item 
+void {\bf SetCondition} (const {\bf BooleanExpression} \&condition)
+\item 
+string {\bf GetDependentString} () const 
+\item 
+string {\bf GetDependentName} () const 
+\item 
+void {\bf SetDependentName} (string name)
+\item 
+string {\bf GetDependentRevision} () const 
+\item 
+void {\bf SetDependentRevision} (string revision)
+\item 
+bool {\bf Save} (xmlNodePtr parentNode)
+\item 
+bool {\bf Load} (xmlNodePtr dependencyNode)
+\item 
+bool {\bf IsActive} (const FeatureOptionVector \&features) const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mPackageName}\label{classPackageDependency_a3b009847300b97cfc6295bd988961816}
+
+\begin{DoxyCompactList}\small\item\em The name of the package this dependency refers to. \item\end{DoxyCompactList}\item 
+{\bf Revision} {\bf mMinRevision}\label{classPackageDependency_aa9de7e4359e07a8237838683d4c1a25f}
+
+\begin{DoxyCompactList}\small\item\em The minimum revision of the package which satisfies this dependency. \item\end{DoxyCompactList}\item 
+{\bf Revision} {\bf mMaxRevision}\label{classPackageDependency_a6156971e5421135731c0eb72cc4a8a0f}
+
+\begin{DoxyCompactList}\small\item\em The maximum revision of the package which satisfies this dependency. \item\end{DoxyCompactList}\item 
+{\bf BooleanExpression} {\bf mCondition}\label{classPackageDependency_a9ee3305e9daa414dc7b35b1c6e49ce76}
+
+\begin{DoxyCompactList}\small\item\em The expression of feature conditions which activate this dependency. \item\end{DoxyCompactList}\item 
+string {\bf mType}\label{classPackageDependency_a300b773e33b1b28c2ae31975eb6693ff}
+
+\begin{DoxyCompactList}\small\item\em The type of dependency (i.e. install tool, static lib, dynamic lib, etc). \item\end{DoxyCompactList}\item 
+string {\bf mDependentName}\label{classPackageDependency_a2a7136d4206077e515ab861ff73632cd}
+
+\begin{DoxyCompactList}\small\item\em The name of the package which relies on this dependency (empty unless this is a reverse dependency). \item\end{DoxyCompactList}\item 
+{\bf Revision} {\bf mDependentRevision}\label{classPackageDependency_a5b9db17be797c6a2dac6106a25474578}
+
+\begin{DoxyCompactList}\small\item\em The revision of the package which relies on this dependency (meaningless unless this is a reverse dependency). \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class responsible for representing a dependency between two packages. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{PackageDependency@{PackageDependency}!PackageDependency@{PackageDependency}}
+\index{PackageDependency@{PackageDependency}!PackageDependency@{PackageDependency}}
+\subsubsection[{PackageDependency}]{\setlength{\rightskip}{0pt plus 5cm}PackageDependency::PackageDependency (
+\begin{DoxyParamCaption}
+\item[{const {\bf PackageDependency} \&}]{ clone}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_af5ccdee7a2934297c3fa08fadbf18efc}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em clone}]-\/ the package dependency to copy \end{DoxyParams}
+
+
+References mCondition, mDependentName, mDependentRevision, mMaxRevision, mMinRevision, mPackageName, and mType.
+
+\index{PackageDependency@{PackageDependency}!PackageDependency@{PackageDependency}}
+\index{PackageDependency@{PackageDependency}!PackageDependency@{PackageDependency}}
+\subsubsection[{PackageDependency}]{\setlength{\rightskip}{0pt plus 5cm}PackageDependency::PackageDependency (
+\begin{DoxyParamCaption}
+\item[{const {\bf PackageDependency} \&}]{ clone, }
+\item[{string}]{ minRevision, }
+\item[{string}]{ maxRevision}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_af2d92d776bd470ab1145b51b15ba298a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em clone}]-\/ the package dependency to copy \item[{\em minRevision}]-\/ the dependency application's minimum allowed revision \item[{\em maxRevision}]-\/ the dependency application's maximum allowed revision \end{DoxyParams}
+
+
+References mCondition, mDependentName, mDependentRevision, mMaxRevision, mMinRevision, mPackageName, mType, and Revision::Set().
+
+\index{PackageDependency@{PackageDependency}!PackageDependency@{PackageDependency}}
+\index{PackageDependency@{PackageDependency}!PackageDependency@{PackageDependency}}
+\subsubsection[{PackageDependency}]{\setlength{\rightskip}{0pt plus 5cm}PackageDependency::PackageDependency (
+\begin{DoxyParamCaption}
+\item[{string}]{ name, }
+\item[{string}]{ minRevision, }
+\item[{string}]{ maxRevision, }
+\item[{string}]{ type}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_a98943e9140fa67b89f707db15d2d2936}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]-\/ the dependency application's name \item[{\em minRevision}]-\/ the dependency application's minimum allowed revision \item[{\em maxRevision}]-\/ the dependency application's maximum allowed revision \item[{\em type}]-\/ the type of dependency (\char`\"{}static\char`\"{}, \char`\"{}dynamic\char`\"{}, or \char`\"{}install\char`\"{}) \end{DoxyParams}
+
+
+References mDependentName, mMaxRevision, mMinRevision, mPackageName, mType, and Revision::Set().
+
+
+
+\subsection{Member Function Documentation}
+\index{PackageDependency@{PackageDependency}!GetDependentName@{GetDependentName}}
+\index{GetDependentName@{GetDependentName}!PackageDependency@{PackageDependency}}
+\subsubsection[{GetDependentName}]{\setlength{\rightskip}{0pt plus 5cm}string PackageDependency::GetDependentName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_abd88475a93ba83392843c827aa62e117}
+\begin{DoxyReturn}{Returns}
+the name of the package that relies on this dependency 
+\end{DoxyReturn}
+
+
+References mDependentName.
+
+\index{PackageDependency@{PackageDependency}!GetDependentRevision@{GetDependentRevision}}
+\index{GetDependentRevision@{GetDependentRevision}!PackageDependency@{PackageDependency}}
+\subsubsection[{GetDependentRevision}]{\setlength{\rightskip}{0pt plus 5cm}string PackageDependency::GetDependentRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_a1255727c86cadd96fda67a26a01fdd02}
+\begin{DoxyReturn}{Returns}
+the revision of the package that relies on this dependency 
+\end{DoxyReturn}
+
+
+References Revision::GetString(), and mDependentRevision.
+
+\index{PackageDependency@{PackageDependency}!GetDependentString@{GetDependentString}}
+\index{GetDependentString@{GetDependentString}!PackageDependency@{PackageDependency}}
+\subsubsection[{GetDependentString}]{\setlength{\rightskip}{0pt plus 5cm}string PackageDependency::GetDependentString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_a4c47409418663994ecf3d9904cbf60a4}
+\begin{DoxyReturn}{Returns}
+human readable string describing the package that relies on this dependency 
+\end{DoxyReturn}
+
+
+References BooleanExpression::GetString(), Revision::GetString(), mCondition, mDependentName, and mDependentRevision.
+
+\index{PackageDependency@{PackageDependency}!GetMaxRevision@{GetMaxRevision}}
+\index{GetMaxRevision@{GetMaxRevision}!PackageDependency@{PackageDependency}}
+\subsubsection[{GetMaxRevision}]{\setlength{\rightskip}{0pt plus 5cm}string PackageDependency::GetMaxRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_ac98f825943e11431653ed4afab2ed1c9}
+\begin{DoxyReturn}{Returns}
+string identifying the maximum required revision 
+\end{DoxyReturn}
+
+
+References Revision::GetString(), and mMaxRevision.
+
+
+
+Referenced by Package::Package().
+
+\index{PackageDependency@{PackageDependency}!GetMinRevision@{GetMinRevision}}
+\index{GetMinRevision@{GetMinRevision}!PackageDependency@{PackageDependency}}
+\subsubsection[{GetMinRevision}]{\setlength{\rightskip}{0pt plus 5cm}string PackageDependency::GetMinRevision (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_aace3914bad80663156e35fac0beb4820}
+\begin{DoxyReturn}{Returns}
+string identifying the minimum required revision 
+\end{DoxyReturn}
+
+
+References Revision::GetString(), and mMinRevision.
+
+
+
+Referenced by Package::Package().
+
+\index{PackageDependency@{PackageDependency}!GetName@{GetName}}
+\index{GetName@{GetName}!PackageDependency@{PackageDependency}}
+\subsubsection[{GetName}]{\setlength{\rightskip}{0pt plus 5cm}string PackageDependency::GetName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_ac65f73c7cdc8bfdcd6e402b445ace0c1}
+\begin{DoxyReturn}{Returns}
+the name of the package required by this dependency 
+\end{DoxyReturn}
+
+
+References mPackageName.
+
+
+
+Referenced by AppRover::Install(), InstallLog::RegisterReverseDependency(), and InstallLog::Satisfies().
+
+\index{PackageDependency@{PackageDependency}!GetString@{GetString}}
+\index{GetString@{GetString}!PackageDependency@{PackageDependency}}
+\subsubsection[{GetString}]{\setlength{\rightskip}{0pt plus 5cm}string PackageDependency::GetString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_a83a60eb2fb110275266e6da456921f3c}
+\begin{DoxyReturn}{Returns}
+human readable string describing this dependency 
+\end{DoxyReturn}
+
+
+References Revision::GetString(), BooleanExpression::GetString(), Revision::IsSet(), mCondition, mMaxRevision, mMinRevision, and mPackageName.
+
+
+
+Referenced by AppRover::Install().
+
+\index{PackageDependency@{PackageDependency}!GetType@{GetType}}
+\index{GetType@{GetType}!PackageDependency@{PackageDependency}}
+\subsubsection[{GetType}]{\setlength{\rightskip}{0pt plus 5cm}string PackageDependency::GetType (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_a35d3f868855e4ad70c200001c2037bbc}
+\begin{DoxyReturn}{Returns}
+string describing the dependency relationship (\char`\"{}static\char`\"{}, \char`\"{}dynamic\char`\"{}, or \char`\"{}install\char`\"{}) 
+\end{DoxyReturn}
+
+
+References mType.
+
+
+
+Referenced by InstallLog::RegisterReverseDependency().
+
+\index{PackageDependency@{PackageDependency}!IsActive@{IsActive}}
+\index{IsActive@{IsActive}!PackageDependency@{PackageDependency}}
+\subsubsection[{IsActive}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageDependency::IsActive (
+\begin{DoxyParamCaption}
+\item[{const FeatureOptionVector \&}]{ features}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_a741654b65a61efe446042e6eb2f9a3d1}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em features}]-\/ the set of features used to evaluate the dependency condition \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the dependency condition is empty or evaluates to true (which indicates that this dependency cannot be ignored) 
+\end{DoxyReturn}
+
+
+References BooleanExpression::EvaluatesToTrue(), BooleanExpression::IsEmpty(), and mCondition.
+
+
+
+Referenced by AppRover::Install().
+
+\index{PackageDependency@{PackageDependency}!IsSatisfiedBy@{IsSatisfiedBy}}
+\index{IsSatisfiedBy@{IsSatisfiedBy}!PackageDependency@{PackageDependency}}
+\subsubsection[{IsSatisfiedBy}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageDependency::IsSatisfiedBy (
+\begin{DoxyParamCaption}
+\item[{const {\bf InstallEntry} $\ast$}]{ package}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_aec19f85b09e1f8cd6aa11faaea9d24da}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ an installed package which potentially satisfies the dependency \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if package is NULL or does not satisfy the dependency
+\end{DoxyReturn}
+Determines whether the specified package satisfies this dependency. 
+
+\begin{Desc}
+\item[{\bf Todo}]Add support for blocking dependencies \end{Desc}
+\begin{Desc}
+\item[{\bf Todo}]Add support for \char`\"{}virtual\char`\"{} dependencies \end{Desc}
+
+
+
+
+References InstallEntry::GetName(), InstallEntry::GetRevision(), Revision::IsSet(), mMaxRevision, mMinRevision, and mPackageName.
+
+\index{PackageDependency@{PackageDependency}!IsSatisfiedBy@{IsSatisfiedBy}}
+\index{IsSatisfiedBy@{IsSatisfiedBy}!PackageDependency@{PackageDependency}}
+\subsubsection[{IsSatisfiedBy}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageDependency::IsSatisfiedBy (
+\begin{DoxyParamCaption}
+\item[{const {\bf Package} $\ast$}]{ package}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_a358eae90c5eeec6ddae5f385bda1731a}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ a package which potentially satisfies the dependency \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if package is NULL or does not satisfy the dependency
+\end{DoxyReturn}
+Determines whether the specified package satisfies this dependency. 
+
+\begin{Desc}
+\item[{\bf Todo}]Add support for blocking dependencies \end{Desc}
+\begin{Desc}
+\item[{\bf Todo}]Add support for \char`\"{}virtual\char`\"{} dependencies \end{Desc}
+
+
+
+
+References Package::GetName(), Package::GetRevision(), Revision::IsSet(), mMaxRevision, mMinRevision, and mPackageName.
+
+
+
+Referenced by AppRover::FindMostCurrentPackage(), PackageIndex::GetMostCurrentPackage(), InstallLog::RegisterReverseDependency(), and InstallLog::Satisfies().
+
+\index{PackageDependency@{PackageDependency}!IsSatisfiedBy@{IsSatisfiedBy}}
+\index{IsSatisfiedBy@{IsSatisfiedBy}!PackageDependency@{PackageDependency}}
+\subsubsection[{IsSatisfiedBy}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageDependency::IsSatisfiedBy (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ packageName, }
+\item[{const {\bf Revision} \&}]{ revision}
+\end{DoxyParamCaption}
+) const}\label{classPackageDependency_a843acb4ad329e79518d3d067f64eb922}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ name of a package which potentially satisfies the dependency \item[{\em revision}]-\/ revision of a package which potentially satisfies the dependency \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if package name and revision does not satisfy the dependency
+\end{DoxyReturn}
+Determines whether the specified package satisfies this dependency. 
+
+\begin{Desc}
+\item[{\bf Todo}]Add support for blocking dependencies \end{Desc}
+\begin{Desc}
+\item[{\bf Todo}]Add support for \char`\"{}virtual\char`\"{} dependencies \end{Desc}
+
+
+
+
+References Revision::IsSet(), mMaxRevision, mMinRevision, and mPackageName.
+
+\index{PackageDependency@{PackageDependency}!Load@{Load}}
+\index{Load@{Load}!PackageDependency@{PackageDependency}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageDependency::Load (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ dependencyNode}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_ac069a7d3dc1fbc545b88c8e1b23a6294}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dependencyNode}]-\/ the XML DOM node containing the dependency data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if dependencyNode is NULL or there is a format error
+\end{DoxyReturn}
+Loads the dependency data from the specified node. 
+
+References mCondition, mDependentName, mDependentRevision, mMaxRevision, mMinRevision, mPackageName, mType, BooleanExpression::ParseFromString(), and Revision::Set().
+
+
+
+Referenced by Package::Load(), and InstallEntry::Load().
+
+\index{PackageDependency@{PackageDependency}!Save@{Save}}
+\index{Save@{Save}!PackageDependency@{PackageDependency}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageDependency::Save (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ parentNode}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_ac1abab89eed719e7d3293659ec84197b}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em parentNode}]-\/ the parent XML DOM node for the dependency node \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if parentNode is NULL
+\end{DoxyReturn}
+Saves the dependency data as a child node of the specified parent. 
+
+References BooleanExpression::GetString(), Revision::GetString(), Revision::IsSet(), mCondition, mDependentName, mDependentRevision, mMaxRevision, mMinRevision, mPackageName, and mType.
+
+\index{PackageDependency@{PackageDependency}!SetCondition@{SetCondition}}
+\index{SetCondition@{SetCondition}!PackageDependency@{PackageDependency}}
+\subsubsection[{SetCondition}]{\setlength{\rightskip}{0pt plus 5cm}void PackageDependency::SetCondition (
+\begin{DoxyParamCaption}
+\item[{const {\bf BooleanExpression} \&}]{ condition}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_a381cb43eeb24f3b73d1c4a1f2f1cb6c0}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em condition}]-\/ the boolean expresssion which activates this dependency \end{DoxyParams}
+
+
+References mCondition.
+
+\index{PackageDependency@{PackageDependency}!SetDependentName@{SetDependentName}}
+\index{SetDependentName@{SetDependentName}!PackageDependency@{PackageDependency}}
+\subsubsection[{SetDependentName}]{\setlength{\rightskip}{0pt plus 5cm}void PackageDependency::SetDependentName (
+\begin{DoxyParamCaption}
+\item[{string}]{ name}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_a3792e30f25ec40077cc006813bb87dff}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]-\/ the name of the package that relies on this dependency \end{DoxyParams}
+
+
+References mDependentName.
+
+
+
+Referenced by InstallEntry::AddReverseDependency().
+
+\index{PackageDependency@{PackageDependency}!SetDependentRevision@{SetDependentRevision}}
+\index{SetDependentRevision@{SetDependentRevision}!PackageDependency@{PackageDependency}}
+\subsubsection[{SetDependentRevision}]{\setlength{\rightskip}{0pt plus 5cm}void PackageDependency::SetDependentRevision (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_a8358c3fe469563f9bcad94d0787cc831}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ the revision of the package that relies on this dependency \end{DoxyParams}
+
+
+References mDependentRevision, and Revision::Set().
+
+
+
+Referenced by InstallEntry::AddReverseDependency().
+
+\index{PackageDependency@{PackageDependency}!SetType@{SetType}}
+\index{SetType@{SetType}!PackageDependency@{PackageDependency}}
+\subsubsection[{SetType}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageDependency::SetType (
+\begin{DoxyParamCaption}
+\item[{string}]{ type}
+\end{DoxyParamCaption}
+)}\label{classPackageDependency_a25a21ad3c747b0b423e58b83579c57b6}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em type}]-\/ the dependency relationship (\char`\"{}static\char`\"{}, \char`\"{}dynamic\char`\"{}, or \char`\"{}install\char`\"{}) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if type is valid 
+\end{DoxyReturn}
+
+
+References mType.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+PackageDependency.h\item 
+PackageDependency.cpp\end{DoxyCompactItemize}

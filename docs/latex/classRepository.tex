@@ -1,0 +1,336 @@
+\section{Repository Class Reference}
+\label{classRepository}\index{Repository@{Repository}}
+
+
+Container class for handling packages stored in a particular location.  
+
+
+
+
+{\ttfamily \#include $<$Repository.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+RepositoryStatusType {\bf Save} () const 
+\item 
+RepositoryStatusType {\bf Load} (string direcotry)
+\item 
+{\bf Package} $\ast$ {\bf FindMostCurrentPackage} (string packageName, const {\bf PackageDependency} $\ast$dependency=NULL)
+\item 
+{\bf Package} $\ast$ {\bf GetPackage} (string packageName, string revision)
+\item 
+{\bf Package} $\ast$ {\bf GetPrecedingPackage} (string packageName, string revision)
+\item 
+string {\bf GetDirectory} () const 
+\item 
+void {\bf SetDirectory} (string directory)
+\item 
+bool {\bf AddPackage} ({\bf Package} $\ast$package)
+\item 
+int {\bf NumPackages} () const 
+\item 
+string {\bf GetPackageName} (int packageIndex) const 
+\item 
+string {\bf Synchronize} ()
+\item 
+bool {\bf SetSyncProtocol} (string protocol)
+\item 
+bool {\bf SetSyncLocation} (string location)
+\item 
+bool {\bf IsLocal} () const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mSyncProtocol}\label{classRepository_ab79bad19064e104865e1d03d4b26bb24}
+
+\begin{DoxyCompactList}\small\item\em The name of the protocol used to synchronize with remotely. \item\end{DoxyCompactList}\item 
+string {\bf mSyncLocation}\label{classRepository_af0035425690eb556636ae0e446088351}
+
+\begin{DoxyCompactList}\small\item\em Remote location to which this repository should be synchronized. \item\end{DoxyCompactList}\item 
+string {\bf mDirectory}\label{classRepository_a7b05273da22bb5c3d932af363cff37c4}
+
+\begin{DoxyCompactList}\small\item\em Directory where the local copy of the repository is stored. \item\end{DoxyCompactList}\item 
+PackageIndexVector {\bf mPackages}\label{classRepository_adb6bca12015378f76eceadfc65997b25}
+
+\begin{DoxyCompactList}\small\item\em List of packages available in this repository. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container class for handling packages stored in a particular location. 
+
+\subsection{Member Function Documentation}
+\index{Repository@{Repository}!AddPackage@{AddPackage}}
+\index{AddPackage@{AddPackage}!Repository@{Repository}}
+\subsubsection[{AddPackage}]{\setlength{\rightskip}{0pt plus 5cm}bool Repository::AddPackage (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ package}
+\end{DoxyParamCaption}
+)}\label{classRepository_a0ceb38c077bfef9e83a7af6fd974e743}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ the package to add to the repository \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if package is NULL or package duplicates another package
+\end{DoxyReturn}
+Adds the specified package to the repository. If no package index exists for this package, one will be created. 
+
+References PackageIndex::AddPackage(), Package::GetName(), Package::GetRevision(), Revision::GetString(), mDirectory, mPackages, Save(), and PackageIndex::SetBaseLocation().
+
+\index{Repository@{Repository}!FindMostCurrentPackage@{FindMostCurrentPackage}}
+\index{FindMostCurrentPackage@{FindMostCurrentPackage}!Repository@{Repository}}
+\subsubsection[{FindMostCurrentPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ Repository::FindMostCurrentPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{const {\bf PackageDependency} $\ast$}]{ dependency = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{classRepository_a351c52dccf80a05936f02334c0720701}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the package to find \item[{\em dependency}]-\/ the dependency requirements \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the package with the specified name and latest revision 
+
+NULL if the packageName is not recognized or no revision is available.
+\end{DoxyReturn}
+Finds the latest revision of the package with the specified name. If dependency is non-\/null, it locates the most current revision which statisfies the dependency. 
+
+References mPackages.
+
+\index{Repository@{Repository}!GetDirectory@{GetDirectory}}
+\index{GetDirectory@{GetDirectory}!Repository@{Repository}}
+\subsubsection[{GetDirectory}]{\setlength{\rightskip}{0pt plus 5cm}string Repository::GetDirectory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classRepository_addc8f1d2ca42f6aa518fc9112a30b499}
+\begin{DoxyReturn}{Returns}
+the directory containing the repository config file 
+\end{DoxyReturn}
+
+
+References mDirectory.
+
+
+
+Referenced by AppRover::SynchronizeRepositories().
+
+\index{Repository@{Repository}!GetPackage@{GetPackage}}
+\index{GetPackage@{GetPackage}!Repository@{Repository}}
+\subsubsection[{GetPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ Repository::GetPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classRepository_ae7b7085ac89b1fd314289dd0c2d5b8c4}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the package to retrieve \item[{\em revision}]-\/ the revision of the package to retrieve \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+package with the specified name and revision 
+
+NULL if no package with the specified name and revision could be found 
+\end{DoxyReturn}
+
+
+References mPackages.
+
+\index{Repository@{Repository}!GetPackageName@{GetPackageName}}
+\index{GetPackageName@{GetPackageName}!Repository@{Repository}}
+\subsubsection[{GetPackageName}]{\setlength{\rightskip}{0pt plus 5cm}string Repository::GetPackageName (
+\begin{DoxyParamCaption}
+\item[{int}]{ packageIndex}
+\end{DoxyParamCaption}
+) const}\label{classRepository_ae632557b85fc2f5cd0337efadf8d2d18}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageIndex}]the index to the list of package names\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the name of the package at the specified index 
+
+\char`\"{}\char`\"{} if the index is invalid 
+\end{DoxyReturn}
+
+
+References mPackages.
+
+\index{Repository@{Repository}!GetPrecedingPackage@{GetPrecedingPackage}}
+\index{GetPrecedingPackage@{GetPrecedingPackage}!Repository@{Repository}}
+\subsubsection[{GetPrecedingPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ Repository::GetPrecedingPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ packageName, }
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classRepository_a5f3bb69fecc9d8d0fd4ddfed3c9a300f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageName}]-\/ the name of the package to retrieve \item[{\em revision}]-\/ the revision which comes after the desired revision \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+package with the specified name with revision preceding the specified one 
+
+NULL if no package with the specified name and revision constraint could be found 
+\end{DoxyReturn}
+
+
+References mPackages.
+
+\index{Repository@{Repository}!IsLocal@{IsLocal}}
+\index{IsLocal@{IsLocal}!Repository@{Repository}}
+\subsubsection[{IsLocal}]{\setlength{\rightskip}{0pt plus 5cm}bool Repository::IsLocal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classRepository_afcfdaba759dbb2dd33122b15d69f6422}
+\begin{DoxyReturn}{Returns}
+true if this repository does not have a synchronization location 
+\end{DoxyReturn}
+
+
+References mSyncLocation.
+
+\index{Repository@{Repository}!Load@{Load}}
+\index{Load@{Load}!Repository@{Repository}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}RepositoryStatusType Repository::Load (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classRepository_a291c55e07eed62baf1640aed4bc11dc9}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em directory}]-\/ the directory containing the repository config file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+REPO\_\-DIR\_\-NOT\_\-SPECIFIED if directory is \char`\"{}\char`\"{} 
+
+REPO\_\-FILE\_\-MISSING if the config file could not be read 
+
+REPO\_\-FILE\_\-FORMAT\_\-ERROR if there is a format error in the file 
+
+REPO\_\-OK otherwise
+\end{DoxyReturn}
+Loads the repository data from the repository config file in the specified directory. 
+
+References PackageIndex::Load(), mDirectory, mPackages, mSyncLocation, mSyncProtocol, and PackageIndex::SetBaseLocation().
+
+
+
+Referenced by AppRover::AppRover(), and AppRover::SynchronizeRepositories().
+
+\index{Repository@{Repository}!NumPackages@{NumPackages}}
+\index{NumPackages@{NumPackages}!Repository@{Repository}}
+\subsubsection[{NumPackages}]{\setlength{\rightskip}{0pt plus 5cm}int Repository::NumPackages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classRepository_ac1d892f4b036ef67bbfedabe636b09e6}
+\begin{DoxyReturn}{Returns}
+the number of distinct package names in the repository 
+\end{DoxyReturn}
+
+
+References mPackages.
+
+\index{Repository@{Repository}!Save@{Save}}
+\index{Save@{Save}!Repository@{Repository}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}RepositoryStatusType Repository::Save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classRepository_acc2a7eda955dc7a91aea625e3af6b955}
+\begin{DoxyReturn}{Returns}
+REPO\_\-FILE\_\-NOT\_\-WRITABLE if the repository file cannot be written 
+
+REPO\_\-OK otherwise
+\end{DoxyReturn}
+Saves the repository data to the repository config file in the previously specified directory. 
+
+References mDirectory, mPackages, mSyncLocation, and mSyncProtocol.
+
+
+
+Referenced by AppRover::AddNewRepository(), AddPackage(), AppRover::AppRover(), and AppRover::SynchronizeRepositories().
+
+\index{Repository@{Repository}!SetDirectory@{SetDirectory}}
+\index{SetDirectory@{SetDirectory}!Repository@{Repository}}
+\subsubsection[{SetDirectory}]{\setlength{\rightskip}{0pt plus 5cm}void Repository::SetDirectory (
+\begin{DoxyParamCaption}
+\item[{string}]{ directory}
+\end{DoxyParamCaption}
+)}\label{classRepository_ab69be032f1db4a3b67d8cbfed1160b41}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em directory}]-\/ the directory to hold the repository\end{DoxyParams}
+Sets the config directory for the repository. If the directory does not exist, it will be created. 
+
+References mDirectory.
+
+
+
+Referenced by AppRover::AddNewRepository().
+
+\index{Repository@{Repository}!SetSyncLocation@{SetSyncLocation}}
+\index{SetSyncLocation@{SetSyncLocation}!Repository@{Repository}}
+\subsubsection[{SetSyncLocation}]{\setlength{\rightskip}{0pt plus 5cm}bool Repository::SetSyncLocation (
+\begin{DoxyParamCaption}
+\item[{string}]{ location}
+\end{DoxyParamCaption}
+)}\label{classRepository_a92857ef764fd9119b22cb87cb6abd82f}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em location}]-\/ the remote location used to synchronize this repository (\char`\"{}\char`\"{} for local repository) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true; 
+\end{DoxyReturn}
+
+
+\begin{Desc}
+\item[{\bf Todo}]Start checking if location format matches protocol \end{Desc}
+
+
+
+
+References mSyncLocation.
+
+\index{Repository@{Repository}!SetSyncProtocol@{SetSyncProtocol}}
+\index{SetSyncProtocol@{SetSyncProtocol}!Repository@{Repository}}
+\subsubsection[{SetSyncProtocol}]{\setlength{\rightskip}{0pt plus 5cm}bool Repository::SetSyncProtocol (
+\begin{DoxyParamCaption}
+\item[{string}]{ protocol}
+\end{DoxyParamCaption}
+)}\label{classRepository_af4bf22be99b165abde4988285d31c312}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em protocol}]-\/ the protocol to use for syncronization to a remote repository \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the protocol is supported (\char`\"{}cvs\char`\"{}, \char`\"{}rsync\char`\"{}, or \char`\"{}package\char`\"{}) 
+\end{DoxyReturn}
+
+
+References mSyncProtocol.
+
+\index{Repository@{Repository}!Synchronize@{Synchronize}}
+\index{Synchronize@{Synchronize}!Repository@{Repository}}
+\subsubsection[{Synchronize}]{\setlength{\rightskip}{0pt plus 5cm}string Repository::Synchronize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classRepository_a01e87f84cb9b88f4809a6e6f52fc35b0}
+\begin{DoxyReturn}{Returns}
+string containing an error message (if any)
+\end{DoxyReturn}
+Uses the protocol specified in mSyncProtocol to update this repository to match the contents of the location specified in mSyncLocation. This does nothing if the repository is local, or either mSyncProtocol or mSyncLocation is unspecified. Cvs and package protocols are supported. Rsync support is currently not implemented. 
+
+\begin{Desc}
+\item[{\bf Todo}]Do actual rsync synchronization \end{Desc}
+
+
+
+
+References Fetcher::Fetch(), Interpreter::Interpret(), mDirectory, mSyncLocation, and mSyncProtocol.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Repository.h\item 
+Repository.cpp\end{DoxyCompactItemize}

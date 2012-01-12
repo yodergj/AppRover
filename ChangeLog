@@ -1,0 +1,70 @@
+--------------------------------------------------------------------------------
+Mar 23 2009 - Fix bug which caused backup filenames to be "..arbak".
+            - Update documentation.
+--------------------------------------------------------------------------------
+Mar 14 2009 - Refined file logging - purge entries which don't exist, and don't
+              log obvious binaries (currently check for .a, .la, .o and .so)
+            - After install a file, purge all backup files which either refer
+              to a file that doesn't exist or which matches the contents of the
+              backup file.
+            - Add purify command to CLI.  This causes the non-backup, inherited
+              files of a package to be deleted and then the package is rebuilt.
+--------------------------------------------------------------------------------
+Aug 08 2008 - Make embedded sourcefiles be correctly inherited when used as
+              part of a package template.
+--------------------------------------------------------------------------------
+Aug 07 2008 - Fix libwatcher's handling of open flags and fopen mode.
+--------------------------------------------------------------------------------
+Aug 06 2008 - Added support for source files embedded in the package.
+            - Refined the source file location editing in CLI.
+--------------------------------------------------------------------------------
+Aug 05 2008 - Signal handler for mimicking BeOS behavior has been removed.
+            - InstallLog is saved after packages complete stages instead of
+              just at the end.  This is so that work isn't undone if the
+              process crashes or is killed.
+            - Print nifty status messages in the title bar of xterm
+--------------------------------------------------------------------------------
+Aug 04 2008 - Replace strace file logging with a new preloaded library.
+--------------------------------------------------------------------------------
+Jul 12 2008 - Fix a bunch of checks for string position == -1 (instead of
+              string::npos)
+            - Added detection of number of processors, and automatically set
+              the make -j option accordingly.
+--------------------------------------------------------------------------------
+Jun 14 2008 - Fix build for gcc 4.3.1
+--------------------------------------------------------------------------------
+Jun 04 2008 - When using a package as a template to create a new package, any
+              dependencies with revision equal to the templates revision will
+              now be udpated for the new package.
+--------------------------------------------------------------------------------
+May 31 2008 - Add the ability to exclude a package from automatic updates.  It
+              will still be updated if explicitly installed or if it is
+              required to install or update another package.
+--------------------------------------------------------------------------------
+May 29 2008 - Fix selection of "moc" in the KDE build.
+            - Fix revision handling of "pre" and make the minimum value for
+              alpha, beta, pre, and rc equal to 0.
+--------------------------------------------------------------------------------
+Feb 28 2008 - Add error message for unsatisfied dependencies in pretend mode
+            - Fix memory leak with dependency failure in pretend mode
+--------------------------------------------------------------------------------
+Feb 27 2008 - Add support for grabbing the most recent revision of a package
+              which precedes a specified revision.
+            - CLI package templates now offer the most recent preceding package
+              rather than the highest revision.
+            - CLI now offers a cmake based template
+--------------------------------------------------------------------------------
+Jan 22 2008 - Fix the satisfaction of dependencies which have a max revision
+              which is less than the newest available revision.
+--------------------------------------------------------------------------------
+Dec 18 2007 - Dependencies now have a maximum revision in addition to the
+              existing minimum revision.  Setting min == max will effectively
+              set a dependency on a single revision.
+            - Applications can now specify a specific revision to install.
+              This is currently only used by the CLI application.
+            - Add the ability to update all installed packages.  The CLI
+              application uses the "update" command to do this.
+--------------------------------------------------------------------------------
+Dec 27 2006 - Fix bug with dependency entries being recorded multiple times if
+              the configure stage fails and is repeated.
+--------------------------------------------------------------------------------

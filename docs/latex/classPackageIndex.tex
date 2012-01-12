@@ -1,0 +1,235 @@
+\section{PackageIndex Class Reference}
+\label{classPackageIndex}\index{PackageIndex@{PackageIndex}}
+
+
+A storage class for tracking and maintaining package revisions.  
+
+
+
+
+{\ttfamily \#include $<$PackageIndex.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf Save} (xmlNodePtr parentNode) const 
+\item 
+bool {\bf Load} (xmlNodePtr packageIndexNode)
+\item 
+{\bf Package} $\ast$ {\bf GetPackage} (string revision)
+\item 
+{\bf Package} $\ast$ {\bf GetMostCurrentPackage} (const {\bf PackageDependency} $\ast$dependency=NULL)
+\item 
+{\bf Package} $\ast$ {\bf GetPrecedingPackage} (string revision)
+\item 
+void {\bf SetBaseLocation} (string baseLocation)
+\item 
+bool {\bf AddPackage} ({\bf Package} $\ast$package)
+\item 
+string {\bf GetName} () const 
+\item 
+bool {\bf ContainsRevision} (string revision) const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string {\bf mPackageName}\label{classPackageIndex_a371cd31544ee7ee2dd94ea2cd6a5c83b}
+
+\begin{DoxyCompactList}\small\item\em The name of the application pertaining to the list of packages. \item\end{DoxyCompactList}\item 
+string {\bf mBaseLocation}\label{classPackageIndex_aa64023f614008a1232f96dfb99c900c5}
+
+\begin{DoxyCompactList}\small\item\em The directory containing the list file for this index. \item\end{DoxyCompactList}\item 
+vector$<$ {\bf Revision} $>$ {\bf mPackageRevisions}\label{classPackageIndex_ac038d851c5a331b56d0a89ac637fdf26}
+
+\begin{DoxyCompactList}\small\item\em The list of revisions available for this application. \item\end{DoxyCompactList}\item 
+vector$<$ string $>$ {\bf mPackageFilenames}\label{classPackageIndex_a0cc2fe3f2ecbdf6fd615771a7875cdef}
+
+\begin{DoxyCompactList}\small\item\em The list of files containing package data for this application. \item\end{DoxyCompactList}\item 
+PackageVector {\bf mLoadedPackages}\label{classPackageIndex_aa14b735bdad38ff880b4b18d91e4a55a}
+
+\begin{DoxyCompactList}\small\item\em The list of packages whose info has been already loaded from disk. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A storage class for tracking and maintaining package revisions. 
+
+\subsection{Member Function Documentation}
+\index{PackageIndex@{PackageIndex}!AddPackage@{AddPackage}}
+\index{AddPackage@{AddPackage}!PackageIndex@{PackageIndex}}
+\subsubsection[{AddPackage}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageIndex::AddPackage (
+\begin{DoxyParamCaption}
+\item[{{\bf Package} $\ast$}]{ package}
+\end{DoxyParamCaption}
+)}\label{classPackageIndex_a0cf2e3720bce95c36898c22110f1b754}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em package}]-\/ a package to add to this index \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if 1) package is NULL 2) the package is missing its name or revision 3) the index contains a package with the same revision as the revision of package 4) the package has the wrong name
+\end{DoxyReturn}
+This adds a package to the list of packages handled by this index. If this is the first package, it is used to set the name of the package index. 
+
+References ContainsRevision(), Package::GetName(), Package::GetRevision(), Revision::GetString(), mLoadedPackages, mPackageFilenames, mPackageName, and mPackageRevisions.
+
+
+
+Referenced by Repository::AddPackage().
+
+\index{PackageIndex@{PackageIndex}!ContainsRevision@{ContainsRevision}}
+\index{ContainsRevision@{ContainsRevision}!PackageIndex@{PackageIndex}}
+\subsubsection[{ContainsRevision}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageIndex::ContainsRevision (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+) const}\label{classPackageIndex_a11594e3d67fa994d040a66d1a7b8db8c}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ the revision potentially handled by this index \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ true if the specified revision is contained in one of the packages handled by this index 
+\end{DoxyReturn}
+
+
+References mPackageRevisions.
+
+
+
+Referenced by AddPackage().
+
+\index{PackageIndex@{PackageIndex}!GetMostCurrentPackage@{GetMostCurrentPackage}}
+\index{GetMostCurrentPackage@{GetMostCurrentPackage}!PackageIndex@{PackageIndex}}
+\subsubsection[{GetMostCurrentPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ PackageIndex::GetMostCurrentPackage (
+\begin{DoxyParamCaption}
+\item[{const {\bf PackageDependency} $\ast$}]{ dependency = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{classPackageIndex_aa1ba3b06dfe8da68fd9a18f8edcdf86b}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dependency}]-\/ the dependency requirements \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the package with the latest revision number 
+
+NULL if there are not entries in the index, or the package cannot be loaded.
+\end{DoxyReturn}
+If dependency is non-\/null, it locates the most current revision which statisfies the dependency. 
+
+References PackageDependency::IsSatisfiedBy(), Package::Load(), mBaseLocation, mLoadedPackages, mPackageFilenames, mPackageName, and mPackageRevisions.
+
+\index{PackageIndex@{PackageIndex}!GetName@{GetName}}
+\index{GetName@{GetName}!PackageIndex@{PackageIndex}}
+\subsubsection[{GetName}]{\setlength{\rightskip}{0pt plus 5cm}string PackageIndex::GetName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classPackageIndex_a5c6d64dfe50edf5ccd3b95d3c7e4c214}
+\begin{DoxyReturn}{Returns}
+the name of the package managed by this index 
+\end{DoxyReturn}
+
+
+References mPackageName.
+
+
+
+Referenced by Save().
+
+\index{PackageIndex@{PackageIndex}!GetPackage@{GetPackage}}
+\index{GetPackage@{GetPackage}!PackageIndex@{PackageIndex}}
+\subsubsection[{GetPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ PackageIndex::GetPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classPackageIndex_a467ddbe15ff1481c6568636c4cf95240}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ the revision of the package to retrieve \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the package with the specified revision 
+
+NULL if the revision is unknown or the package could not be loaded 
+\end{DoxyReturn}
+
+
+References mBaseLocation, mLoadedPackages, mPackageFilenames, mPackageName, and mPackageRevisions.
+
+\index{PackageIndex@{PackageIndex}!GetPrecedingPackage@{GetPrecedingPackage}}
+\index{GetPrecedingPackage@{GetPrecedingPackage}!PackageIndex@{PackageIndex}}
+\subsubsection[{GetPrecedingPackage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Package} $\ast$ PackageIndex::GetPrecedingPackage (
+\begin{DoxyParamCaption}
+\item[{string}]{ revision}
+\end{DoxyParamCaption}
+)}\label{classPackageIndex_ab55c8854e5c155bddc932c66a2f03893}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em revision}]-\/ a revision following the desired revision \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the package with the latest revision number preceding the specified one 
+
+NULL if there are not entries in the index, or the package cannot be loaded. 
+\end{DoxyReturn}
+
+
+References Package::Load(), mBaseLocation, mLoadedPackages, mPackageFilenames, mPackageName, mPackageRevisions, and Revision::Set().
+
+\index{PackageIndex@{PackageIndex}!Load@{Load}}
+\index{Load@{Load}!PackageIndex@{PackageIndex}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageIndex::Load (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ packageIndexNode}
+\end{DoxyParamCaption}
+)}\label{classPackageIndex_ad8c6089b87a0ae91c4190545aaf176cb}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em packageIndexNode}]-\/ the XML DOM node containing the package index data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if packageIndexNode is NULL or there is a format error
+\end{DoxyReturn}
+Loads the package index data from the specified node. 
+
+References mPackageFilenames, mPackageName, mPackageRevisions, and Revision::Set().
+
+
+
+Referenced by Repository::Load().
+
+\index{PackageIndex@{PackageIndex}!Save@{Save}}
+\index{Save@{Save}!PackageIndex@{PackageIndex}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}bool PackageIndex::Save (
+\begin{DoxyParamCaption}
+\item[{xmlNodePtr}]{ parentNode}
+\end{DoxyParamCaption}
+) const}\label{classPackageIndex_a45c1e28a051ad4595df989750ebca7ec}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em parentNode}]-\/ the parent XML DOM node for the package index node \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if parentNode is NULL
+\end{DoxyReturn}
+Saves the package index data as a child node of the specified parent. 
+
+References GetName(), mBaseLocation, mLoadedPackages, mPackageFilenames, mPackageName, and mPackageRevisions.
+
+\index{PackageIndex@{PackageIndex}!SetBaseLocation@{SetBaseLocation}}
+\index{SetBaseLocation@{SetBaseLocation}!PackageIndex@{PackageIndex}}
+\subsubsection[{SetBaseLocation}]{\setlength{\rightskip}{0pt plus 5cm}void PackageIndex::SetBaseLocation (
+\begin{DoxyParamCaption}
+\item[{string}]{ baseLocation}
+\end{DoxyParamCaption}
+)}\label{classPackageIndex_a522a74d6ecd90a10f320fc42e19664e6}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em baseLocation}]-\/ the parent to the package directory\end{DoxyParams}
+This sets the directory which will be used as a parent to the directory where the packages are stored. The package directory will be created if it does not exist. 
+
+References mBaseLocation, and mPackageName.
+
+
+
+Referenced by Repository::AddPackage(), and Repository::Load().
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+PackageIndex.h\item 
+PackageIndex.cpp\end{DoxyCompactItemize}
