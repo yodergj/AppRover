@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// Copyright (c) 2004-2009 Gabriel Yoder
+// Copyright (c) 2004-2012 Gabriel Yoder
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -811,10 +811,10 @@ bool Package::Fetch(InstallEntry* logEntry, string storageDirectory, bool force)
   if ( !logEntry )
     return false;
 
+  numFiles = mSourceFiles.size();
   if ( numFiles > 0 )
     gShowProcessingStage("Fetching " + mPackageName + " " + mPackageRevision.GetString());
 
-  numFiles = mSourceFiles.size();
   for (i = 0; i < numFiles; i++)
   {
     if ( !mSourceFiles[i]->IsActive(logEntry->GetFeatures()) ||
