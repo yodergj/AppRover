@@ -60,6 +60,7 @@ release: clean
 	@ cd $(REL_DIR)/KDE && rm -rf CVS .depends
 	@ cd $(REL_DIR)/libsrc && rm -rf CVS .depends
 	@ cd $(REL_DIR)/utils && rm -rf CVS .depends
+	@ cd $(REL_DIR)/watcher && rm -rf CVS .depends
 	@ cd $(REL_DIR)/docs && rm -rf CVS
 	@ cd $(REL_DIR)/docs/html && rm -rf CVS
 	@ cd $(REL_DIR)/docs/latex && rm -rf CVS

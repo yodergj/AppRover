@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef int (*RIntPCCharIntVar_FuncType)(const char*, int, ...);
 typedef int (*RIntPCCharModeT_FuncType)(const char*, mode_t);
