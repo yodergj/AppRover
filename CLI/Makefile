@@ -3,14 +3,13 @@ CPP = g++
 ifeq ($(OS),BeOS)
 INCFLAGS = -I /boot/home/config/include/libxml2 -I ../libsrc
 LDFLAGS = -L /boot/home/config/lib
-LIBS = -lxml2 -lz
 APP_ROVER_DIR = '"/boot/home/config/AppRover/"'
 else
 INCFLAGS = -I /usr/include/libxml2 -I ../libsrc
 LDFLAGS =
-LIBS = -lxml2
 APP_ROVER_DIR = '"/usr/AppRover/"'
 endif
+LIBS = -lxml2 -lz
 CFLAGS = -g -Wall -c $(INCFLAGS) -DAPP_ROVER_DIR=$(APP_ROVER_DIR)
 OBJS = CLI.o
 ROVERLIB = ../libsrc/AppRover.a
